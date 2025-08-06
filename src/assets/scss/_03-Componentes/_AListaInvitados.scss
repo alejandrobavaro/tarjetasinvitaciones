@@ -264,6 +264,37 @@
   }
 }
 
+.btn-copiar-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #8B4513;
+  transition: all 0.2s;
+  border-radius: 4px;
+  
+  &:hover {
+    background-color: #f1f1f1;
+  }
+
+  .icon-link {
+    font-size: 1.2rem;
+  }
+
+  .icon-clipboard {
+    font-size: 0.9rem;
+  }
+
+  .copiado-text {
+    color: #2e7d32;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
 /* Breakpoint para tablet (768px) */
 @media (min-width: 768px) {
   .lista-invitados-container {

@@ -35,6 +35,11 @@ const BCrearTarjetaInvitacion = () => {
 
   const generarMensajeWhatsApp = () => {
     if (!invitadoSeleccionado) return '';
+
+    const linksGenerados = JSON.parse(localStorage.getItem('linksConfirmacion') || '{}');
+    const linkConfirmacion = linksGenerados[invitadoSeleccionado.id]?.link ||
+                          `${window.location.origin}/confirmar/${invitadoSeleccionado.id}`;
+
     return `¡Hola ${invitadoSeleccionado.nombre}! 🎉\n\n` +
       `Hoy compartimos contigo una alegría muy especial:\n` +
       `¡Nos casamos! 💍❤️\n\n` +
@@ -46,8 +51,7 @@ const BCrearTarjetaInvitacion = () => {
       `Si deseas contribuir a nuestra luna de miel:\n` +
       `💌 ${diseno.detallesRegalo}\n\n` +
       `*Confirmá tu asistencia aquí:*\n` +
-      `👉 ${window.location.origin}/confirmar/${invitadoSeleccionado.id}\n\n` +
-      `¡Esperamos celebrar este día especial contigo!\n` +
+      `👉 ${linkConfirmacion}\n\n` +
       `Con amor,\n${diseno.nombresNovios}`;
   };
 
@@ -68,12 +72,12 @@ const BCrearTarjetaInvitacion = () => {
         logging: false,
         useCORS: true,
         allowTaint: true,
-        width: 500, // Ajusta el ancho del canvas
-        height: 750, // Ajusta el alto del canvas
-        x: 0, // Asegúrate de que el canvas comience desde la esquina superior izquierda
-        y: 0, // Asegúrate de que el canvas comience desde la esquina superior izquierda
+        width: 500,
+        height: 750,
+        x: 0,
+        y: 0,
       });
-  
+
       const link = document.createElement('a');
       link.download = `invitacion-${invitadoSeleccionado?.nombre || 'boda'}.jpg`;
       link.href = canvas.toDataURL('image/jpeg', 0.9);
@@ -82,7 +86,6 @@ const BCrearTarjetaInvitacion = () => {
       console.error("Error al generar la imagen:", error);
     }
   };
-  
 
   return (
     <div className="crear-tarjeta-container">
@@ -196,20 +199,24 @@ const BCrearTarjetaInvitacion = () => {
                 {invitadoSeleccionado && (
                   <p className="nombre-invitado">Querido/a {invitadoSeleccionado.nombre}</p>
                 )}
-                <h2>¡Nos Casamos!</h2>
+                <h2 className='titulotarjeta'>¡Nos Casamos!</h2>
                 <p className="frase-destacada">"El amor es la razón de nuestro ser"</p>
                 <div className="detalles-principales">
                   <p className="nombres-novios">{diseno.nombresNovios}</p>
                   <p>{diseno.fecha}</p>
                   <p>{diseno.hora}</p>
                   <p className="lugar-destacado">{diseno.lugar.split('\n')[0]}</p>
-                  <p className="codigo-vestimenta">{diseno.codigoVestimenta}</p>
-                  <p className="frase-cierre">¡Esperamos compartir este momento tan especial contigo!</p>
+                
+                  <p className="codigo-vestimenta">Vestimenta {diseno.codigoVestimenta}</p>
+                  <p className="frase-cierre"></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+
+        
       </div>
     </div>
   );

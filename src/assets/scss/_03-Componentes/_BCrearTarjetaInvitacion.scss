@@ -1,13 +1,11 @@
 /* Estilos base - Mobile First */
 .crear-tarjeta-container {
-  // Contenedor principal con márgenes automáticos para centrado
   max-width: 100%;
   margin: 0 auto;
   padding: 0.5rem;
   font-family: 'Cormorant Garamond', serif;
-  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado con tonalidad del proyecto
+  background-color: rgba(249, 245, 240, 0.8);
 
-  // Título principal
   h1 {
     font-family: 'Cinzel', serif;
     color: #8B4513;
@@ -16,21 +14,18 @@
     font-size: 1.5rem;
   }
 
-  // Contenedor de las dos columnas (formulario y preview)
   .contenedor-principal {
     display: flex;
-    flex-direction: column; // Mobile: columnas apiladas
-    gap: 1rem; // Gap pequeño para mobile
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  // Estilos del formulario
   .formulario-simple {
     background: #f9f5f0;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
 
-    // Cada grupo de campos del formulario
     .form-group {
       margin-bottom: 0.8rem;
 
@@ -42,7 +37,6 @@
         font-size: 0.9rem;
       }
 
-      // Campos de entrada
       input, textarea, select {
         width: 100%;
         padding: 0.5rem;
@@ -58,24 +52,21 @@
     }
   }
 
-  // Contenedor de la vista previa de la tarjeta
   .preview-container {
     width: 100%;
     margin: 0 auto;
 
-    // Marco de la invitación con imagen de fondo
     .marco-invitacion {
       background: url('/img/00-fondos/marcoinvitacion2.png') no-repeat center center;
       background-size: contain;
       background-color: white;
       width: 100%;
       height: 0;
-      padding-bottom: 150%; // Relación de aspecto para mobile
+      padding-bottom: 150%;
       position: relative;
       color: #5a2d2d;
       margin: 0 auto;
 
-      // Contenido centrado dentro del marco
       .contenido-invitacion {
         position: absolute;
         top: 50%;
@@ -85,14 +76,12 @@
         text-align: center;
         padding: 5%;
 
-        // Nombre del invitado
         .nombre-invitado {
           font-size: 1rem;
           margin-bottom: 0.8rem;
           font-weight: 600;
         }
 
-        // Título principal
         h2 {
           font-family: 'Cinzel', serif;
           font-size: 1.4rem;
@@ -100,7 +89,6 @@
           color: #8B4513;
         }
 
-        // Frase destacada
         .frase-destacada {
           font-style: italic;
           margin: 1rem 0;
@@ -108,7 +96,6 @@
           color: #8B4513;
         }
 
-        // Detalles principales de la boda
         .detalles-principales {
           margin: 0.8rem 0;
 
@@ -125,7 +112,6 @@
           }
         }
 
-        // Frase de cierre
         .frase-cierre {
           margin-top: 0.8rem;
           font-weight: 500;
@@ -135,14 +121,12 @@
     }
   }
 
-  // Contenedor de botones de acción
   .acciones-invitacion {
     display: flex;
-    flex-direction: column; // Mobile: botones apilados
+    flex-direction: column;
     gap: 0.8rem;
     margin-top: 1rem;
 
-    // Estilos base para botones
     button {
       padding: 0.7rem;
       border: none;
@@ -159,7 +143,6 @@
       }
     }
 
-    // Botón de descargar
     .btn-descargar {
       background-color: #8B4513;
       color: white;
@@ -169,7 +152,6 @@
       }
     }
 
-    // Botón de copiar
     .btn-copiar {
       background-color: #D4AF37;
       color: #333;
@@ -177,6 +159,48 @@
       &:hover:not(:disabled) {
         background-color: #C49F30;
       }
+    }
+  }
+}
+
+/* Añadir estos estilos al archivo SCSS */
+.marco-invitacion {
+  position: relative;
+  padding: 20px;
+  margin-top: -30px; // Sube el contenido 30px hacia arriba
+}
+
+.contenido-invitacion {
+  transform: translateY(-20px); // Sube el texto adicionalmente
+  padding-top: 10px; // Reduce el padding superior
+
+  .nombre-invitado {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+   
+  }
+
+  .frase-destacada {
+    margin-bottom: 20px;
+  }
+
+  .detalles-principales {
+    p {
+      margin-bottom: 10px;
+    }
+
+    .lugar-destacado {
+      margin-bottom: 15px;
+    }
+
+    .frase-cierre {
+      padding-top: 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
     }
   }
 }
@@ -237,7 +261,7 @@
     }
 
     .acciones-invitacion {
-      flex-direction: row; // Tablet: botones en línea
+      flex-direction: row;
       justify-content: center;
       gap: 1rem;
 
@@ -255,7 +279,7 @@
     padding: 1.5rem;
 
     .contenedor-principal {
-      flex-direction: row; // Escritorio: columnas lado a lado
+      flex-direction: row;
       gap: 2rem;
 
       .formulario-columna {
@@ -329,6 +353,9 @@
       }
     }
 
+.titulotarjeta {
+color: #801717d2 !important;
+}
     .acciones-invitacion {
       gap: 1.5rem;
 

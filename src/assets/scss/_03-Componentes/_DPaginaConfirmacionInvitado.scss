@@ -1,81 +1,100 @@
-.confirmacion-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+/* =============================================== */
+/* ESTILOS PARA PÁGINA DE CONFIRMACIÓN DE ASISTENCIA */
+/* =============================================== */
 
+/* Contenedor principal - Mobile First */
+.confirmacion-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado
+
+  /* --- Encabezado --- */
   .header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
 
     h1 {
-      color: #2c3e50;
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      color: #8B4513;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-family: 'Cinzel', serif;
     }
 
     p {
-      font-size: 1.1rem;
-      color: #7f8c8d;
+      font-size: 1rem;
+      color: #5a2d2d;
 
       strong {
-        color: #2c3e50;
+        color: #8B4513;
       }
     }
   }
 
+  /* --- Formulario de confirmación --- */
   .form-confirmacion {
-    background-color: #f8f9fa;
-    padding: 2rem;
+    background-color: white;
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
+    /* Grupo de campos del formulario */
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
 
-      label {
+      /* Estilos para labels normales */
+      label:not(.checkbox-label) {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         font-weight: 600;
-        color: #34495e;
+        color: #5a2d2d;
+        font-size: 0.9rem;
       }
 
+      /* Campos de entrada */
       input[type="number"],
       input[type="text"],
       textarea {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.6rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-size: 1rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
 
         &:focus {
           outline: none;
-          border-color: #3498db;
+          border-color: #D4AF37;
         }
       }
 
       textarea {
         resize: vertical;
-        min-height: 100px;
+        min-height: 80px;
       }
 
+      /* Texto de ayuda */
       .hint {
         display: block;
-        font-size: 0.875rem;
-        color: #7f8c8d;
-        margin-top: 0.25rem;
+        font-size: 0.8rem;
+        color: #8B4513;
+        margin-top: 0.2rem;
       }
 
+      /* Estilo personalizado para checkbox */
       .checkbox-label {
         display: flex;
         align-items: center;
         cursor: pointer;
         position: relative;
-        padding-left: 35px;
-        font-size: 1.1rem;
+        padding-left: 30px;
+        font-size: 1rem;
         user-select: none;
+        color: #5a2d2d;
 
+        /* Input checkbox oculto */
         input {
           position: absolute;
           opacity: 0;
@@ -83,9 +102,10 @@
           height: 0;
           width: 0;
 
+          /* Estado checked */
           &:checked ~ .checkmark {
-            background-color: #2ecc71;
-            border-color: #2ecc71;
+            background-color: #8B4513;
+            border-color: #8B4513;
 
             &:after {
               display: block;
@@ -93,104 +113,171 @@
           }
         }
 
+        /* Checkmark personalizado */
         .checkmark {
           position: absolute;
           top: 0;
           left: 0;
-          height: 25px;
-          width: 25px;
+          height: 20px;
+          width: 20px;
           background-color: white;
-          border: 2px solid #bdc3c7;
+          border: 2px solid #8B4513;
           border-radius: 4px;
-          transition: all 0.3s;
+          transition: all 0.2s;
 
+          /* Checkmark visual */
           &:after {
             content: "";
             position: absolute;
             display: none;
-            left: 9px;
-            top: 5px;
+            left: 6px;
+            top: 2px;
             width: 5px;
             height: 10px;
             border: solid white;
-            border-width: 0 3px 3px 0;
+            border-width: 0 2px 2px 0;
             transform: rotate(45deg);
           }
         }
 
+        /* Efecto hover */
         &:hover input ~ .checkmark {
-          border-color: #95a5a6;
+          background-color: #f1f1f1;
         }
       }
     }
 
+    /* Botón de confirmación */
     .btn-confirmar {
       width: 100%;
-      padding: 1rem;
+      padding: 0.8rem;
       border: none;
       border-radius: 4px;
-      font-size: 1.1rem;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-      margin-top: 1rem;
-
-      background-color: #2ecc71;
+      transition: all 0.2s;
+      margin-top: 0.8rem;
+      background-color: #8B4513;
       color: white;
 
       &:hover {
-        background-color: #27ae60;
+        background-color: #6B3410;
       }
     }
   }
 
+  /* --- Mensajes de estado --- */
+  
+  /* Mensaje de carga */
   .loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    font-size: 1.5rem;
-    color: #7f8c8d;
+    height: 100px;
+    font-size: 1rem;
+    color: #8B4513;
   }
 
+  /* Mensaje de error */
   .error {
     text-align: center;
-    color: #e74c3c;
-    font-size: 1.2rem;
-    padding: 2rem;
+    color: #c0392b;
+    font-size: 1rem;
+    padding: 1rem;
   }
 }
 
+/* =============================================== */
+/* ESTILOS PARA PÁGINA DE CONFIRMACIÓN EXITOSA */
+/* =============================================== */
 .confirmacion-exitosa {
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
+  background-color: rgba(249, 245, 240, 0.8);
 
   h1 {
-    color: #2ecc71;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    color: #8B4513;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Cinzel', serif;
   }
 
   p {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #5a2d2d;
+    margin-bottom: 1.5rem;
   }
 
+  /* Botón para volver al inicio */
   .btn-volver {
-    background-color: #3498db;
+    background-color: #8B4513;
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 4px;
-    font-size: 1.1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.2s;
 
     &:hover {
-      background-color: #2980b9;
+      background-color: #6B3410;
     }
+  }
+}
+
+/* =============================================== */
+/* MEDIA QUERIES - TABLET (768px) */
+/* =============================================== */
+@media (min-width: 768px) {
+  .confirmacion-container {
+    max-width: 600px;
+    padding: 1.5rem;
+
+    .header {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .form-confirmacion {
+      padding: 1.5rem;
+
+      .btn-confirmar {
+        padding: 1rem;
+      }
+    }
+  }
+
+  .confirmacion-exitosa {
+    max-width: 500px;
+    padding: 2rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+/* =============================================== */
+/* MEDIA QUERIES - ESCRITORIO (1024px) */
+/* =============================================== */
+@media (min-width: 1024px) {
+  .confirmacion-container {
+    max-width: 700px;
+    padding: 2rem;
   }
 }

@@ -12,7 +12,12 @@ const EListaInvitadosqueConfirmaronAsistencia = () => {
       
       const lista = Object.entries(confirmacionesData).map(([id, conf]) => {
         const invitado = data.grupos.flatMap(g => g.invitados).find(i => i.id === parseInt(id));
-        return { ...invitado, ...conf };
+        return { 
+          ...invitado, 
+          ...conf,
+          // Añadir el link de confirmación
+          linkConfirmacion: `${window.location.origin}/confirmar/${id}`
+        };
       });
       
       setConfirmaciones(lista);
@@ -32,6 +37,7 @@ const EListaInvitadosqueConfirmaronAsistencia = () => {
           <tr>
             <th>Nombre</th>
             <th>Acompañantes</th>
+            <th>Link Confirmación</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +45,11 @@ const EListaInvitadosqueConfirmaronAsistencia = () => {
             <tr key={index}>
               <td>{item.nombre}</td>
               <td>{item.acompanantes}</td>
+              <td>
+                <a href={item.linkConfirmacion} target="_blank" rel="noopener noreferrer">
+                  Ver link
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>
