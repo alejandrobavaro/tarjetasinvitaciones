@@ -1,0 +1,315 @@
+/* ========================================================= */
+/* _AListaInvitados.scss - Estilos para el componente de lista de invitados */
+/* ========================================================= */
+
+/* --- Contenedor principal --- */
+.lista-invitados-container {
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+
+  /* --- Encabezado con título y botones --- */
+  .header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--color-primary);
+      font-size: 1.6rem;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+
+  /* --- Botones principales --- */
+  .btn-primary, .btn-secondary {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  /* --- Barra de estadísticas --- */
+  .stats-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+
+    .stat-card {
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: var(--shadow-light);
+
+      .stat-number {
+        font-size: 1.5rem;
+        font-weight: 600;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+      }
+
+      &.total {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+
+      &.confirmed {
+        background-color: #2e8b57;
+        color: var(--color-white);
+      }
+
+      &.pending {
+        background-color: #cd5c5c;
+        color: var(--color-white);
+      }
+    }
+  }
+
+  /* --- Contenedor de filtros --- */
+  .filtros-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .filtro-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-weight: 600;
+        color: var(--color-primary);
+      }
+
+      select, input {
+        padding: 0.7rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        background-color: var(--color-white);
+
+        &:focus {
+          outline: none;
+          border-color: var(--color-secondary);
+        }
+      }
+    }
+  }
+
+  /* --- Tabla de invitados --- */
+  .tabla-invitados {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-white);
+    border-radius: 4px;
+    box-shadow: var(--shadow-light);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+
+      th, td {
+        padding: 0.8rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      th {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+          background-color: #7a4f50;
+        }
+      }
+
+      tr {
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #f9f9f9;
+        }
+
+        &.confirmado td:first-child {
+          border-left: 3px solid #2e8b57;
+        }
+
+        &.pendiente td:first-child {
+          border-left: 3px solid #cd5c5c;
+        }
+      }
+
+      .badge {
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+
+        &.confirmado {
+          background-color: #2e8b57;
+          color: white;
+        }
+
+        &.pendiente {
+          background-color: #cd5c5c;
+          color: white;
+        }
+
+        .check-icon {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .no-results {
+      padding: 1.5rem;
+      text-align: center;
+      color: #777;
+    }
+  }
+
+  /* --- Paginación --- */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+
+    button {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ddd;
+      background-color: var(--color-white);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-primary);
+        color: white;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &.active {
+        background-color: var(--color-primary);
+        color: white;
+      }
+    }
+  }
+
+  /* --- Mensaje de carga --- */
+  .loading {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+  }
+}
+
+/* ========================================================= */
+/* Media Queries - Tablet (768px+) */
+/* ========================================================= */
+@media (min-width: 768px) {
+  .lista-invitados-container {
+    max-width: 750px;
+    padding: 1.5rem;
+
+    .header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .header-actions {
+        flex-direction: row;
+      }
+    }
+
+    .stats-bar {
+      flex-direction: row;
+
+      .stat-card {
+        flex: 1;
+      }
+    }
+
+    .filtros-container {
+      flex-direction: row;
+
+      .filtro-group {
+        flex: 1;
+      }
+
+      .search-group {
+        flex: 2;
+      }
+    }
+  }
+}
+
+/* ========================================================= */
+/* Media Queries - Desktop (1024px+) */
+/* ========================================================= */
+@media (min-width: 1024px) {
+  .lista-invitados-container {
+    max-width: 960px;
+    padding: 2rem;
+
+    .header h1 {
+      font-size: 1.8rem;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+}
