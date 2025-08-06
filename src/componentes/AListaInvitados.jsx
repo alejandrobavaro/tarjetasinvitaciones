@@ -114,7 +114,7 @@ const AListaInvitados = () => {
             onClick={exportarCSV}
             disabled={invitadosOrdenados.length === 0}
           >
-            Exportar a CSV
+            Exportar Lista Invitados
           </button>
         </div>
       </div>

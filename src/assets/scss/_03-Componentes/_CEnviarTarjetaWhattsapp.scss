@@ -1,150 +1,153 @@
+/* Estilos base - Mobile First */
 .enviar-invitacion-container {
-  padding: 2rem;
-  max-width: 1200px;
+  // Contenedor principal con márgenes automáticos para centrado
+  width: 100%;
   margin: 0 auto;
+  padding: 0.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado
 
+  /* --- Encabezado --- */
   .header {
+    margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column; // Mobile: elementos apilados
+    gap: 0.8rem;
 
     h1 {
-      color: #2c3e50;
-      font-size: 2rem;
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 1.4rem;
+      text-align: center;
       margin: 0;
     }
 
     .btn-volver {
-      background-color: #95a5a6;
+      background-color: #8B4513;
       color: white;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.7rem;
       border-radius: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 0.9rem;
 
       &:hover {
-        background-color: #7f8c8d;
-        transform: translateY(-2px);
+        background-color: #6B3410;
       }
     }
   }
 
+  /* --- Contenido principal --- */
   .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
+    display: flex;
+    flex-direction: column; // Mobile: columnas apiladas
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
+  /* --- Sección de selección de invitado --- */
   .seleccion-invitado {
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
     h2 {
-      color: #34495e;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      color: #5a2d2d;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
     }
 
     .search-group {
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
 
       input {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.6rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-size: 1rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
 
         &:focus {
           outline: none;
-          border-color: #3498db;
-          box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+          border-color: #D4AF37;
         }
       }
     }
 
     select {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.6rem;
       border: 1px solid #ddd;
       border-radius: 4px;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      transition: all 0.2s;
-
-      &:focus {
-        outline: none;
-        border-color: #3498db;
-      }
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      background-color: white;
     }
 
     .info-invitado {
       background-color: #f8f9fa;
-      padding: 1rem;
+      padding: 0.8rem;
       border-radius: 4px;
       border: 1px solid #eee;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
 
       p {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         display: flex;
 
         strong {
           display: inline-block;
-          width: 100px;
-          color: #7f8c8d;
+          width: 80px;
+          color: #8B4513;
         }
       }
 
       .envio-previo {
-        margin-top: 1rem;
-        padding: 0.75rem;
+        margin-top: 0.8rem;
+        padding: 0.6rem;
         background-color: #e8f5e9;
         border-radius: 4px;
         color: #2e7d32;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
+        font-size: 0.8rem;
 
         small {
-          font-size: 0.8rem;
+          font-size: 0.7rem;
           opacity: 0.8;
+          display: block;
+          margin-top: 0.2rem;
         }
       }
     }
   }
 
+  /* --- Vista previa del mensaje --- */
   .vista-previa-mensaje {
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
     h2 {
-      color: #34495e;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      color: #5a2d2d;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
     }
 
     .alert {
-      padding: 1rem;
+      padding: 0.8rem;
       border-radius: 4px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
 
       &.alert-warning {
         background-color: #fff3e0;
@@ -158,28 +161,29 @@
     }
 
     .personalizacion-mensaje {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
 
       label {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         font-weight: 600;
-        color: #34495e;
+        color: #5a2d2d;
+        font-size: 0.9rem;
       }
 
       textarea {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.6rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-size: 1rem;
-        min-height: 120px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
+        min-height: 100px;
         resize: vertical;
 
         &:focus {
           outline: none;
-          border-color: #3498db;
-          box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+          border-color: #D4AF37;
         }
       }
     }
@@ -188,44 +192,46 @@
       background-color: #e5ddd5;
       border-radius: 8px;
       overflow: hidden;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 
       .whatsapp-header {
         background-color: #075e54;
         color: white;
-        padding: 0.75rem 1rem;
+        padding: 0.6rem 0.8rem;
         display: flex;
         align-items: center;
 
         .contacto {
           display: flex;
           flex-direction: column;
+          font-size: 0.9rem;
 
           .nombre {
             font-weight: 600;
           }
 
           .estado {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.8;
           }
         }
       }
 
       .mensaje-content {
-        padding: 1rem;
-        min-height: 300px;
+        padding: 0.8rem;
+        min-height: 200px;
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABnSURBVDhP7cxBCsAgDETR6P3P3KZQKBRB/5+ZQh8EPQmZzFqRc87N3Xvvzjm3tVZrrbXWWmuttdZaa6211lprrbXWWmuttdZaa6211lprrbXWWmuttdZaa6211lprrbXWWvsH/gBZ9ySibWwFJAAAAABJRU5ErkJggg==");
         background-repeat: repeat;
 
         .bubble {
           max-width: 70%;
-          padding: 0.75rem 1rem;
+          padding: 0.6rem 0.8rem;
           border-radius: 7.5px;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
           position: relative;
           word-wrap: break-word;
+          font-size: 0.9rem;
 
           &.sent {
             background-color: #dcf8c6;
@@ -234,7 +240,7 @@
           }
 
           p {
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.4rem 0;
 
             &:last-child {
               margin-bottom: 0;
@@ -249,16 +255,13 @@
       background-color: #25d366;
       color: white;
       border: none;
-      padding: 1rem;
+      padding: 0.8rem;
       border-radius: 4px;
-      font-size: 1rem;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      transition: all 0.2s;
+      font-size: 0.9rem;
 
       &:hover:not(:disabled) {
         background-color: #128c7e;
@@ -271,27 +274,30 @@
     }
 
     .envio-exitoso {
-      margin-top: 1rem;
-      padding: 0.75rem;
+      margin-top: 0.8rem;
+      padding: 0.6rem;
       background-color: #e8f5e9;
       color: #2e7d32;
       border-radius: 4px;
       text-align: center;
+      font-size: 0.9rem;
       animation: fadeIn 0.5s;
     }
   }
 
+  /* --- Historial de envíos --- */
   .historial-envios {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-    margin-top: 2rem;
+    padding: 1rem;
+    margin-top: 1rem;
 
     h2 {
-      color: #34495e;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      color: #5a2d2d;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
     }
 
     .historial-table {
@@ -300,9 +306,10 @@
       table {
         width: 100%;
         border-collapse: collapse;
+        font-size: 0.8rem;
 
         th, td {
-          padding: 0.75rem 1rem;
+          padding: 0.6rem 0.8rem;
           text-align: left;
           border-bottom: 1px solid #eee;
         }
@@ -310,7 +317,7 @@
         th {
           background-color: #f8f9fa;
           font-weight: 600;
-          color: #34495e;
+          color: #5a2d2d;
         }
 
         tr:hover {
@@ -320,17 +327,80 @@
     }
   }
 
+  /* --- Mensaje de carga --- */
   .loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    font-size: 1.5rem;
-    color: #7f8c8d;
+    height: 100px;
+    font-size: 1rem;
+    color: #8B4513;
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 
+/* Animación para mensaje de éxito */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Breakpoint para tablet (768px) */
+@media (min-width: 768px) {
+  .enviar-invitacion-container {
+    padding: 1rem;
+    max-width: 750px;
+
+    .header {
+      flex-direction: row; // Tablet: título y botón en línea
+      align-items: center;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 1.6rem;
+        text-align: left;
+      }
+    }
+
+    .content {
+      flex-direction: row; // Tablet: columnas en línea
+      gap: 1.5rem;
+    }
+
+    .seleccion-invitado,
+    .vista-previa-mensaje {
+      flex: 1;
+    }
+
+    .btn-volver,
+    .btn-enviar {
+      padding: 0.8rem 1rem;
+    }
+  }
+}
+
+/* Breakpoint para escritorio (1024px) */
+@media (min-width: 1024px) {
+  .enviar-invitacion-container {
+    max-width: 960px;
+    padding: 1.5rem;
+
+    .header h1 {
+      font-size: 1.8rem;
+    }
+
+    .content {
+      gap: 2rem;
+    }
+
+    .seleccion-invitado,
+    .vista-previa-mensaje {
+      padding: 1.5rem;
+    }
+
+    .btn-volver,
+    .btn-enviar {
+      font-size: 1rem;
+    }
+  }
 }

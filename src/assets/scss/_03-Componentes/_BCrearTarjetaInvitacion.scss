@@ -1,153 +1,157 @@
+/* Estilos base - Mobile First */
 .crear-tarjeta-container {
-  max-width: 1200px;
+  // Contenedor principal con márgenes automáticos para centrado
+  max-width: 100%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.5rem;
   font-family: 'Cormorant Garamond', serif;
+  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado con tonalidad del proyecto
 
+  // Título principal
   h1 {
     font-family: 'Cinzel', serif;
     color: #8B4513;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
   }
 
+  // Contenedor de las dos columnas (formulario y preview)
   .contenedor-principal {
     display: flex;
-    gap: 2rem;
-
-    .formulario-columna {
-      flex: 1;
-      min-width: 400px;
-    }
-
-    .preview-columna {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+    flex-direction: column; // Mobile: columnas apiladas
+    gap: 1rem; // Gap pequeño para mobile
   }
 
+  // Estilos del formulario
   .formulario-simple {
     background: #f9f5f0;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
+    // Cada grupo de campos del formulario
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
 
       label {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
         color: #5a2d2d;
         font-weight: 600;
+        font-size: 0.9rem;
       }
 
+      // Campos de entrada
       input, textarea, select {
         width: 100%;
-        padding: 0.7rem;
+        padding: 0.5rem;
         border: 1px solid #d4af37;
         border-radius: 4px;
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
 
       textarea {
-        min-height: 80px;
-      }
-
-      select {
-        background-color: white;
+        min-height: 70px;
       }
     }
   }
 
+  // Contenedor de la vista previa de la tarjeta
   .preview-container {
     width: 100%;
-    max-width: 512px;
+    margin: 0 auto;
 
-
-    
+    // Marco de la invitación con imagen de fondo
     .marco-invitacion {
       background: url('/img/00-fondos/marcoinvitacion2.png') no-repeat center center;
       background-size: contain;
       background-color: white;
-      width: 500px; // Ajusta el ancho del contenedor
-      height: 750px; // Ajusta el alto del contenedor
+      width: 100%;
+      height: 0;
+      padding-bottom: 150%; // Relación de aspecto para mobile
       position: relative;
       color: #5a2d2d;
-      overflow: hidden; // Asegúrate de que no haya desbordamiento
-    
+      margin: 0 auto;
+
+      // Contenido centrado dentro del marco
       .contenido-invitacion {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%; // Ajusta el ancho del contenido
+        width: 85%;
         text-align: center;
-        padding: 10px; // Ajusta el padding según sea necesario
-        box-sizing: border-box; // Asegúrate de que el padding no aumente el tamaño total
-    
+        padding: 5%;
+
+        // Nombre del invitado
         .nombre-invitado {
-          font-size: 1.2rem;
-          margin-bottom: 1rem;
+          font-size: 1rem;
+          margin-bottom: 0.8rem;
           font-weight: 600;
         }
-    
+
+        // Título principal
         h2 {
           font-family: 'Cinzel', serif;
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
           color: #8B4513;
         }
-    
+
+        // Frase destacada
         .frase-destacada {
           font-style: italic;
-          margin: 1.5rem 0;
-          font-size: 1.1rem;
+          margin: 1rem 0;
+          font-size: 1rem;
           color: #8B4513;
         }
-    
+
+        // Detalles principales de la boda
         .detalles-principales {
-          margin: 1rem 0; // Ajusta los márgenes según sea necesario
-    
+          margin: 0.8rem 0;
+
           .nombres-novios {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
             color: #5a2d2d;
           }
-    
+
           .lugar-destacado {
             font-weight: 600;
-            margin-top: 0.5rem; // Ajusta los márgenes según sea necesario
+            margin-top: 0.4rem;
           }
         }
-    
+
+        // Frase de cierre
         .frase-cierre {
-          margin-top: 1rem; // Ajusta los márgenes según sea necesario
+          margin-top: 0.8rem;
           font-weight: 500;
+          font-size: 0.9rem;
         }
       }
     }
-    
-
   }
 
+  // Contenedor de botones de acción
   .acciones-invitacion {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column; // Mobile: botones apilados
+    gap: 0.8rem;
     margin-top: 1rem;
 
+    // Estilos base para botones
     button {
-      padding: 0.8rem 1.5rem;
+      padding: 0.7rem;
       border: none;
       border-radius: 4px;
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
+      font-size: 0.9rem;
 
       &:disabled {
         opacity: 0.6;
@@ -155,6 +159,7 @@
       }
     }
 
+    // Botón de descargar
     .btn-descargar {
       background-color: #8B4513;
       color: white;
@@ -164,6 +169,7 @@
       }
     }
 
+    // Botón de copiar
     .btn-copiar {
       background-color: #D4AF37;
       color: #333;
@@ -175,27 +181,160 @@
   }
 }
 
-@media (max-width: 1024px) {
+/* Breakpoint para tablet (768px) */
+@media (min-width: 768px) {
   .crear-tarjeta-container {
+    padding: 1rem;
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
     .contenedor-principal {
-      flex-direction: column;
+      gap: 1.5rem;
+    }
 
-      .formulario-columna, .preview-columna {
-        min-width: 100%;
-      }
+    .formulario-simple {
+      padding: 1.2rem;
 
-      .preview-columna {
-        order: -1;
-        margin-bottom: 2rem;
+      .form-group {
+        margin-bottom: 1rem;
+
+        label {
+          font-size: 1rem;
+        }
+
+        input, textarea, select {
+          padding: 0.6rem;
+          font-size: 1rem;
+        }
       }
     }
 
     .preview-container {
-      max-width: 100%;
+      .marco-invitacion {
+        .contenido-invitacion {
+          .nombre-invitado {
+            font-size: 1.1rem;
+          }
+
+          h2 {
+            font-size: 1.6rem;
+          }
+
+          .frase-destacada {
+            font-size: 1.1rem;
+          }
+
+          .detalles-principales {
+            .nombres-novios {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+
+    .acciones-invitacion {
+      flex-direction: row; // Tablet: botones en línea
+      justify-content: center;
+      gap: 1rem;
+
+      button {
+        padding: 0.8rem 1.2rem;
+      }
+    }
+  }
+}
+
+/* Breakpoint para escritorio (1024px) */
+@media (min-width: 1024px) {
+  .crear-tarjeta-container {
+    max-width: 1200px;
+    padding: 1.5rem;
+
+    .contenedor-principal {
+      flex-direction: row; // Escritorio: columnas lado a lado
+      gap: 2rem;
+
+      .formulario-columna {
+        flex: 1;
+      }
+
+      .preview-columna {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .formulario-simple {
+      padding: 1.5rem;
+
+      .form-group {
+        margin-bottom: 1.2rem;
+
+        input, textarea, select {
+          padding: 0.7rem;
+        }
+
+        textarea {
+          min-height: 80px;
+        }
+      }
+    }
+
+    .preview-container {
+      max-width: 512px;
 
       .marco-invitacion {
-        height: 0;
-        padding-bottom: 150%;
+        width: 500px;
+        height: 750px;
+        padding-bottom: 0;
+
+        .contenido-invitacion {
+          .nombre-invitado {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+          }
+
+          h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .frase-destacada {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+          }
+
+          .detalles-principales {
+            margin: 1rem 0;
+
+            .nombres-novios {
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+            }
+
+            .lugar-destacado {
+              margin-top: 0.5rem;
+            }
+          }
+
+          .frase-cierre {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+
+    .acciones-invitacion {
+      gap: 1.5rem;
+
+      button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
       }
     }
   }
