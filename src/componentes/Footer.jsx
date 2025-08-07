@@ -29,17 +29,7 @@ function Footer() {
 
   return (
     <footer className="footer">
-      
-      {/* Botón de contacto */}
-      <div className="contact-btn-container">
-        <Link 
-          to="/contacto" 
-          className="contact-btn"
-          onClick={scrollToTop}
-        >
-          CONTACTO
-        </Link>
-      </div>
+    
      
       {/* Contenido principal del Footer */}
       <div className="footer-content">
@@ -52,9 +42,21 @@ function Footer() {
             className="footer-logo"
           />
         </div>
+
+          
+      {/* Botón de ContactoUnificado */}
+      <div className="contact-btn-container">
+        <Link 
+          to="/ContactoUnificado" 
+          className="contact-btn"
+          onClick={scrollToTop}
+        >
+          Contacto
+        </Link>
+      </div>
         
         {/* Redes sociales */}
-        <div className="social-links-container">
+        {/* <div className="social-links-container">
           <div className="social-links">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <BsInstagram className="social-icon" />
@@ -70,7 +72,7 @@ function Footer() {
             </a>
           </div>
         </div>
-        
+         */}
         {/* Logo decorativo derecho */}
         <div className="footer-logo-container">
           <img 

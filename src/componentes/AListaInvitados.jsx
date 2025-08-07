@@ -30,7 +30,7 @@ const AListaInvitados = () => {
             grupoNombre: grupo.nombre,
             confirmado: confirmaciones[invitado.id]?.asistencia || false,
             acompanantesConfirmados: confirmaciones[invitado.id]?.acompanantes || 0,
-            telefono: invitado.contacto?.telefono || 'N/A'
+            telefono: invitado.ContactoUnificado?.telefono || 'N/A'
           }))
         );
 

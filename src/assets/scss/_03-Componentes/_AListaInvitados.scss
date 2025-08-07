@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 0.5rem;
   font-family: 'Cormorant Garamond', serif;
-  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado
+  background-color: rgb(255, 255, 255); 
 
   /* --- Encabezado --- */
   .header {
@@ -16,11 +16,11 @@
 
     h1 {
       font-family: 'Cinzel', serif;
-      color: #8B4513;
+      color: #6B2D2D; // Bordo oscuro
       font-size: 1.4rem;
       text-align: center;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid #D4AF37;
+      border-bottom: 1px solid #D4A373; // Color tierra claro
     }
 
     .header-actions {
@@ -48,13 +48,13 @@
   }
 
   .btn-primary {
-    background-color: #8B4513;
-    color: white;
+    background-color: #721818; // Bordo oscuro
+    color: #FAF5F0; // Crema claro
   }
 
   .btn-secondary {
-    background-color: #D4AF37;
-    color: #333;
+    background-color: #501b44; // Color tierra claro
+    color: #ffffff; // Bordo medio
 
     &:disabled {
       opacity: 0.6;
@@ -86,18 +86,18 @@
       }
 
       &.total {
-        background-color: #8B4513;
-        color: white;
+        background-color: #6B2D2D; // Bordo oscuro
+        color: #FAF5F0; // Crema claro
       }
 
       &.confirmed {
-        background-color: #2e8b57;
-        color: white;
+        background-color: #578b38; // Tierra claro
+        color: #FAF5F0; // Crema claro
       }
 
       &.pending {
-        background-color: #cd5c5c;
-        color: white;
+        background-color: #7c582df5; // Tierra dorado claro
+        color: #ffffff; // Bordo medio
       }
     }
   }
@@ -116,21 +116,21 @@
 
       label {
         font-weight: 600;
-        color: #5a2d2d;
+        color: #5A2D2D; // Bordo medio
         font-size: 0.9rem;
       }
 
       select, input {
         padding: 0.6rem;
-        border: 1px solid #ddd;
+        border: 1px solid #D4A373; // Color tierra claro
         border-radius: 4px;
         font-family: 'Cormorant Garamond', serif;
-        background-color: white;
+        background-color: #FAF5F0; // Crema claro
         font-size: 0.9rem;
 
         &:focus {
           outline: none;
-          border-color: #D4AF37;
+          border-color: #6b2d2db9; // Bordo oscuro
         }
       }
     }
@@ -145,7 +145,7 @@
     width: 100%;
     overflow-x: auto; // Scroll horizontal en mobile
     margin-bottom: 1rem;
-    background-color: white;
+    background-color: #FAF5F0; // Crema claro
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
@@ -157,19 +157,19 @@
       th, td {
         padding: 0.6rem;
         text-align: left;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #D4A373; // Color tierra claro
         font-size: 0.9rem;
       }
 
       th {
-        background-color: #8B4513;
-        color: white;
+        background-color: #6B2D2D; // Bordo oscuro
+        color: #FAF5F0; // Crema claro
         font-weight: 600;
         cursor: pointer;
         position: relative;
 
         &:hover {
-          background-color: #6B3410;
+          background-color: #5A2D2D; // Bordo medio
         }
       }
 
@@ -177,15 +177,17 @@
         transition: background-color 0.2s;
 
         &:hover {
-          background-color: #f9f9f9;
+          background-color: #F0E6D2; // Crema más cálido
         }
 
         &.confirmado td:first-child {
-          border-left: 3px solid #2e8b57;
+          border-left: 3px solid #A38B6D; // Tierra claro
         }
 
         &.pendiente td:first-child {
-          border-left: 3px solid #cd5c5c;
+          border-left: 3px solid #C19A6B; // Tierra dorado claro
+          color: rgb(155, 19, 19);
+          font-weight: bold;
         }
       }
 
@@ -198,13 +200,13 @@
         gap: 0.2rem;
 
         &.confirmado {
-          background-color: #2e8b57;
-          color: white;
+          background-color: #A38B6D; // Tierra claro
+          color: #FAF5F0; // Crema claro
         }
 
         &.pendiente {
-          background-color: #cd5c5c;
-          color: white;
+          background-color: #C19A6B; // Tierra dorado claro
+          color: #5A2D2D; // Bordo medio
         }
 
         .check-icon {
@@ -216,7 +218,7 @@
     .no-results {
       padding: 1rem;
       text-align: center;
-      color: #777;
+      color: #5A2D2D; // Bordo medio
       font-size: 0.9rem;
     }
   }
@@ -231,16 +233,16 @@
 
     button {
       padding: 0.4rem 0.7rem;
-      border: 1px solid #ddd;
-      background-color: white;
+      border: 1px solid #D4A373; // Color tierra claro
+      background-color: #FAF5F0; // Crema claro
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.2s;
       font-size: 0.9rem;
 
       &:hover:not(:disabled) {
-        background-color: #8B4513;
-        color: white;
+        background-color: #6B2D2D; // Bordo oscuro
+        color: #FAF5F0; // Crema claro
       }
 
       &:disabled {
@@ -249,8 +251,8 @@
       }
 
       &.active {
-        background-color: #8B4513;
-        color: white;
+        background-color: #6B2D2D; // Bordo oscuro
+        color: #FAF5F0; // Crema claro
       }
     }
   }
@@ -260,7 +262,7 @@
     padding: 1.5rem;
     text-align: center;
     font-size: 1rem;
-    color: #8B4513;
+    color: #6B2D2D; // Bordo oscuro
   }
 }
 
@@ -272,12 +274,12 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  color: #8B4513;
+  color: #6B2D2D; // Bordo oscuro
   transition: all 0.2s;
   border-radius: 4px;
   
   &:hover {
-    background-color: #f1f1f1;
+    background-color: #F0E6D2; // Crema más cálido
   }
 
   .icon-link {
@@ -289,7 +291,7 @@
   }
 
   .copiado-text {
-    color: #2e7d32;
+    color: #5A2D2D; // Bordo medio
     font-size: 0.8rem;
     font-weight: 600;
   }

@@ -1,45 +1,21 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { BsList, BsEnvelope, BsPeopleFill, BsPersonCheck, BsCardText, BsSend } from "react-icons/bs";
+import { Navbar, Container } from "react-bootstrap";
 import "../assets/scss/_03-Componentes/_Header.scss";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-  // Rutas públicas
-  const publicLinks = [
-    { path: "/contacto", icon: <BsEnvelope />, label: "Contacto" }
+  // Mapeo de pasos a rutas
+  const stepRoutes = [
+    { path: "/organizacion/invitados", step: 1, label: "1. Lista Invitados" },
+    { path: "/organizacion/previsualizar-invitacion", step: 2, label: "2. Diseñar Invitación" },
+    { path: "/enviar-invitacion", step: 3, label: "3. Enviar Invitaciones" },
+    { path: "/organizacion/confirmaciones", step: 4, label: "4. Confirmaciones" },
+    { path: "/organizacion/ListadeConfirmaciones", step: 5, label: "5. Lista Confirmados" }
   ];
 
-  // Rutas de organización (sin números de paso)
-  const orgLinks = [
-    { 
-      path: "/organizacion/invitados", 
-      icon: <BsPeopleFill />, 
-      label: "Lista Invitados"
-    },
-    { 
-      path: "/organizacion/previsualizar-invitacion", 
-      icon: <BsCardText />, 
-      label: "Diseñar Invitación"
-    },
-    { 
-      path: "/enviar-invitacion", 
-      icon: <BsSend />, 
-      label: "Enviar Invitaciones"
-    },
-    { 
-      path: "/organizacion/ListadeConfirmaciones", 
-      icon: <BsPersonCheck />, 
-      label: "Ver Confirmaciones"
-    }
-  ];
-
-  // Determinar paso actual
+  // Determina el paso actual basado en la ruta
   const getCurrentStep = () => {
     if (location.pathname === "/" || location.pathname.includes("invitados")) return 1;
     if (location.pathname.includes("crear-invitacion") || location.pathname.includes("previsualizar")) return 2;
@@ -51,19 +27,13 @@ const Header = () => {
 
   return (
     <header className="app-header">
+      {/* Decoración superior */}
       <div className="header-decoration-top"></div>
 
-      {/* Barra de progreso de pasos */}
-      <div className="steps-progress">
-        <div className={`step ${getCurrentStep() >= 1 ? 'active' : ''}`}>1. Lista Invitados</div>
-        <div className={`step ${getCurrentStep() >= 2 ? 'active' : ''}`}>2. Diseñar Invitación</div>
-        <div className={`step ${getCurrentStep() >= 3 ? 'active' : ''}`}>3. Enviar Invitaciones</div>
-        <div className={`step ${getCurrentStep() >= 4 ? 'active' : ''}`}>4. Confirmaciones</div>
-        <div className={`step ${getCurrentStep() >= 5 ? 'active' : ''}`}>5. Lista Confirmados</div>
-      </div>
-
+      {/* Barra de navegación principal integrada con progreso */}
       <Navbar expand="lg" className="header-navbar">
         <Container className="header-container">
+          {/* Logo que lleva al inicio */}
           <Navbar.Brand as={Link} to="/" className="header-logo">
             <img
               src="/img/02-logos/logo-bodaaleyfabi1d.png"
@@ -72,56 +42,22 @@ const Header = () => {
             />
           </Navbar.Brand>
 
-          <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
-            onClick={handleToggleMobileMenu}
-            className="menu-toggle"
-          >
-            <BsList className="menu-icon" />
-          </Navbar.Toggle>
-
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className={`navbar-menu ${isMobileMenuOpen ? "open" : ""}`}
-          >
-            <Nav className="ms-auto">
-              <Nav.Link 
-                as={Link} 
-                to="/" 
-                active={location.pathname === "/"}
-                className="nav-link"
+          {/* Barra de progreso integrada */}
+          <div className="steps-progress">
+            {stepRoutes.map((step) => (
+              <Link
+                key={step.step}
+                to={step.path}
+                className={`step ${getCurrentStep() >= step.step ? 'active' : ''}`}
               >
-                Inicio
-              </Nav.Link>
-
-              {orgLinks.map(({ path, icon, label }) => (
-                <Nav.Link 
-                  key={path} 
-                  as={Link} 
-                  to={path} 
-                  active={location.pathname === path}
-                  className="nav-link"
-                >
-                  {icon} <span className="link-label">{label}</span>
-                </Nav.Link>
-              ))}
-
-              {publicLinks.map(({ path, icon, label }) => (
-                <Nav.Link 
-                  key={path} 
-                  as={Link} 
-                  to={path} 
-                  active={location.pathname === path}
-                  className="nav-link"
-                >
-                  {icon} <span className="link-label">{label}</span>
-                </Nav.Link>
-              ))}
-            </Nav>
-          </Navbar.Collapse>
+                <span className="step-label">{step.label}</span>
+              </Link>
+            ))}
+          </div>
         </Container>
       </Navbar>
 
+      {/* Decoración inferior */}
       <div className="header-decoration-bottom"></div>
     </header>
   );

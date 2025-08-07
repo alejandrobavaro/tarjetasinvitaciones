@@ -5,7 +5,7 @@ import BCrearTarjetaInvitacion from './componentes/BCrearTarjetaInvitacion';
 import CEnviarTarjetaWhattsapp from './componentes/CEnviarTarjetaWhattsapp';
 import DPaginaConfirmacionInvitado from './componentes/DPaginaConfirmacionInvitado';
 import EListaInvitadosqueConfirmaronAsistencia from './componentes/EListaInvitadosqueConfirmaronAsistencia';
-import Contacto from './componentes/Contacto';
+import ContactoUnificado from './componentes/ContactoUnificado';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer';
 
@@ -41,8 +41,8 @@ const routesConfig = [
   },
   // Otras rutas
   { 
-    path: '/contacto', 
-    element: <Contacto /> 
+    path: '/ContactoUnificado', 
+    element: <ContactoUnificado /> 
   }
 ];
 
