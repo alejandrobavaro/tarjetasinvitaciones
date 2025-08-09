@@ -1,34 +1,98 @@
 /* =============================================== */
 /* ESTILOS PARA PÁGINA DE CONFIRMACIÓN DE ASISTENCIA */
+/* Mobile First (0-412px) */
 /* =============================================== */
 
-/* Contenedor principal - Mobile First */
 .confirmacion-container {
   width: 100%;
+  max-width: 412px;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 1rem;
   font-family: 'Cormorant Garamond', serif;
-  background-color: rgba(249, 245, 240, 0.8); // Fondo transparentado
+  background-color: rgba(249, 245, 240, 0.9);
+  min-height: 100vh;
 
   /* --- Encabezado --- */
   .header {
     text-align: center;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0d8c0;
 
     h1 {
       color: #8B4513;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 0.8rem;
       font-family: 'Cinzel', serif;
+      font-weight: 600;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #5a2d2d;
+      line-height: 1.4;
 
       strong {
         color: #8B4513;
+        font-weight: 600;
+      }
+    }
+  }
+
+  /* --- Compartir link --- */
+  .compartir-link {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f8f4e8;
+    border-radius: 8px;
+    border: 1px solid #e0d8c0;
+    
+    p {
+      margin-bottom: 0.8rem;
+      color: #5a2d2d;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .link-container {
+      display: flex;
+      gap: 0.5rem;
+
+      .link-input {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
+        background-color: white;
+        color: #5a2d2d;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .btn-copiar-link {
+        background-color: #8B4513;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: all 0.2s;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+
+        &:hover {
+          background-color: #6B3410;
+        }
+
+        svg {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -36,65 +100,82 @@
   /* --- Formulario de confirmación --- */
   .form-confirmacion {
     background-color: white;
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 
-    /* Grupo de campos del formulario */
+    /* Grupo de campos */
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
 
-      /* Estilos para labels normales */
+      /* Labels normales */
       label:not(.checkbox-label) {
         display: block;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.5rem;
         font-weight: 600;
         color: #5a2d2d;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
 
       /* Campos de entrada */
-      input[type="number"],
       input[type="text"],
+      input[type="number"],
       textarea {
         width: 100%;
-        padding: 0.6rem;
+        padding: 0.7rem;
         border: 1px solid #ddd;
         border-radius: 4px;
         font-family: 'Cormorant Garamond', serif;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        transition: border 0.2s;
 
         &:focus {
           outline: none;
           border-color: #D4AF37;
+          box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
         }
       }
 
       textarea {
         resize: vertical;
-        min-height: 80px;
+        min-height: 100px;
+      }
+
+      /* Mensajes de error */
+      .error-message {
+        display: block;
+        color: #c0392b;
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
       }
 
       /* Texto de ayuda */
       .hint {
         display: block;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         color: #8B4513;
-        margin-top: 0.2rem;
+        margin-top: 0.3rem;
+        font-style: italic;
       }
 
-      /* Estilo personalizado para checkbox */
+      /* Checkbox personalizado */
+      &.checkbox-group {
+        margin-bottom: 1.8rem;
+      }
+
       .checkbox-label {
         display: flex;
         align-items: center;
         cursor: pointer;
         position: relative;
-        padding-left: 30px;
-        font-size: 1rem;
+        padding-left: 32px;
+        font-size: 1.05rem;
         user-select: none;
         color: #5a2d2d;
+        font-weight: 500;
+        line-height: 1.4;
 
-        /* Input checkbox oculto */
+        /* Input oculto */
         input {
           position: absolute;
           opacity: 0;
@@ -102,7 +183,6 @@
           height: 0;
           width: 0;
 
-          /* Estado checked */
           &:checked ~ .checkmark {
             background-color: #8B4513;
             border-color: #8B4513;
@@ -113,19 +193,18 @@
           }
         }
 
-        /* Checkmark personalizado */
+        /* Checkmark visual */
         .checkmark {
           position: absolute;
           top: 0;
           left: 0;
-          height: 20px;
-          width: 20px;
+          height: 22px;
+          width: 22px;
           background-color: white;
           border: 2px solid #8B4513;
           border-radius: 4px;
           transition: all 0.2s;
 
-          /* Checkmark visual */
           &:after {
             content: "";
             position: absolute;
@@ -140,9 +219,8 @@
           }
         }
 
-        /* Efecto hover */
         &:hover input ~ .checkmark {
-          background-color: #f1f1f1;
+          background-color: #f8f4e8;
         }
       }
     }
@@ -150,98 +228,123 @@
     /* Botón de confirmación */
     .btn-confirmar {
       width: 100%;
-      padding: 0.8rem;
+      padding: 1rem;
       border: none;
       border-radius: 4px;
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.2s;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
       background-color: #8B4513;
       color: white;
+      box-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
 
       &:hover {
         background-color: #6B3410;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
-  }
-
-  /* --- Mensajes de estado --- */
-  
-  /* Mensaje de carga */
-  .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    font-size: 1rem;
-    color: #8B4513;
-  }
-
-  /* Mensaje de error */
-  .error {
-    text-align: center;
-    color: #c0392b;
-    font-size: 1rem;
-    padding: 1rem;
   }
 }
 
 /* =============================================== */
-/* ESTILOS PARA PÁGINA DE CONFIRMACIÓN EXITOSA */
+/* ESTILOS PARA CONFIRMACIÓN EXITOSA */
 /* =============================================== */
 .confirmacion-exitosa {
   width: 100%;
+  max-width: 412px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
   text-align: center;
-  background-color: rgba(249, 245, 240, 0.8);
+  background-color: rgba(249, 245, 240, 0.9);
+  min-height: 100vh;
+
+  .icono-exito {
+    font-size: 3rem;
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+  }
 
   h1 {
     color: #8B4513;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
     font-family: 'Cinzel', serif;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #5a2d2d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
   }
 
-  /* Botón para volver al inicio */
+  .detalles-confirmacion {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    p {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+
+      strong {
+        color: #8B4513;
+        font-weight: 600;
+      }
+    }
+  }
+
   .btn-volver {
     background-color: #8B4513;
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 1.8rem;
     border-radius: 4px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(139, 69, 19, 0.2);
+    width: 100%;
+    max-width: 250px;
 
     &:hover {
       background-color: #6B3410;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }
 
 /* =============================================== */
-/* MEDIA QUERIES - TABLET (768px) */
+/* MEDIA QUERIES - TABLET (≥768px) */
 /* =============================================== */
 @media (min-width: 768px) {
   .confirmacion-container {
     max-width: 600px;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    min-height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
     .header {
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       p {
@@ -250,17 +353,17 @@
     }
 
     .form-confirmacion {
-      padding: 1.5rem;
-
-      .btn-confirmar {
-        padding: 1rem;
-      }
+      padding: 1.8rem;
     }
   }
 
   .confirmacion-exitosa {
-    max-width: 500px;
-    padding: 2rem;
+    max-width: 600px;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    min-height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
     h1 {
       font-size: 2rem;
@@ -273,11 +376,38 @@
 }
 
 /* =============================================== */
-/* MEDIA QUERIES - ESCRITORIO (1024px) */
+/* MEDIA QUERIES - ESCRITORIO (≥1024px) */
 /* =============================================== */
 @media (min-width: 1024px) {
   .confirmacion-container {
     max-width: 700px;
-    padding: 2rem;
+    padding: 2rem 3rem;
   }
+
+  .confirmacion-exitosa {
+    max-width: 650px;
+    padding: 3rem;
+  }
+}
+
+/* =============================================== */
+/* ESTILOS PARA MENSAJES DE ESTADO */
+/* =============================================== */
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.loading {
+  color: #8B4513;
+}
+
+.error {
+  color: #c0392b;
 }

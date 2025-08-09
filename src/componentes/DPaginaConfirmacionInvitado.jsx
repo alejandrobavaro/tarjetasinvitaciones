@@ -1,106 +1,151 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../assets/scss/_03-Componentes/_EListaInvitadosqueConfirmaronAsistencia.scss';
-import { BsClipboard } from 'react-icons/bs';
+import '../assets/scss/_03-Componentes/_DPaginaConfirmacionInvitado.scss';
+import { BsClipboard, BsCheckCircle } from 'react-icons/bs';
 
 const DPaginaConfirmacionInvitado = () => {
+  // 1. Estados iniciales
   const { id } = useParams();
   const navigate = useNavigate();
   const [invitado, setInvitado] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // 2. Estado para confirmación
   const [confirmacion, setConfirmacion] = useState({
     asistencia: true,
     acompanantes: 0,
     alergias: '',
     mensaje: ''
   });
-  const [loading, setLoading] = useState(true);
+  
+  // 3. Estados para UI
   const [submitted, setSubmitted] = useState(false);
   const [linkCopiado, setLinkCopiado] = useState(false);
   const [linkGenerado, setLinkGenerado] = useState('');
+  const [modoBusqueda, setModoBusqueda] = useState(false);
+  const [nombreBuscado, setNombreBuscado] = useState('');
 
+  // 4. Generar link único para el invitado
   const generarLinkConfirmacion = () => {
     return `${window.location.origin}/confirmar/${id}`;
   };
 
+  // 5. Copiar link al portapapeles
   const copiarLinkConfirmacion = () => {
     navigator.clipboard.writeText(linkGenerado);
     setLinkCopiado(true);
     setTimeout(() => setLinkCopiado(false), 2000);
   };
 
+  // 6. Cargar datos del invitado
   useEffect(() => {
     const cargarDatos = async () => {
       try {
         const response = await fetch('/invitados.json');
+        if (!response.ok) throw new Error('Error cargando datos');
+        
         const data = await response.json();
         const invitadoEncontrado = data.grupos
           .flatMap(g => g.invitados)
           .find(i => i.id === parseInt(id));
 
-        if (invitadoEncontrado) {
-          setInvitado(invitadoEncontrado);
-          // Cargar confirmación existente si existe
-          const confirmaciones = JSON.parse(localStorage.getItem('confirmaciones') || '{}');
-          if (confirmaciones[id]) {
-            setConfirmacion(confirmaciones[id]);
-          } else {
-            // Establecer valores por defecto basados en la invitación
-            setConfirmacion(prev => ({
-              ...prev,
-              acompanantes: invitadoEncontrado.acompanantes || 0
-            }));
-          }
+        if (!invitadoEncontrado) {
+          setError('Invitación no encontrada');
+          return;
         }
 
-        // Cargar link guardado desde localStorage
-        const linksGenerados = JSON.parse(localStorage.getItem('linksConfirmacion') || '{}');
-        if (linksGenerados[id]) {
-          setLinkGenerado(linksGenerados[id]);
+        setInvitado(invitadoEncontrado);
+        
+        // Cargar confirmación existente si existe
+        const confirmaciones = JSON.parse(localStorage.getItem('confirmaciones') || '{}');
+        if (confirmaciones[id]) {
+          setConfirmacion(confirmaciones[id]);
         } else {
-          // Generar nuevo link si no existe
-          const nuevoLink = generarLinkConfirmacion();
-          setLinkGenerado(nuevoLink);
+          setConfirmacion(prev => ({
+            ...prev,
+            acompanantes: invitadoEncontrado.acompanantes || 0
+          }));
+        }
+
+        // Cargar o generar link
+        const linksGenerados = JSON.parse(localStorage.getItem('linksConfirmacion') || '{}');
+        const nuevoLink = linksGenerados[id] || generarLinkConfirmacion();
+        setLinkGenerado(nuevoLink);
+        
+        if (!linksGenerados[id]) {
           linksGenerados[id] = nuevoLink;
           localStorage.setItem('linksConfirmacion', JSON.stringify(linksGenerados));
         }
-      } catch (error) {
-        console.error("Error cargando datos:", error);
+      } catch (err) {
+        console.error("Error:", err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    cargarDatos();
+    if (id && id !== 'buscar') {
+      cargarDatos();
+    } else {
+      setModoBusqueda(true);
+      setLoading(false);
+    }
   }, [id]);
 
+  // 7. Manejar envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!invitado && !nombreBuscado.trim()) {
+      setError('Por favor ingresa tu nombre');
+      return;
+    }
 
     const confirmaciones = JSON.parse(localStorage.getItem('confirmaciones') || '{}');
-    confirmaciones[id] = {
+    const confirmacionId = id || `manual-${Date.now()}`;
+    
+    confirmaciones[confirmacionId] = {
       ...confirmacion,
-      nombre: invitado.nombre,
-      fechaConfirmacion: new Date().toISOString()
+      nombre: invitado ? invitado.nombre : nombreBuscado.trim(),
+      fechaConfirmacion: new Date().toISOString(),
+      confirmacionManual: !invitado
     };
 
     localStorage.setItem('confirmaciones', JSON.stringify(confirmaciones));
-
-    // Disparar evento personalizado para notificar a otros componentes
-    window.dispatchEvent(new CustomEvent('confirmacionActualizada', {
-      detail: { id, confirmacion: confirmaciones[id] }
-    }));
-
+    window.dispatchEvent(new CustomEvent('confirmacionActualizada'));
     setSubmitted(true);
   };
 
-  if (loading) return <div className="loading">Cargando invitación...</div>;
-  if (!invitado) return <div className="error">Invitación no encontrada</div>;
+  // 8. Manejar búsqueda manual
+  const buscarInvitado = () => {
+    if (!nombreBuscado.trim()) {
+      setError('Por favor ingresa tu nombre completo');
+      return;
+    }
+    setError(null);
+  };
 
+  // 9. Estados de carga/error
+  if (loading) return <div className="loading">Cargando invitación...</div>;
+  if (error && !modoBusqueda) return <div className="error">{error}</div>;
+
+  // 10. Vista después de confirmar
   if (submitted) {
     return (
       <div className="confirmacion-exitosa">
-        <h1>¡Gracias por confirmar!</h1>
+        <BsCheckCircle className="icono-exito" />
+        <h1>¡Confirmación exitosa!</h1>
         <p>Hemos registrado tu asistencia a nuestra boda.</p>
+        <div className="detalles-confirmacion">
+          <p><strong>Nombre:</strong> {confirmacion.nombre}</p>
+          {confirmacion.asistencia && (
+            <>
+              <p><strong>Acompañantes:</strong> {confirmacion.acompanantes}</p>
+              {confirmacion.alergias && <p><strong>Alergias:</strong> {confirmacion.alergias}</p>}
+            </>
+          )}
+        </div>
         <button onClick={() => navigate('/')} className="btn-volver">
           Volver al inicio
         </button>
@@ -108,41 +153,58 @@ const DPaginaConfirmacionInvitado = () => {
     );
   }
 
+  // 11. Vista principal
   return (
     <div className="confirmacion-container">
       <div className="header">
         <h1>Confirmar Asistencia</h1>
-        <p>Querido(a) <strong>{invitado.nombre}</strong>, por favor confirma tu asistencia:</p>
+        
+        {invitado ? (
+          <p>Querido(a) <strong>{invitado.nombre}</strong>, por favor confirma tu asistencia:</p>
+        ) : (
+          <p>Por favor confirma tu asistencia:</p>
+        )}
 
         {/* Sección para compartir link */}
-        <div className="compartir-link">
-          <p>¿Quieres compartir este link con alguien más?</p>
-          <div className="link-container">
+        {invitado && (
+          <div className="compartir-link">
+            <p>Tu link personalizado para compartir:</p>
+            <div className="link-container">
+              <input
+                type="text"
+                value={linkGenerado}
+                readOnly
+                className="link-input"
+              />
+              <button
+                onClick={copiarLinkConfirmacion}
+                className="btn-copiar-link"
+              >
+                {linkCopiado ? '¡Copiado!' : <><BsClipboard /> Copiar</>}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Formulario de confirmación */}
+      <form onSubmit={handleSubmit} className="form-confirmacion">
+        {/* Campo de búsqueda para modo manual */}
+        {modoBusqueda && (
+          <div className="form-group">
+            <label>Ingresa tu nombre completo:</label>
             <input
               type="text"
-              value={linkGenerado}
-              readOnly
-              className="link-input"
+              value={nombreBuscado}
+              onChange={(e) => setNombreBuscado(e.target.value)}
+              placeholder="Ej: María González"
+              required
             />
-            <button
-              onClick={copiarLinkConfirmacion}
-              className="btn-copiar-link"
-              title="Copiar link de confirmación"
-            >
-              {linkCopiado ? (
-                <span className="copiado-text">¡Copiado!</span>
-              ) : (
-                <>
-                  <BsClipboard className="icon-clipboard" />
-                  Copiar
-                </>
-              )}
-            </button>
+            {error && <span className="error-message">{error}</span>}
           </div>
-        </div>
-      </div>
-      <form onSubmit={handleSubmit} className="form-confirmacion">
-        <div className="form-group">
+        )}
+
+        <div className="form-group checkbox-group">
           <label className="checkbox-label">
             <input
               type="checkbox"
@@ -150,9 +212,10 @@ const DPaginaConfirmacionInvitado = () => {
               onChange={(e) => setConfirmacion({...confirmacion, asistencia: e.target.checked})}
             />
             <span className="checkmark"></span>
-            Confirmo mi asistencia
+            {confirmacion.asistencia ? 'Confirmo mi asistencia' : 'No podré asistir'}
           </label>
         </div>
+
         {confirmacion.asistencia && (
           <>
             <div className="form-group">
@@ -160,12 +223,17 @@ const DPaginaConfirmacionInvitado = () => {
               <input
                 type="number"
                 value={confirmacion.acompanantes}
-                onChange={(e) => setConfirmacion({...confirmacion, acompanantes: parseInt(e.target.value) || 0})}
+                onChange={(e) => {
+                  const max = invitado?.acompanantes || 5;
+                  const value = Math.min(parseInt(e.target.value) || 0, max);
+                  setConfirmacion({...confirmacion, acompanantes: value});
+                }}
                 min="0"
-                max={invitado.acompanantes || 5}
+                max={invitado?.acompanantes || 5}
               />
-              <span className="hint">Máximo: {invitado.acompanantes || 5}</span>
+              <span className="hint">Máximo permitido: {invitado?.acompanantes || 5}</span>
             </div>
+
             <div className="form-group">
               <label>Alergias o restricciones alimentarias:</label>
               <input
@@ -175,18 +243,21 @@ const DPaginaConfirmacionInvitado = () => {
                 placeholder="Ninguna (si no aplica)"
               />
             </div>
+
             <div className="form-group">
               <label>Mensaje para los novios (opcional):</label>
               <textarea
                 value={confirmacion.mensaje}
                 onChange={(e) => setConfirmacion({...confirmacion, mensaje: e.target.value})}
                 rows="3"
+                placeholder="Escribe tu mensaje aquí..."
               />
             </div>
           </>
         )}
+
         <button type="submit" className="btn-confirmar">
-          {confirmacion.asistencia ? 'Confirmar Asistencia' : 'Lamentablemente no podré asistir'}
+          {confirmacion.asistencia ? 'Confirmar Asistencia' : 'Confirmar No Asistencia'}
         </button>
       </form>
     </div>

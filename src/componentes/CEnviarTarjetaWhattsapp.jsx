@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/scss/_03-Componentes/_CEnviarTarjetaWhattsapp.scss';
+import { BsWhatsapp, BsCheckCircle } from 'react-icons/bs';
 
 const CEnviarTarjetaWhattsapp = () => {
   const [invitados, setInvitados] = useState([]);
@@ -12,6 +13,7 @@ const CEnviarTarjetaWhattsapp = () => {
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [historialEnviados, setHistorialEnviados] = useState([]);
+  const [linksConfirmacion, setLinksConfirmacion] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const CEnviarTarjetaWhattsapp = () => {
           g.invitados.map(inv => ({
             ...inv,
             grupoNombre: g.nombre,
-            telefono: inv.contacto?.whatsapp || inv.contacto?.telefono || ''
+            telefono: inv.ContactoUnificado?.whatsapp || inv.ContactoUnificado?.telefono || ''
           }))
         );
         setInvitados(invitadosProcesados);
@@ -36,6 +38,10 @@ const CEnviarTarjetaWhattsapp = () => {
         // Cargar historial de envíos
         const historial = JSON.parse(localStorage.getItem('historialWhatsApp')) || [];
         setHistorialEnviados(historial);
+
+        // Cargar links de confirmación
+        const links = JSON.parse(localStorage.getItem('linksConfirmacion') || '{}');
+        setLinksConfirmacion(links);
       } catch (error) {
         console.error("Error cargando datos:", error);
       } finally {
@@ -52,8 +58,22 @@ const CEnviarTarjetaWhattsapp = () => {
         inv.grupoNombre.toLowerCase().includes(busqueda.toLowerCase()))
     : invitados;
 
+  // Obtener o generar link de confirmación
+  const getConfirmacionLink = (id) => {
+    if (!linksConfirmacion[id]) {
+      const nuevoLink = `${window.location.origin}/confirmar/${id}`;
+      const nuevosLinks = {...linksConfirmacion, [id]: nuevoLink};
+      localStorage.setItem('linksConfirmacion', JSON.stringify(nuevosLinks));
+      setLinksConfirmacion(nuevosLinks);
+      return nuevoLink;
+    }
+    return linksConfirmacion[id];
+  };
+
   const generarMensaje = () => {
     if (!selectedInvitado || !disenoInvitacion) return '';
+    
+    const linkConfirmacion = getConfirmacionLink(selectedInvitado.id);
     
     const mensajeBase = `¡Hola ${selectedInvitado.nombre}!\n\n` +
       `*${disenoInvitacion.titulo}*\n\n` +
@@ -62,7 +82,7 @@ const CEnviarTarjetaWhattsapp = () => {
       `*Hora:* ${disenoInvitacion.hora}\n` +
       `*Lugar:* ${disenoInvitacion.lugar}\n` +
       `*Código de vestimenta:* ${disenoInvitacion.codigoVestimenta}\n\n` +
-      `Por favor confirma tu asistencia aquí: ${window.location.origin}/confirmar/${selectedInvitado.id}`;
+      `Por favor confirma tu asistencia aquí: ${linkConfirmacion}`;
     
     return mensajePersonalizado || mensajeBase;
   };
@@ -83,7 +103,8 @@ const CEnviarTarjetaWhattsapp = () => {
         invitadoNombre: selectedInvitado.nombre,
         telefono: selectedInvitado.telefono,
         fechaEnvio,
-        mensaje
+        mensaje,
+        linkConfirmacion: getConfirmacionLink(selectedInvitado.id)
       }
     ];
     
@@ -97,7 +118,7 @@ const CEnviarTarjetaWhattsapp = () => {
       setTimeout(() => setEnviado(false), 3000);
       
       // En producción descomentar esto:
-      // window.open(`https://wa.me/${selectedInvitado.telefono}?text=${encodeURIComponent(mensaje)}`);
+      window.open(`https://wa.me/${selectedInvitado.telefono}?text=${encodeURIComponent(mensaje)}`);
     }, 1500);
   };
 
@@ -233,6 +254,7 @@ const CEnviarTarjetaWhattsapp = () => {
                   <th>Fecha</th>
                   <th>Invitado</th>
                   <th>Teléfono</th>
+                  <th>Link Confirmación</th>
                 </tr>
               </thead>
               <tbody>
@@ -241,6 +263,16 @@ const CEnviarTarjetaWhattsapp = () => {
                     <td>{new Date(envio.fechaEnvio).toLocaleString()}</td>
                     <td>{envio.invitadoNombre}</td>
                     <td>{envio.telefono}</td>
+                    <td>
+                      <a 
+                        href={envio.linkConfirmacion} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="link-confirmacion"
+                      >
+                        Ver link
+                      </a>
+                    </td>
                   </tr>
                 ))}
               </tbody>
