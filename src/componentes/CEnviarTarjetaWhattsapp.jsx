@@ -26,7 +26,7 @@ const CEnviarTarjetaWhattsapp = () => {
           g.invitados.map(inv => ({
             ...inv,
             grupoNombre: g.nombre,
-            telefono: inv.ContactoUnificado?.whatsapp || inv.ContactoUnificado?.telefono || ''
+            telefono: inv.Contacto?.whatsapp || inv.Contacto?.telefono || ''
           }))
         );
         setInvitados(invitadosProcesados);

@@ -121,7 +121,7 @@ src/componentes/
              "id": 1,
              "nombre": "Ejemplo Invitado",
              "relacion": "Familiar",
-             "ContactoUnificado": {
+             "Contacto": {
                "whatsapp": "+549123456789"
              }
            }

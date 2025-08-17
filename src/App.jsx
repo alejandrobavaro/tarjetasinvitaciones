@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import AListaInvitados from './componentes/AListaInvitados';
 import BCrearTarjetaInvitacion from './componentes/BCrearTarjetaInvitacion';
 import CEnviarTarjetaWhattsapp from './componentes/CEnviarTarjetaWhattsapp';
-import ContactoUnificado from './componentes/ContactoUnificado';
+import Contacto from './componentes/Contacto';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer';
 
@@ -32,8 +32,8 @@ const routesConfig = [
   },
   // Otras rutas
   {
-    path: '/ContactoUnificado',
-    element: <ContactoUnificado />
+    path: '/Contacto',
+    element: <Contacto />
   }
 ];
 

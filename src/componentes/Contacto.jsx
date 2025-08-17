@@ -2,9 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../assets/scss/_03-Componentes/_ContactoUnificado.scss";
+import "../assets/scss/_03-Componentes/_Contacto.scss";
 
-const ContactoUnificadoUnificado = () => {
+const ContactoUnificado = () => {
   // Configuración del slider
   const sliderSettings = {
     dots: true,
@@ -132,4 +132,4 @@ const ContactoUnificadoUnificado = () => {
   );
 };
 
-export default ContactoUnificadoUnificado;
+export default ContactoUnificado;
