@@ -10,29 +10,28 @@ import Footer from './componentes/Footer';
 // Crear el objeto de historial
 const history = createBrowserHistory({ window });
 
-
 const routesConfig = [
-
   {
     path: '/',
-    element: <ListaInvitados />,
-    alias: '/organizacion/invitados'
+    element: <ListaInvitados />
+  },
+  {
+    path: '/organizacion/invitados',
+    element: <ListaInvitados />
   },
   {
     path: '/crear-invitacion',
-    element: <PasosInvitacion />,
-    alias: '/organizacion/previsualizar-invitacion'
+    element: <PasosInvitacion />
   },
   {
     path: '/enviar-invitacion',
-    element: <PasosInvitacion /> // Redirige al flujo completo
+    element: <PasosInvitacion />
   },
-   {
+  {
     path: '/Contacto',
     element: <Contacto />
   }
 ];
-
 
 function App() {
   return (
@@ -50,10 +49,11 @@ function App() {
       <main className="main-content">
         <Routes>
           {routesConfig.map((route, index) => (
-            <React.Fragment key={index}>
-              <Route path={route.path} element={route.element} />
-              {route.alias && <Route path={route.alias} element={route.element} />}
-            </React.Fragment>
+            <Route 
+              key={index} 
+              path={route.path} 
+              element={route.element} 
+            />
           ))}
           
           {/* Ruta para manejar errores 404 - Página no encontrada */}

@@ -76,17 +76,19 @@ const PasosInvitacion = () => {
   };
 
   // FUNCIÓN: Finalizar el proceso
-  const finalizarProceso = () => {
-    if (invitadoSeleccionado) {
-      const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
-      estadosEnvio[invitadoSeleccionado.id] = true;
-      localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
-    }
-    
-    reiniciarProceso();
-    navigate('/lista-invitados');
-  };
 
+const finalizarProceso = () => {
+  if (invitadoSeleccionado) {
+    const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
+    estadosEnvio[invitadoSeleccionado.id] = true;
+    localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
+  }
+  
+  // REINICIAR EL PROCESO AL PASO 1
+  reiniciarProceso();
+  
+  navigate('/'); // o cualquier otra ruta que prefieras
+};
   // RENDER: Barra de progreso con NUEVO ORDEN
   const renderBarraProgreso = () => (
     <div className="barra-progreso">

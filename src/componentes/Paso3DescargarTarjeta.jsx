@@ -208,14 +208,7 @@ const Paso3DescargarTarjeta = ({
 
       {/* Acciones del paso */}
       <div className="acciones-paso ocultar-al-descargar">
-        <button
-          onClick={avanzarPaso}
-          className="btn-siguiente-paso"
-          disabled={!puedeAvanzar()}
-        >
-          Siguiente: Copiar Mensaje WhatsApp →
-        </button>
-
+     
         {!puedeAvanzar() && descargaCompletada === false && (
           <p className="mensaje-ayuda">
             💡 Primero descarga la tarjeta para continuar

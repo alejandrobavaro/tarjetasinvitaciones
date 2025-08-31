@@ -1,1163 +1,1340 @@
 {
-  "novios": {
-    "novia": "Fabiola Lutrario",
-    "novio": "Alejandro Bavaro",
-    "contacto": {
-      "telefono": "+54 9 223 555-1234",
-      "email": "fabiolayalejandro@bodas.com"
-    }
+  "boda": {
+    "novios": "Alejandro Bavaro y Fabiola Lutrario",
+    "fecha": "2025-11-23",
+    "lugar": "Casa del Mar, Mar del Plata"
   },
   "grupos": [
     {
+      "id": "familia_novia",
       "nombre": "Familia Novia",
       "invitados": [
         {
           "id": 1,
           "nombre": "Ana Maria Lutrario",
           "relacion": "Tía paterna",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550001",
-            "telefono": "+542235550001",
-            "email": "ana.lutrario@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 2,
           "nombre": "Mario Vincenzo Lutrario",
           "relacion": "Padre de la novia",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550002",
-            "telefono": "+542235550002",
-            "email": "mario.lutrario@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235063349",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 3,
           "nombre": "Norma Perez",
           "relacion": "Amiga de la tía Ana",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550003",
-            "telefono": "+542235550003",
-            "email": "norma.perez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 4,
           "nombre": "Monica Tetamantti",
           "relacion": "Amiga de la tía Ana",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550004",
-            "telefono": "+542235550004",
-            "email": "monica.tetamantti@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 5,
           "nombre": "Maria Teresa",
           "relacion": "Amiga de la tía Ana",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550005",
-            "telefono": "+542235550005",
-            "email": "maria.teresa@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 6,
-          "nombre": "Deliana Fernandez",
+          "nombre": "Deliana",
           "relacion": "Ahijada de la tía Ana",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550006",
-            "telefono": "+542235550006",
-            "email": "deliana.fernandez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 7,
           "nombre": "Jorge Di Norcia",
           "relacion": "Primo paterno",
-          "acompanantes": 2,
           "contacto": {
-            "whatsapp": "+5492235550007",
-            "telefono": "+542235550007",
-            "email": "jorge.dinorcia@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 8,
           "nombre": "Mirta Arrighini",
           "relacion": "Prima paterna",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550008",
-            "telefono": "+542235550008",
-            "email": "mirta.arrighini@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 9,
           "nombre": "Joaquin Conti",
-          "relacion": "Hermastro (Fefe)",
-          "acompanantes": 0,
+          "relacion": "Jefe de Fabiola",
           "contacto": {
-            "whatsapp": "+5492235550009",
-            "telefono": "+542235550009",
-            "email": "joaquin.conti@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235195797",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 10,
           "nombre": "Julieta Ruiz Conti",
-          "relacion": "Cuñada (esposa de Joaquín)",
-          "acompanantes": 0,
+          "relacion": "Esposa de Joaquín",
           "contacto": {
-            "whatsapp": "+5492235550010",
-            "telefono": "+542235550010",
-            "email": "julieta.ruiz@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 11,
           "nombre": "GianFranco Lutrario",
           "relacion": "Hermano de la novia",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550011",
-            "telefono": "+542235550011",
-            "email": "gian.lutrario@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+584246972486",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 12,
           "nombre": "Francis Arteaga",
-          "relacion": "Amiga de Fabiola desde la infancia",
-          "acompanantes": 0,
+          "relacion": "Amiga de Fabiola",
           "contacto": {
-            "whatsapp": "+5492235550012",
-            "telefono": "+542235550012",
-            "email": "francis.arteaga@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 13,
           "nombre": "Aurimar Gómez",
-          "relacion": "Amiga de Fabiola de la universidad",
-          "acompanantes": 1,
+          "relacion": "Amiga de Fabiola",
           "contacto": {
-            "whatsapp": "+5492235550013",
-            "telefono": "+542235550013",
-            "email": "aurimar.gomez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 14,
           "nombre": "Antonio Álvarez",
-          "relacion": "Amigo de Fabiola del trabajo",
-          "acompanantes": 0,
+          "relacion": "Amigo de Fabiola",
           "contacto": {
-            "whatsapp": "+5492235550014",
-            "telefono": "+542235550014",
-            "email": "antonio.alvarez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         }
       ]
     },
     {
+      "id": "familia_novio",
       "nombre": "Familia Novio",
       "invitados": [
         {
           "id": 15,
           "nombre": "Miguel Bavaro",
           "relacion": "Padre del novio",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550015",
-            "telefono": "+542235550015",
-            "email": "miguel.bavaro@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235817638",
+            "email": "miguelbavaro@hotmail.com"
           }
         },
         {
           "id": 16,
           "nombre": "Elina Calvo Parra",
           "relacion": "Madre del novio",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550016",
-            "telefono": "+542235550016",
-            "email": "elina.calvo@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235817640",
+            "email": "elinacp@hotmail.com"
           }
         },
         {
           "id": 17,
           "nombre": "Emilia Calvo Parra",
           "relacion": "Tía materna",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550017",
-            "telefono": "+542235550017",
-            "email": "emilia.calvo@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235229320",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 18,
           "nombre": "Pantaleon Mattiolli",
           "relacion": "Tío político",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550018",
-            "telefono": "+542235550018",
-            "email": "pantaleon.mattiolli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235214929",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 19,
           "nombre": "Gabriela Mattiolli",
           "relacion": "Prima materna",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550019",
-            "telefono": "+542235550019",
-            "email": "gabriela.mattiolli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492233056298",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 20,
           "nombre": "Alba Mattiolli",
           "relacion": "Ahijada del novio",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550020",
-            "telefono": "+542235550020",
-            "email": "alba.mattiolli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 21,
           "nombre": "Silvana Mattiolli",
           "relacion": "Prima materna",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550021",
-            "telefono": "+542235550021",
-            "email": "silvana.mattiolli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236854789",
+            "email": "silvanamattioli@hotmail.com"
           }
         },
         {
           "id": 22,
-          "nombre": "José 'Pepe' Martinez",
+          "nombre": "Pepe",
           "relacion": "Pareja de Silvana",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550022",
-            "telefono": "+542235550022",
-            "email": "pepe.martinez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 23,
           "nombre": "Carmela Ozzano",
           "relacion": "Tía abuela materna",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550023",
-            "telefono": "+542235550023",
-            "email": "carmela.ozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235265101",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 24,
           "nombre": "Mavi Ozzano",
           "relacion": "Ahijada del novio",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550024",
-            "telefono": "+542235550024",
-            "email": "mavi.ozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235996759",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 25,
           "nombre": "Livia Ozzano",
           "relacion": "Prima materna",
-          "acompanantes": 1,
           "contacto": {
-            "whatsapp": "+5492235550025",
-            "telefono": "+542235550025",
-            "email": "livia.ozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235060311",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 26,
           "nombre": "Raul Luna",
           "relacion": "Pareja de Livia",
-          "acompanantes": 0,
           "contacto": {
-            "whatsapp": "+5492235550026",
-            "telefono": "+542235550026",
-            "email": "raul.luna@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
-        }
-      ]
-    },
-    {
-      "nombre": "Amigos San Alberto",
-      "invitados": [
+        },
         {
           "id": 27,
-          "nombre": "Mariano Marmol",
-          "relacion": "Amigo del colegio",
-          "acompanantes": 0,
+          "nombre": "Mariela Calvo Parra",
+          "relacion": "Familia Córdoba",
           "contacto": {
-            "whatsapp": "+5492235550027",
-            "telefono": "+542235550027",
-            "email": "mariano.marmol@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5493534299147",
+            "email": "marielaafrica@hotmail.com"
           }
         },
         {
           "id": 28,
-          "nombre": "Juliana Lukaszewicz",
-          "relacion": "Pareja de Mariano",
-          "acompanantes": 0,
+          "nombre": "Lorenzo Calvo Parra",
+          "relacion": "Hijo de Mariela",
           "contacto": {
-            "whatsapp": "+5492235550028",
-            "telefono": "+542235550028",
-            "email": "juliana.lukaszewicz@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 29,
-          "nombre": "Juan Laffitte",
-          "relacion": "Amigo de la infancia",
-          "acompanantes": 1,
+          "nombre": "Edith Calvo Parra",
+          "relacion": "Familia Córdoba",
           "contacto": {
-            "whatsapp": "+5492235550029",
-            "telefono": "+542235550029",
-            "email": "juan.laffitte@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5493535698186",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 30,
-          "nombre": "Eugenia Morales",
-          "relacion": "Pareja de Juan",
-          "acompanantes": 0,
+          "nombre": "Oscar Ledesma",
+          "relacion": "Familia Córdoba",
           "contacto": {
-            "whatsapp": "+5492235550030",
-            "telefono": "+542235550030",
-            "email": "eugenia.morales@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5493534087266",
+            "email": "SIN DATOS"
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "amigos_san_alberto",
+      "nombre": "Amigos del San Alberto - ALE",
+      "invitados": [
         {
           "id": 31,
-          "nombre": "Joaquin Moran",
-          "relacion": "Amigo del barrio",
-          "acompanantes": 1,
+          "nombre": "Mariano Marmol",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550031",
-            "telefono": "+542235550031",
-            "email": "joaquin.moran@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492234375282",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 32,
-          "nombre": "Agustina Keeteman",
-          "relacion": "Pareja de Joaquín",
-          "acompanantes": 0,
+          "nombre": "Juliana Lukaszewicz",
+          "relacion": "Pareja de Mariano",
           "contacto": {
-            "whatsapp": "+5492235550032",
-            "telefono": "+542235550032",
-            "email": "agustina.keeteman@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 33,
-          "nombre": "Lucrecia Letamendia",
-          "relacion": "Amiga de la adolescencia",
-          "acompanantes": 0,
+          "nombre": "Juan Laffitte",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550033",
-            "telefono": "+542235550033",
-            "email": "lucrecia.letamendia@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235452700",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 34,
-          "nombre": "Agustin Saez",
-          "relacion": "Amigo del club",
-          "acompanantes": 0,
+          "nombre": "Eugenia",
+          "relacion": "Pareja de Juan",
           "contacto": {
-            "whatsapp": "+5492235550034",
-            "telefono": "+542235550034",
-            "email": "agustin.saez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 35,
-          "nombre": "Marcela Barragan",
-          "relacion": "Amiga de viaje",
-          "acompanantes": 0,
+          "nombre": "Joaquin Moran",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550035",
-            "telefono": "+542235550035",
-            "email": "marcela.barragan@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235310904",
+            "email": "moranjoaquin@hotmail.com"
           }
         },
         {
           "id": 36,
-          "nombre": "Clara 'Clarita' Dominguez",
-          "relacion": "Amiga de la facultad",
-          "acompanantes": 1,
+          "nombre": "Agustina Keeteman",
+          "relacion": "Pareja de Joaquín",
           "contacto": {
-            "whatsapp": "+5492235550036",
-            "telefono": "+542235550036",
-            "email": "clara.dominguez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 37,
-          "nombre": "Nacho Dámbra",
-          "relacion": "Amigo de la música",
-          "acompanantes": 1,
+          "nombre": "Lucrecia Letamendia",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550037",
-            "telefono": "+542235550037",
-            "email": "nacho.dambra@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235127974",
+            "email": "luckymendia@hotmail.com"
           }
         },
         {
           "id": 38,
-          "nombre": "Victoria Dámbra",
-          "relacion": "Pareja de Nacho",
-          "acompanantes": 0,
+          "nombre": "Agustin Saez",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550038",
-            "telefono": "+542235550038",
-            "email": "victoria.dambra@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492944530664",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 39,
-          "nombre": "Patricio Conti",
-          "relacion": "Amigo del trabajo",
-          "acompanantes": 3,
+          "nombre": "Marcela Barragan",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550039",
-            "telefono": "+542235550039",
-            "email": "patricio.conti@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235127974",
+            "email": "machimdq@hotmail.com"
           }
         },
         {
           "id": 40,
-          "nombre": "Dominique Negri",
-          "relacion": "Pareja de Patricio",
-          "acompanantes": 0,
+          "nombre": "Clarita",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550040",
-            "telefono": "+542235550040",
-            "email": "dominique.negri@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235265178",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 41,
-          "nombre": "Ines Conti",
-          "relacion": "Hija de Patricio",
-          "acompanantes": 0,
+          "nombre": "Ignacio Dámbra",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550041",
-            "telefono": "+542235550041",
-            "email": "ines.conti@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2234569552",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 42,
-          "nombre": "Felicitas Conti",
-          "relacion": "Hija de Patricio",
-          "acompanantes": 0,
+          "nombre": "Victoria Dámbra",
+          "relacion": "Pareja de Ignacio",
           "contacto": {
-            "whatsapp": "+5492235550042",
-            "telefono": "+542235550042",
-            "email": "felicitas.conti@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
-        }
-      ]
-    },
-    {
-      "nombre": "Banda AlmanGo",
-      "subgrupos": ["Integrantes", "Parejas", "Amigos cercanos"],
-      "invitados": [
+        },
         {
           "id": 43,
-          "nombre": "Nicolas Traficando",
-          "relacion": "Bajista de la banda",
-          "subgrupo": "Integrantes",
-          "acompanantes": 1,
+          "nombre": "Patricio Conti",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550043",
-            "telefono": "+542235550043",
-            "email": "nico.traficando@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235441224",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 44,
-          "nombre": "Ana Laura Rodriguez",
-          "relacion": "Pareja de Nico",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Dominique Negri",
+          "relacion": "Pareja de Patricio",
           "contacto": {
-            "whatsapp": "+5492235550044",
-            "telefono": "+542235550044",
-            "email": "ana.rodriguez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 45,
-          "nombre": "Santiago Sotille",
-          "relacion": "Baterista de la banda",
-          "subgrupo": "Integrantes",
-          "acompanantes": 1,
+          "nombre": "Toto Francuchi",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550045",
-            "telefono": "+542235550045",
-            "email": "santiago.sotille@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236022676",
+            "email": "SIN DATOS"
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "amigos_otros",
+      "nombre": "Amigos Otros - ALE",
+      "invitados": [
         {
           "id": 46,
-          "nombre": "Florencia Hernandez",
-          "relacion": "Pareja de Santi",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Hector Guzman",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550046",
-            "telefono": "+542235550046",
-            "email": "florencia.hernandez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492234985615",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 47,
-          "nombre": "Mariano Vattino",
-          "relacion": "Amigo de la escena musical",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Pareja Hector Guzman",
+          "relacion": "Pareja de Héctor",
           "contacto": {
-            "whatsapp": "+5492235550047",
-            "telefono": "+542235550047",
-            "email": "mariano.vattino@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 48,
-          "nombre": "Cintia Vattino",
-          "relacion": "Pareja de Mariano",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Luis Borquez",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550048",
-            "telefono": "+542235550048",
-            "email": "cintia.vattino@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235293898",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 49,
-          "nombre": "Lorena Martinez",
-          "relacion": "Amiga de los ensayos",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Marcelo Bochor",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550049",
-            "telefono": "+542235550049",
-            "email": "lorena.martinez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5491158009600",
+            "email": "mdbochor@yahoo.com.ar"
           }
         },
         {
           "id": 50,
-          "nombre": "Ximena Garcea",
-          "relacion": "Amiga de conciertos",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Pareja Marcelo Bochor",
+          "relacion": "Pareja de Marcelo",
           "contacto": {
-            "whatsapp": "+5492235550050",
-            "telefono": "+542235550050",
-            "email": "ximena.garcea@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 51,
-          "nombre": "Jorge Luis Lazo",
-          "relacion": "Técnico de sonido",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Melina Cabo",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550051",
-            "telefono": "+542235550051",
-            "email": "jorge.lazo@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5491133620263",
+            "email": "mely_garre@hotmail.com"
           }
         },
         {
           "id": 52,
-          "nombre": "Leandro Castrillon",
-          "relacion": "Road manager",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Noelia Vaccaro",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550052",
-            "telefono": "+542235550052",
-            "email": "leandro.castrillon@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235500737",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 53,
-          "nombre": "Carolina Gutierrez",
-          "relacion": "Pareja de Leandro",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Pareja Noelia Vaccaro",
+          "relacion": "Pareja de Noelia",
           "contacto": {
-            "whatsapp": "+5492235550053",
-            "telefono": "+542235550053",
-            "email": "carolina.gutierrez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "banda_almango",
+      "nombre": "Amigos Banda AlmanGo - ALE",
+      "invitados": [
         {
           "id": 54,
-          "nombre": "Cristian Telleria",
-          "relacion": "Amigo productor",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Nicolas Traficando",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550054",
-            "telefono": "+542235550054",
-            "email": "cristian.telleria@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235397288",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 55,
-          "nombre": "Jeremias Rodriguez",
-          "relacion": "Amigo compositor",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Ana Laura Rodriguez",
+          "relacion": "Pareja de Nicolas",
           "contacto": {
-            "whatsapp": "+5492235550055",
-            "telefono": "+542235550055",
-            "email": "jeremias.rodriguez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235631762",
+            "email": "negris_09@hotmail.com"
           }
         },
         {
           "id": 56,
-          "nombre": "Julieta Sanchez",
-          "relacion": "Pareja de Jeremias",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Santiago Sotille",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550056",
-            "telefono": "+542235550056",
-            "email": "julieta.sanchez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235995548",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 57,
-          "nombre": "Roberto Zubillaga",
-          "relacion": "Amigo de giras",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Florencia Hernandez",
+          "relacion": "Pareja de Santiago",
           "contacto": {
-            "whatsapp": "+5492235550057",
-            "telefono": "+542235550057",
-            "email": "roberto.zubillaga@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236856764",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 58,
-          "nombre": "Javier Carnero",
-          "relacion": "Colega músico",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Mariano Vattino",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550058",
-            "telefono": "+542235550058",
-            "email": "javier.carnero@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2236181548",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 59,
-          "nombre": "Dario Guevara",
-          "relacion": "Amigo de festivales",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Cintia Vattino",
+          "relacion": "Pareja de Mariano",
           "contacto": {
-            "whatsapp": "+5492235550059",
-            "telefono": "+542235550059",
-            "email": "dario.guevara@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 60,
-          "nombre": "Gonzalo Izurieta",
-          "relacion": "Amigo de Brasil",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Lorena Martinez",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550060",
-            "telefono": "+542235550060",
-            "email": "gonzalo.izurieta@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235805746",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 61,
-          "nombre": "Camila Fernandez",
-          "relacion": "Pareja de Gonza",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Ximena Garcea",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550061",
-            "telefono": "+542235550061",
-            "email": "camila.fernandez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235276404",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 62,
-          "nombre": "Pablo Garcea",
-          "relacion": "Hermano de Ximena",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Jorge Luis Lazo",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550062",
-            "telefono": "+542235550062",
-            "email": "pablo.garcea@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492234549696",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 63,
-          "nombre": "Valeria Sosa",
-          "relacion": "Pareja de Pablo",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Leandro Castrillon",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550063",
-            "telefono": "+542235550063",
-            "email": "valeria.sosa@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492234364915",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 64,
-          "nombre": "Lorena Moreno",
-          "relacion": "Amiga de backstage",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Carolina Castrillon",
+          "relacion": "Pareja de Leandro",
           "contacto": {
-            "whatsapp": "+5492235550064",
-            "telefono": "+542235550064",
-            "email": "lorena.moreno@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 65,
-          "nombre": "Martin Rios",
-          "relacion": "Pareja de Lorena",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Cristian Telleria",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550065",
-            "telefono": "+542235550065",
-            "email": "martin.rios@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235504326",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 66,
-          "nombre": "Guillermo Villan",
-          "relacion": "Amigo de grabaciones",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 0,
+          "nombre": "Jeremias Rodriguez",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550066",
-            "telefono": "+542235550066",
-            "email": "guillermo.villan@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235454293",
+            "email": "jeremiasrodriguez@gmail.com"
           }
         },
         {
           "id": 67,
-          "nombre": "Melina Ludueña",
-          "relacion": "Amiga de letras",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Julieta",
+          "relacion": "Pareja de Jeremias",
           "contacto": {
-            "whatsapp": "+5492235550067",
-            "telefono": "+542235550067",
-            "email": "melina.luduena@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 68,
-          "nombre": "Lucas Pereyra",
-          "relacion": "Pareja de Melina",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Roberto Zubillaga",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550068",
-            "telefono": "+542235550068",
-            "email": "lucas.pereyra@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236240377",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 69,
-          "nombre": "Nino Alvez",
-          "relacion": "Amigo de covers",
-          "subgrupo": "Amigos cercanos",
-          "acompanantes": 1,
+          "nombre": "Javier Carnero",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550069",
-            "telefono": "+542235550069",
-            "email": "nino.alvez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+573142508458",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 70,
-          "nombre": "Sofia Mendieta",
-          "relacion": "Pareja de Nino",
-          "subgrupo": "Parejas",
-          "acompanantes": 0,
+          "nombre": "Dario Guevara",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550070",
-            "telefono": "+542235550070",
-            "email": "sofia.mendieta@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235260960",
+            "email": "SIN DATOS"
           }
-        }
-      ]
-    },
-    {
-      "nombre": "Amigos Familia",
-      "invitados": [
+        },
         {
           "id": 71,
-          "nombre": "Alberto Castelli",
-          "relacion": "Amigo de la familia Bavaro",
-          "acompanantes": 1,
+          "nombre": "Nino Alvez",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550071",
-            "telefono": "+542235550071",
-            "email": "alberto.castelli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492233403284",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 72,
-          "nombre": "Graciela 'Pocha' Fernandez",
-          "relacion": "Pareja de Alberto",
-          "acompanantes": 0,
+          "nombre": "Adriana Alvez",
+          "relacion": "Pareja de Nino",
           "contacto": {
-            "whatsapp": "+5492235550072",
-            "telefono": "+542235550072",
-            "email": "graciela.fernandez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 73,
-          "nombre": "Oscar Lozzano",
-          "relacion": "Amigo de los padres",
-          "acompanantes": 3,
+          "nombre": "Lore Moreno",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550073",
-            "telefono": "+542235550073",
-            "email": "oscar.lozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235330362",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 74,
-          "nombre": "Gloria Mendez",
-          "relacion": "Pareja de Oscar",
-          "acompanantes": 0,
+          "nombre": "Pareja Lore Moreno",
+          "relacion": "Pareja de Lore",
           "contacto": {
-            "whatsapp": "+5492235550074",
-            "telefono": "+542235550074",
-            "email": "gloria.mendez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 75,
-          "nombre": "Laura Lozzano",
-          "relacion": "Hija de Oscar",
-          "acompanantes": 1,
+          "nombre": "Guille Villan",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550075",
-            "telefono": "+542235550075",
-            "email": "laura.lozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492233047445",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 76,
-          "nombre": "Soledad Lozzano",
-          "relacion": "Hija de Oscar",
-          "acompanantes": 1,
+          "nombre": "Melina Ludueña",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550076",
-            "telefono": "+542235550076",
-            "email": "soledad.lozzano@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236824253",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 77,
-          "nombre": "Gerardo Guazzelli",
-          "relacion": "Amigo de la familia",
-          "acompanantes": 1,
+          "nombre": "Pareja Melina Ludueña",
+          "relacion": "Pareja de Melina",
           "contacto": {
-            "whatsapp": "+5492235550077",
-            "telefono": "+542235550077",
-            "email": "gerardo.guazzelli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 78,
-          "nombre": "Nora Guzman",
-          "relacion": "Pareja de Gerardo",
-          "acompanantes": 0,
+          "nombre": "Flor Leiba",
+          "relacion": "Amiga de Ale",
           "contacto": {
-            "whatsapp": "+5492235550078",
-            "telefono": "+542235550078",
-            "email": "nora.guzman@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235491207",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 79,
-          "nombre": "Andres Guazzelli",
-          "relacion": "Hijo de Gerardo",
-          "acompanantes": 1,
+          "nombre": "Rob Bodrato",
+          "relacion": "Amigo de Ale",
           "contacto": {
-            "whatsapp": "+5492235550079",
-            "telefono": "+542235550079",
-            "email": "andres.guazzelli@example.com"
-          }
-        },
-        {
-          "id": 80,
-          "nombre": "Lucia Perez",
-          "relacion": "Pareja de Andrés",
-          "acompanantes": 0,
-          "contacto": {
-            "whatsapp": "+5492235550080",
-            "telefono": "+542235550080",
-            "email": "lucia.perez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492234482953",
+            "email": "SIN DATOS"
           }
         }
       ]
     },
     {
-      "nombre": "Amigos Varios",
+      "id": "amigos_familia",
+      "nombre": "Amigos de la Familia - ALE",
       "invitados": [
         {
-          "id": 81,
-          "nombre": "Hector Guzman",
-          "relacion": "Amigo del gimnasio",
-          "acompanantes": 1,
+          "id": 80,
+          "nombre": "Alberto Castelli",
+          "relacion": "Amigo de la familia",
           "contacto": {
-            "whatsapp": "+5492235550081",
-            "telefono": "+542235550081",
-            "email": "hector.guzman@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+542236871910",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 81,
+          "nombre": "Pocha Castelli",
+          "relacion": "Pareja de Alberto",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+542234956473",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 82,
-          "nombre": "Maria Gonzalez",
-          "relacion": "Pareja de Héctor",
-          "acompanantes": 0,
+          "nombre": "Oscar Lozzano",
+          "relacion": "Amigo de la familia",
           "contacto": {
-            "whatsapp": "+5492235550082",
-            "telefono": "+542235550082",
-            "email": "maria.gonzalez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235419432",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 83,
-          "nombre": "Noelia Vaccaro",
-          "relacion": "Amiga de eventos",
-          "acompanantes": 1,
+          "nombre": "Gloria Lozzano",
+          "relacion": "Pareja de Oscar",
           "contacto": {
-            "whatsapp": "+5492235550083",
-            "telefono": "+542235550083",
-            "email": "noelia.vaccaro@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235419432",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 84,
-          "nombre": "Carlos Bianchi",
-          "relacion": "Pareja de Noelia",
-          "acompanantes": 0,
+          "nombre": "Maria Ester",
+          "relacion": "Hermana de Gloria",
           "contacto": {
-            "whatsapp": "+5492235550084",
-            "telefono": "+542235550084",
-            "email": "carlos.bianchi@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 85,
-          "nombre": "Maria Mozcuzza",
-          "relacion": "Colega de trabajo",
-          "acompanantes": 1,
+          "nombre": "Laura Lozzano",
+          "relacion": "Hija de Oscar",
           "contacto": {
-            "whatsapp": "+5492235550085",
-            "telefono": "+542235550085",
-            "email": "maria.mozcuzza@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 86,
-          "nombre": "Roberto Sosa",
-          "relacion": "Pareja de María",
-          "acompanantes": 0,
+          "nombre": "Soledad Lozzano",
+          "relacion": "Hija de Oscar",
           "contacto": {
-            "whatsapp": "+5492235550086",
-            "telefono": "+542235550086",
-            "email": "roberto.sosa@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 87,
+          "nombre": "Gerardo Guazzelli",
+          "relacion": "Amigo de la familia",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235368553",
+            "email": "gerardoguazzelli@gmail.com"
+          }
+        },
+        {
+          "id": 88,
+          "nombre": "Nora Guazzelli",
+          "relacion": "Pareja de Gerardo",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 89,
+          "nombre": "Andres Guazzelli",
+          "relacion": "Hijo de Gerardo",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235125195",
+            "email": "andresguazzelli@hotmail.com"
+          }
+        },
+        {
+          "id": 90,
+          "nombre": "Nicolas Bartolucchi",
+          "relacion": "Amigo de la familia",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         }
       ]
     },
     {
-      "nombre": "Invitados por Confirmar",
-      "pendiente": true,
+      "id": "amigos_trabajo",
+      "nombre": "Amigos del Trabajo - ALE",
       "invitados": [
         {
-          "id": 87,
-          "nombre": "Lucas Ozzano",
-          "relacion": "Primo materno",
-          "acompanantes": 1,
-          "contacto": {
-            "whatsapp": "+5492235550087",
-            "telefono": "+542235550087",
-            "email": "lucas.ozzano@example.com"
-          }
-        },
-        {
-          "id": 88,
-          "nombre": "Paloma Rodriguez",
-          "relacion": "Pareja de Lucas",
-          "acompanantes": 0,
-          "contacto": {
-            "whatsapp": "+5492235550088",
-            "telefono": "+542235550088",
-            "email": "paloma.rodriguez@example.com"
-          }
-        },
-        {
-          "id": 89,
-          "nombre": "Martin Ozzano",
-          "relacion": "Primo materno",
-          "acompanantes": 1,
-          "contacto": {
-            "whatsapp": "+5492235550089",
-            "telefono": "+542235550089",
-            "email": "martin.ozzano@example.com"
-          }
-        },
-        {
-          "id": 90,
-          "nombre": "Emma Sanchez",
-          "relacion": "Pareja de Martín",
-          "acompanantes": 0,
-          "contacto": {
-            "whatsapp": "+5492235550090",
-            "telefono": "+542235550090",
-            "email": "emma.sanchez@example.com"
-          }
-        },
-        {
           "id": 91,
-          "nombre": "Federico Letamendia",
-          "relacion": "Amigo de viaje",
-          "acompanantes": 0,
+          "nombre": "Maria del Carmen Mozcuzza",
+          "relacion": "Colega de trabajo",
           "contacto": {
-            "whatsapp": "+5492235550091",
-            "telefono": "+542235550091",
-            "email": "federico.letamendia@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235935508",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 92,
-          "nombre": "Cristina Estrada",
-          "relacion": "Madre de Federico",
-          "acompanantes": 1,
+          "nombre": "Marido Maria Mozcuzza",
+          "relacion": "Marido de María",
           "contacto": {
-            "whatsapp": "+5492235550092",
-            "telefono": "+542235550092",
-            "email": "cristina.estrada@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 93,
-          "nombre": "Alfredo 'Freddie' Gomez",
-          "relacion": "Pareja de Cristina",
-          "acompanantes": 0,
+          "nombre": "Paula Giacomaso",
+          "relacion": "Colega de trabajo",
           "contacto": {
-            "whatsapp": "+5492235550093",
-            "telefono": "+542235550093",
-            "email": "alfredo.gomez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+542235502234",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 94,
-          "nombre": "Florencia Leiba",
-          "relacion": "Amiga de la infancia",
-          "acompanantes": 0,
+          "nombre": "Marido Paula Giacomaso",
+          "relacion": "Marido de Paula",
           "contacto": {
-            "whatsapp": "+5492235550094",
-            "telefono": "+542235550094",
-            "email": "florencia.leiba@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "invitados_especiales",
+      "nombre": "Invitados Especiales",
+      "invitados": [
         {
           "id": 95,
-          "nombre": "Roberto Bodrato",
-          "relacion": "Amigo del club",
-          "acompanantes": 0,
+          "nombre": "Adilia Jayares",
+          "relacion": "Invitada especial",
           "contacto": {
-            "whatsapp": "+5492235550095",
-            "telefono": "+542235550095",
-            "email": "roberto.bodrato@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 96,
-          "nombre": "Paula Giacomaso",
-          "relacion": "Amiga de facultad",
-          "acompanantes": 1,
+          "nombre": "Abuela Jayares",
+          "relacion": "Invitada especial",
           "contacto": {
-            "whatsapp": "+5492235550096",
-            "telefono": "+542235550096",
-            "email": "paula.giacomaso@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 97,
-          "nombre": "Juan Perez",
-          "relacion": "Marido de Paula",
-          "acompanantes": 0,
+          "nombre": "Tio Jayares",
+          "relacion": "Invitado especial",
           "contacto": {
-            "whatsapp": "+5492235550097",
-            "telefono": "+542235550097",
-            "email": "juan.perez@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 98,
-          "nombre": "Nicolas Bartolucchi",
-          "relacion": "Amigo de deportes",
-          "acompanantes": 0,
+          "nombre": "Lucas Ozzano",
+          "relacion": "Primo materno",
           "contacto": {
-            "whatsapp": "+5492235550098",
-            "telefono": "+542235550098",
-            "email": "nicolas.bartolucchi@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34610794714",
+            "email": "SIN DATOS"
           }
         },
         {
           "id": 99,
-          "nombre": "Mariana Guazzelli",
-          "relacion": "Prima lejana",
-          "acompanantes": 0,
+          "nombre": "Paloma",
+          "relacion": "Pareja de Lucas",
           "contacto": {
-            "whatsapp": "+5492235550099",
-            "telefono": "+542235550099",
-            "email": "mariana.guazzelli@example.com"
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 100,
+          "nombre": "Martin Ozzano",
+          "relacion": "Primo materno",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34619161984",
+            "email": "martinozzh@hotmail.com"
+          }
+        },
+        {
+          "id": 101,
+          "nombre": "Emma Ozzano",
+          "relacion": "Pareja de Martín",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34669661476",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 102,
+          "nombre": "Paola Ozzano",
+          "relacion": "Invitada especial",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34669756536",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 103,
+          "nombre": "Rafa Calvo Parra",
+          "relacion": "Familia España",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 104,
+          "nombre": "Noelia Calvo Parra",
+          "relacion": "Familia España",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 105,
+          "nombre": "Natalia Bermejo",
+          "relacion": "Familia España",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34627966433",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 106,
+          "nombre": "Loli Calvo Parra",
+          "relacion": "Familia España",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 107,
+          "nombre": "Adolfo Calvo Parra",
+          "relacion": "Familia España",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+34672168964",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 108,
+          "nombre": "Federico Letamendia",
+          "relacion": "Amigo de Ale",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492236352996",
+            "email": "federicoletamendia@hotmail.com"
+          }
+        },
+        {
+          "id": 109,
+          "nombre": "Cristina Estrada",
+          "relacion": "Madre de Federico",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235376444",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 110,
+          "nombre": "Freedie",
+          "relacion": "Pareja de Cristina",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 111,
+          "nombre": "Gonza Izurieta",
+          "relacion": "Amigo de Ale",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 112,
+          "nombre": "Brasileña Izurieta",
+          "relacion": "Pareja de Gonza",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 113,
+          "nombre": "Emily Rolon",
+          "relacion": "Invitada especial",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+13233174948",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 114,
+          "nombre": "Marido Emily Rolon",
+          "relacion": "Marido de Emily",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 115,
+          "nombre": "Miguel Rolon",
+          "relacion": "Invitado especial",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 116,
+          "nombre": "Evelyn Rolon",
+          "relacion": "Invitada especial",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 117,
+          "nombre": "Mariana Guazzelli",
+          "relacion": "Hija de Gerardo",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 118,
+          "nombre": "Victoria Guazzelli",
+          "relacion": "Hija de Gerardo",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "personal_contratado",
+      "nombre": "Personal Contratado",
+      "invitados": [
+        {
+          "id": 119,
+          "nombre": "Oscar Sosa",
+          "relacion": "Fotógrafo Boda-book",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235681251",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 120,
+          "nombre": "Pareja Oscar Sosa",
+          "relacion": "Pareja de Oscar",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 121,
+          "nombre": "Andrea",
+          "relacion": "Fotógrafa Boda-book",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235263565",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 122,
+          "nombre": "Matias Irigoin",
+          "relacion": "Videógrafo",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235609966",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 123,
+          "nombre": "Lalo Andres Maciel",
+          "relacion": "Animador de boda",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "2235209981",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 124,
+          "nombre": "Ailen Acosta",
+          "relacion": "Maquilladora",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235325653",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 125,
+          "nombre": "Lidia Telas",
+          "relacion": "Decoradora",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235255558",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 126,
+          "nombre": "Diego Pastochi",
+          "relacion": "DJ",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235594343",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 127,
+          "nombre": "Soledad",
+          "relacion": "Organización Casa del Mar",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "+5492235926806",
+            "email": "SIN DATOS"
+          }
+        },
+        {
+          "id": 128,
+          "nombre": "Matias",
+          "relacion": "Encargado Casa del Mar",
+          "contacto": {
+            "whatsapp": "SIN DATOS",
+            "telefono": "SIN DATOS",
+            "email": "SIN DATOS"
           }
         }
       ]

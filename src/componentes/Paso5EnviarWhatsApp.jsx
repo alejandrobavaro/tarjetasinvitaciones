@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/scss/_03-Componentes/_Paso5EnviarWhatsApp.scss';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * COMPONENTE: Paso5EnviarWhatsApp
@@ -16,6 +17,9 @@ const Paso5EnviarWhatsApp = ({
   invitadoSeleccionado, 
   finalizarProceso 
 }) => {
+  // Hook de navegación
+  const navigate = useNavigate();
+  
   // ESTADO: Control del proceso de envío
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
@@ -138,6 +142,17 @@ const Paso5EnviarWhatsApp = ({
     });
   };
 
+  // FUNCIÓN: Finalizar proceso y navegar a la lista de invitados
+  const handleFinalizarProceso = () => {
+    // Si se proporciona una función de finalización, usarla
+    if (finalizarProceso) {
+      finalizarProceso();
+    } else {
+      // Navegar directamente a la lista de invitados en la ruta correcta
+      navigate('/organizacion/invitados', { replace: true });
+    }
+  };
+
   // RENDER: Información de envío previo
   const renderInfoEnvioPrevio = () => {
     const ultimoEnvio = getUltimoEnvio();
@@ -165,7 +180,7 @@ const Paso5EnviarWhatsApp = ({
     <div className="paso5-enviar-whatsapp">
       <div className="instrucciones">
         <h2>Paso 5: Enviar por WhatsApp</h2>
-        <p>Último paso: Abre WhatsApp y envía la invitación directamente.</p>
+        <p>Último paso: Abre WhatsApp and envía la invitación directamente.</p>
       </div>
 
       {/* Información del invitado */}
@@ -255,12 +270,7 @@ const Paso5EnviarWhatsApp = ({
       {/* Acciones finales */}
       <div className="acciones-finales">
         <div className="botones-accion">
-          <button
-            onClick={finalizarProceso}
-            className="btn-finalizar"
-          >
-            ✅ Finalizar Proceso
-          </button>
+        
 
           <button
             onClick={abrirWhatsApp}

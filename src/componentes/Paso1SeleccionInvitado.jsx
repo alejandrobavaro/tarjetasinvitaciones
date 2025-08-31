@@ -214,16 +214,7 @@ const Paso1SeleccionInvitado = ({
 
       {/* Acciones del paso */}
       <div className="acciones-paso">
-        <button
-          onClick={avanzarPaso}
-          className="btn-siguiente-paso"
-          disabled={!puedeAvanzar()}
-        >
-          {invitadoSeleccionado?.enviado ? 
-            'Continuar: Crear Tarjeta (sobrescribir) →' : 
-            'Siguiente: Crear Tarjeta →'}
-        </button>
-        
+     
         {!puedeAvanzar() && (
           <p className="mensaje-ayuda">
             💡 Selecciona un invitado para continuar

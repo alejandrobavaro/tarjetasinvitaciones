@@ -205,13 +205,7 @@ const Paso4CopiarMensaje = ({
 
       {/* Acciones del paso */}
       <div className="acciones-paso">
-        <button
-          onClick={avanzarPaso}
-          className="btn-siguiente-paso"
-          disabled={!puedeAvanzar()}
-        >
-          Siguiente: Enviar por WhatsApp →
-        </button>
+    
 
         {!puedeAvanzar() && (
           <p className="mensaje-ayuda">

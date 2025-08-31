@@ -170,16 +170,7 @@ const Paso2CrearTarjeta = ({
             </div>
           </div>
 
-          {/* Botón para avanzar al siguiente paso */}
-          <div className="acciones-paso">
-            <button
-              onClick={avanzarPaso}
-              className="btn-siguiente-paso"
-              disabled={!puedeAvanzar()}
-            >
-              Siguiente: Descargar Tarjeta →
-            </button>
-          </div>
+      
         </div>
 
         {/* COLUMNA DERECHA: Vista previa de la tarjeta */}
