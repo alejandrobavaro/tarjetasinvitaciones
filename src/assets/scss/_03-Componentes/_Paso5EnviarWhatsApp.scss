@@ -1,0 +1,484 @@
+/* =============================================== */
+/* COMPONENTE: Paso 5 - Enviar por WhatsApp */
+/* =============================================== */
+
+/* --- Contenedor Principal --- */
+.paso5-enviar-whatsapp {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+  
+    /* Instrucciones del paso */
+    .instrucciones {
+      margin-bottom: 1.5rem;
+      padding: 0.8rem;
+      background-color: rgba(139, 69, 19, 0.05);
+      border-radius: 6px;
+      border-left: 3px solid #8B4513;
+  
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Información del invitado */
+    .info-invitado {
+      background-color: rgba(212, 175, 55, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+  
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .detalles-invitado {
+        p {
+          margin: 0.4rem 0;
+          color: #5a2d2d;
+          font-size: 0.9rem;
+  
+          strong {
+            color: #8B4513;
+            min-width: 100px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  
+    /* Panel de enlaces fijos */
+    .panel-enlaces {
+      background-color: rgba(33, 150, 243, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(33, 150, 243, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #1976d2;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+  
+      .enlaces-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+  
+      .enlace-item {
+        strong {
+          display: block;
+          color: #1976d2;
+          font-size: 0.9rem;
+          margin-bottom: 0.3rem;
+          font-weight: 600;
+        }
+  
+        .enlace-texto {
+          display: block;
+          color: #1565c0;
+          font-size: 0.8rem;
+          padding: 0.5rem;
+          background-color: rgba(255, 255, 255, 0.8);
+          border-radius: 4px;
+          border: 1px solid #90caf9;
+          word-break: break-all;
+        }
+      }
+    }
+  
+    /* Información de envío previo */
+    .info-envio-previo {
+      background-color: rgba(76, 175, 80, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(76, 175, 80, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #2e7d32;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .detalles-envio {
+        p {
+          margin: 0.4rem 0;
+          color: #5a2d2d;
+          font-size: 0.9rem;
+  
+          strong {
+            color: #2e7d32;
+            min-width: 80px;
+            display: inline-block;
+          }
+        }
+  
+        .estado-enviado {
+          color: #2e7d32;
+          font-weight: 600;
+        }
+      }
+  
+      .nota-reenvio {
+        margin-top: 0.8rem;
+        color: #2e7d32;
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+    }
+  
+    /* Panel de acciones */
+    .panel-acciones {
+      margin-bottom: 1.5rem;
+  
+      .acciones-principales {
+        text-align: center;
+        margin-bottom: 1.5rem;
+  
+        .btn-abrir-whatsapp {
+          background-color: #25d366;
+          color: white;
+          border: none;
+          padding: 0.9rem 1.8rem;
+          border-radius: 4px;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+  
+          &:hover:not(:disabled) {
+            background-color: #128c7e;
+            transform: translateY(-2px);
+          }
+  
+          &:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+        }
+  
+        .mensaje-exito {
+          background-color: #4caf50;
+          color: white;
+          padding: 1rem;
+          border-radius: 6px;
+          font-weight: 600;
+          animation: fadeIn 0.5s;
+  
+          .icono-exito {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+          }
+  
+          .instruccion-final {
+            margin: 0.5rem 0 0 0;
+            font-weight: normal;
+            font-size: 0.9rem;
+            opacity: 0.9;
+          }
+        }
+  
+        .mensaje-error {
+          background-color: #f44336;
+          color: white;
+          padding: 1rem;
+          border-radius: 6px;
+          animation: fadeIn 0.5s;
+  
+          .icono-error {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+  
+      .instrucciones-envio {
+        background-color: rgba(37, 211, 102, 0.1);
+        padding: 1rem;
+        border-radius: 6px;
+        border: 1px solid rgba(37, 211, 102, 0.3);
+  
+        h4 {
+          font-family: 'Cinzel', serif;
+          color: #128c7e;
+          font-size: 1rem;
+          margin-bottom: 0.8rem;
+        }
+  
+        ol {
+          margin: 0;
+          padding-left: 1.2rem;
+          color: #5a2d2d;
+  
+          li {
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+  
+            strong {
+              color: #128c7e;
+            }
+          }
+        }
+      }
+    }
+  
+    /* Vista previa del mensaje */
+    .vista-previa-mensaje {
+      margin-bottom: 1.5rem;
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #5a2d2d;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .mensaje-preview {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 1rem;
+        max-height: 200px;
+        overflow-y: auto;
+  
+        pre {
+          margin: 0;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.8rem;
+          color: #5a2d2d;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          line-height: 1.4;
+        }
+      }
+    }
+  
+    /* Acciones finales */
+    .acciones-finales {
+      margin-bottom: 1.5rem;
+  
+      .botones-accion {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+  
+        .btn-finalizar {
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          padding: 0.9rem 1.5rem;
+          border-radius: 4px;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+          font-size: 0.9rem;
+  
+          &:hover {
+            background-color: #3d8b40;
+          }
+        }
+  
+        .btn-reintentar {
+          background-color: #ff9800;
+          color: white;
+          border: none;
+          padding: 0.7rem 1.2rem;
+          border-radius: 4px;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+          font-size: 0.9rem;
+  
+          &:hover:not(:disabled) {
+            background-color: #f57c00;
+          }
+  
+          &:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+        }
+      }
+  
+      .nota-final {
+        background-color: rgba(255, 152, 0, 0.1);
+        padding: 0.8rem;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 152, 0, 0.3);
+  
+        p {
+          margin: 0;
+          color: #5a2d2d;
+          font-size: 0.9rem;
+          text-align: center;
+        }
+      }
+    }
+  
+    /* Historial reciente */
+    .historial-reciente {
+      background-color: rgba(103, 58, 183, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(103, 58, 183, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #5e35b1;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .lista-historial {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+  
+      .item-historial {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem;
+        background-color: white;
+        border-radius: 4px;
+        border: 1px solid #eee;
+  
+        .fecha {
+          font-size: 0.7rem;
+          color: #757575;
+          flex: 2;
+        }
+  
+        .invitado {
+          font-size: 0.8rem;
+          color: #5a2d2d;
+          flex: 1;
+          text-align: center;
+          font-weight: 500;
+        }
+  
+        .estado {
+          font-size: 0.7rem;
+          color: #4caf50;
+          flex: 1;
+          text-align: right;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  
+  /* Animación de fade in */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* --- Media Queries: Tablet (768px) --- */
+  @media (min-width: 768px) {
+    .paso5-enviar-whatsapp {
+      .instrucciones {
+        padding: 1rem;
+        
+        h2 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .panel-enlaces {
+        .enlaces-container {
+          flex-direction: row;
+          gap: 1.5rem;
+  
+          .enlace-item {
+            flex: 1;
+          }
+        }
+      }
+  
+      .acciones-finales {
+        .botones-accion {
+          flex-direction: row;
+          justify-content: center;
+  
+          .btn-finalizar,
+          .btn-reintentar {
+            flex: 1;
+            max-width: 200px;
+          }
+        }
+      }
+  
+      .historial-reciente {
+        .item-historial {
+          .fecha {
+            font-size: 0.8rem;
+          }
+  
+          .invitado {
+            font-size: 0.9rem;
+          }
+  
+          .estado {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  
+  /* --- Media Queries: Escritorio (1024px) --- */
+  @media (min-width: 1024px) {
+    .paso5-enviar-whatsapp {
+      .panel-acciones {
+        display: flex;
+        gap: 1.5rem;
+  
+        .acciones-principales {
+          flex: 1;
+        }
+  
+        .instrucciones-envio {
+          flex: 1;
+        }
+      }
+  
+      .panel-enlaces {
+        .enlaces-container {
+          gap: 2rem;
+        }
+      }
+    }
+  }

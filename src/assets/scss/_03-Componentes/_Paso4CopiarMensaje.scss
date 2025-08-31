@@ -1,0 +1,428 @@
+/* =============================================== */
+/* COMPONENTE: Paso 4 - Copiar Mensaje WhatsApp */
+/* =============================================== */
+
+/* --- Contenedor Principal --- */
+.paso4-copiar-mensaje {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+  
+    /* Instrucciones del paso */
+    .instrucciones {
+      margin-bottom: 1.5rem;
+      padding: 0.8rem;
+      background-color: rgba(139, 69, 19, 0.05);
+      border-radius: 6px;
+      border-left: 3px solid #8B4513;
+  
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Información del invitado */
+    .info-invitado {
+      background-color: rgba(212, 175, 55, 0.1);
+      padding: 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+  
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Panel de enlaces fijos */
+    .panel-enlaces {
+      background-color: rgba(33, 150, 243, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(33, 150, 243, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #1976d2;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+  
+      .enlace-item {
+        margin-bottom: 0.8rem;
+  
+        strong {
+          display: block;
+          color: #1976d2;
+          font-size: 0.9rem;
+          margin-bottom: 0.3rem;
+          font-weight: 600;
+        }
+  
+        .enlace-fijo {
+          display: block;
+          color: #1565c0;
+          font-size: 0.8rem;
+          text-decoration: none;
+          padding: 0.5rem;
+          background-color: rgba(255, 255, 255, 0.8);
+          border-radius: 4px;
+          border: 1px solid #90caf9;
+          word-break: break-all;
+          transition: all 0.2s ease;
+  
+          &:hover {
+            background-color: white;
+            color: #0d47a1;
+            text-decoration: underline;
+          }
+        }
+      }
+  
+      .nota-enlaces {
+        color: #1976d2;
+        font-size: 0.8rem;
+        margin: 0.8rem 0 0 0;
+        font-style: italic;
+        text-align: center;
+      }
+    }
+  
+    /* Vista previa del mensaje */
+    .vista-previa-mensaje {
+      margin-bottom: 1.5rem;
+  
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #5a2d2d;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  
+    .whatsapp-preview {
+      background-color: #e5ddd5;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-height: 300px;
+      overflow-y: auto;
+  
+      .whatsapp-header {
+        background-color: #075e54;
+        color: white;
+        padding: 0.8rem;
+        display: flex;
+        align-items: center;
+  
+        .contacto {
+          display: flex;
+          flex-direction: column;
+  
+          .nombre {
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+  
+          .estado {
+            font-size: 0.7rem;
+            opacity: 0.8;
+          }
+        }
+      }
+  
+      .mensaje-content {
+        padding: 0.8rem;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABnSURBVDhP7cxBCsAgDETR6P3P3KZQKBRB/5+ZQh8EPQmZzFqRc87N3Xvvzjm3tVZrrbXWWmuttdZaa6211lprrbXWWmuttdZaa6211lprrbXWWmuttdZaa6211lprrbXWWvsH/gBZ9ySibWwFJAAAAABJRU5ErkJggg==");
+        background-repeat: repeat;
+  
+        .bubble {
+          max-width: 85%;
+          padding: 0.7rem 0.9rem;
+          border-radius: 7.5px;
+          margin-bottom: 0.6rem;
+          position: relative;
+          word-wrap: break-word;
+          font-size: 0.8rem;
+  
+          &.sent {
+            background-color: #dcf8c6;
+            margin-left: auto;
+            border-top-right-radius: 0;
+          }
+  
+          &.received {
+            background-color: white;
+            margin-right: auto;
+            border-top-left-radius: 0;
+          }
+  
+          p {
+            margin: 0.3rem 0;
+            line-height: 1.4;
+  
+            &.linea-separadora {
+              text-align: center;
+              color: #666;
+              font-style: italic;
+              border-top: 1px dashed #999;
+              border-bottom: 1px dashed #999;
+              padding: 0.5rem 0;
+              margin: 0.8rem 0;
+            }
+          }
+        }
+      }
+    }
+  
+    /* Controles de copiado */
+    .controles-copia {
+      text-align: center;
+      margin-bottom: 1.5rem;
+  
+      .btn-copiar {
+        background-color: #25d366;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+  
+        &:hover:not(:disabled) {
+          background-color: #128c7e;
+        }
+  
+        &:disabled {
+          background-color: #cccccc;
+          cursor: not-allowed;
+          opacity: 0.7;
+        }
+      }
+  
+      .mensaje-exito {
+        background-color: #4caf50;
+        color: white;
+        padding: 0.7rem;
+        border-radius: 4px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        animation: fadeIn 0.5s;
+      }
+  
+      .mensaje-error {
+        background-color: #f44336;
+        color: white;
+        padding: 0.7rem;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        animation: fadeIn 0.5s;
+      }
+    }
+  
+    /* Instrucciones de uso */
+    .instrucciones-uso {
+      background-color: rgba(37, 211, 102, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #128c7e;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+  
+      ol {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: #5a2d2d;
+  
+        li {
+          margin-bottom: 0.4rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  
+    /* Acciones del paso */
+    .acciones-paso {
+      text-align: center;
+      margin-bottom: 1.5rem;
+  
+      .btn-siguiente-paso {
+        background-color: #8B4513;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+  
+        &:hover:not(:disabled) {
+          background-color: #6B3410;
+        }
+  
+        &:disabled {
+          background-color: #cccccc;
+          cursor: not-allowed;
+          opacity: 0.7;
+        }
+      }
+  
+      .mensaje-ayuda {
+        margin-top: 0.8rem;
+        color: #757575;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+    }
+  
+    /* Nota importante */
+    .nota-importante {
+      background-color: rgba(255, 152, 0, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 152, 0, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #f57c00;
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+        line-height: 1.4;
+      }
+    }
+  }
+  
+  /* Animación de fade in */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* --- Media Queries: Tablet (768px) --- */
+  @media (min-width: 768px) {
+    .paso4-copiar-mensaje {
+      .instrucciones {
+        padding: 1rem;
+        
+        h2 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .panel-enlaces {
+        .enlace-item {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+  
+          strong {
+            min-width: 120px;
+            margin-bottom: 0;
+            text-align: right;
+          }
+  
+          .enlace-fijo {
+            flex: 1;
+          }
+        }
+      }
+  
+      .whatsapp-preview {
+        .mensaje-content {
+          .bubble {
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .acciones-paso {
+        .btn-siguiente-paso {
+          padding: 0.9rem 1.8rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  /* --- Media Queries: Escritorio (1024px) --- */
+  @media (min-width: 1024px) {
+    .paso4-copiar-mensaje {
+      .vista-previa-mensaje {
+        .whatsapp-preview {
+          max-height: 350px;
+        }
+      }
+  
+      .panel-enlaces {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+  
+        h4 {
+          grid-column: 1 / -1;
+        }
+  
+        .nota-enlaces {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }

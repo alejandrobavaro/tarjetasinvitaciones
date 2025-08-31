@@ -5,51 +5,56 @@ import {
   BsCardImage,        // Icono diseño invitación
   BsWhatsapp,         // Icono enviar invitaciones
   BsPeople,           // Icono lista invitados
+  BsArrowRightCircle  // NUEVO: Icono para flujo completo
 } from "react-icons/bs";
 import "../assets/scss/_03-Componentes/_Header.scss";
 
+/**
+ * COMPONENTE: Header
+ * 
+ * PROPÓSITO: Barra de navegación principal con acceso rápido a las secciones
+ * 
+ * CAMBIOS PRINCIPALES:
+ * - Reemplazada ruta individual de envío por flujo completo de creación
+ * - Actualizados tooltips y descripciones
+ * - Mantenida la estructura visual existente
+ */
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Definición de los enlaces de navegación con tooltips
+  // DEFINICIÓN DE ENLACES DE NAVEGACIÓN ACTUALIZADA
   const navLinks = [
     { 
       path: "/", 
       icon: <BsPeople />, 
       label: "Lista de Invitados",
-      shortLabel: "Lista de Invitados",
+      shortLabel: "Lista",
       tooltip: "Ver y gestionar la lista completa de invitados a la boda"
     },
     { 
       path: "/crear-invitacion", 
-      icon: <BsCardImage />, 
-      label: "Crear Tarjeta Invitación",
-      shortLabel: "Crear Tarjeta Invitación",
-      tooltip: "Diseña una invitación personalizada para tus invitados"
-    },
-    { 
-      path: "/enviar-invitacion", 
-      icon: <BsWhatsapp />, 
-      label: "Enviar Mensaje y Tarjeta",
-      shortLabel: "Enviar Mensaje y Tarjeta",
-      tooltip: "Envía las invitaciones diseñadas a tus invitados por WhatsApp"
+      icon: <BsArrowRightCircle />, // Icono actualizado
+      label: "Crear y Enviar Invitación",
+      shortLabel: "Crear Invitación", 
+      tooltip: "Flujo completo de 5 pasos: diseñar, seleccionar, descargar y enviar invitaciones"
     }
   ];
 
+  // FUNCIÓN: Navegar a página
   const goToPage = (path) => {
     navigate(path);
   };
 
   return (
     <header className="app-header">
-      {/* Decoración superior */}
+      {/* Decoración superior con efecto de flujo */}
       <div className="header-decoration-top"></div>
 
       {/* Barra de navegación principal */}
       <Navbar expand="lg" className="header-navbar">
         <Container className="header-container">
-          {/* Logo */}
+          {/* Logo con enlace a inicio */}
           <Navbar.Brand as={Link} to="/" className="header-logo">
             <img
               src="/img/02-logos/logo-bodaaleyfabi1d.png"
@@ -58,7 +63,7 @@ const Header = () => {
             />
           </Navbar.Brand>
 
-          {/* Botones de navegación */}
+          {/* Botones de navegación rápida */}
           <Nav className="quick-access-buttons">
             {navLinks.map((link) => (
               <Nav.Link
@@ -82,7 +87,7 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      {/* Decoración inferior */}
+      {/* Decoración inferior con efecto de flujo */}
       <div className="header-decoration-bottom"></div>
     </header>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/scss/_03-Componentes/_AListaInvitados.scss';
+import '../assets/scss/_03-Componentes/_ListaInvitados.scss';
 
-const AListaInvitados = () => {
+const ListaInvitados = () => {
   const [invitados, setInvitados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -130,4 +130,4 @@ const AListaInvitados = () => {
   );
 };
 
-export default AListaInvitados;
+export default ListaInvitados;

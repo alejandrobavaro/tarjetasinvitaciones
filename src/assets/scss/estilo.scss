@@ -1,19 +1,14 @@
 //------------GENERAL--------------//
 @import "./_01-General/App";
-@import "./_01-General/SweetAlert";
-@import "./_01-General/Toastify";
 
 //------------HEADER--------------//
 @import "./_03-Componentes/Header";
-@import "./_03-Componentes/Notificaciones";
 
 //--------------FOOTER----------------//
 @import "./_03-Componentes/Footer";
-@import "./_03-Componentes/FooterGondra";
 
 //--------------COMPONENTES PRINCIPALES----------------//
-@import "./_03-Componentes/AListaInvitados";
-@import "./_03-Componentes/BCrearTarjetaInvitacion";
-@import "./_03-Componentes/CEnviarTarjetaWhattsapp";
+@import "./_03-Componentes/ListaInvitados";
+
 @import "./_03-Componentes/Contacto";
 @import "./_03-Componentes/PublicidadSlider";
