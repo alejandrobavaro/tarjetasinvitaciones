@@ -109,7 +109,7 @@
     .unified-login-title-container {
       .unified-main-title {
         font-family: 'Cinzel', serif;
-        color: #8B4513;
+        color: #501b22c7;
         font-size: 1.8rem;
         margin: 0 0 0.5rem 0;
         font-weight: 700;
@@ -119,14 +119,14 @@
         gap: 0.5rem;
   
         i {
-          color: #A0522D;
+          color: #911626c7;
           font-size: 1.4rem;
         }
       }
   
       .unified-subtitle {
         font-family: 'Cormorant Garamond', serif;
-        color: #7a4f50;
+        color: #000000;
         font-size: 1.1rem;
         margin: 0 0 1rem 0;
         font-weight: 500;
@@ -141,7 +141,7 @@
       }
   
       .unified-instruction {
-        color: #5a2d2d;
+        color: #000000;
         font-size: 0.95rem;
         margin: 0;
         opacity: 0.9;
@@ -255,7 +255,7 @@
       }
   
       .form-submit-btn {
-        background: linear-gradient(135deg, #7A4F50 0%, #5A2D2D 100%);
+        background: linear-gradient(135deg, #694f7a 0%, #4e0606 100%);
         color: white;
         border: none;
         padding: 1rem 2rem;
@@ -322,7 +322,7 @@
     }
   
     .welcome-message {
-      color: #8B4513;
+      color: #000000;
       font-family: 'Cinzel', serif;
       font-size: 0.95rem;
       margin: 0 0 0.3rem 0;
@@ -330,7 +330,7 @@
     }
   
     .date-message {
-      color: #7a4f50;
+      color: #000000;
       font-size: 0.85rem;
       margin: 0;
       opacity: 0.8;

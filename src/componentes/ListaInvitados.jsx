@@ -419,7 +419,7 @@ const ListaInvitados = () => {
   return (
     <div className="lista-invitados-container compacta">
       {/* Título principal */}
-      <h1>Lista de Invitados</h1>
+      <h1>Lista de Invitados - Verificar y Actualizar datos para enviar Invitaciones</h1>
       
       {/* Controles de filtrado y búsqueda */}
       <div className="controles-invitados compactos">
