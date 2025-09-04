@@ -5,21 +5,23 @@ import {
   BsCardImage,        // Icono diseño invitación
   BsWhatsapp,         // Icono enviar invitaciones
   BsPeople,           // Icono lista invitados
-  BsArrowRightCircle  // NUEVO: Icono para flujo completo
+  BsArrowRightCircle, 
+  BsSendCheck,
+  BsBoxArrowRight     // Icono para logout
 } from "react-icons/bs";
 import "../assets/scss/_03-Componentes/_Header.scss";
 
 /**
  * COMPONENTE: Header
  * 
- * PROPÓSITO: Barra de navegación principal con acceso rápido a las secciones
+ * PROPÓSITO: Barra de navegación principal con acceso rápido a las secciones y logout
  * 
  * CAMBIOS PRINCIPALES:
- * - Reemplazada ruta individual de envío por flujo completo de creación
- * - Actualizados tooltips y descripciones
+ * - Agregado botón de logout
+ * - Función para cerrar sesión
  * - Mantenida la estructura visual existente
  */
-const Header = () => {
+const Header = ({ onLogout }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,16 +36,30 @@ const Header = () => {
     },
     { 
       path: "/crear-invitacion", 
-      icon: <BsArrowRightCircle />, // Icono actualizado
+      icon: <BsArrowRightCircle />,
       label: "Crear y Enviar Invitación",
       shortLabel: "Crear Invitación", 
       tooltip: "Flujo completo de 5 pasos: diseñar, seleccionar, descargar y enviar invitaciones"
+    }, 
+    { 
+      path: "/envio-masivo", 
+      icon: <BsSendCheck />, 
+      label: "Envío Masivo",
+      shortLabel: "Masivo", 
+      tooltip: "Enviar invitaciones a múltiples invitados a la vez"
     }
   ];
 
   // FUNCIÓN: Navegar a página
   const goToPage = (path) => {
     navigate(path);
+  };
+
+  // FUNCIÓN: Manejar logout
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout();
+    }
   };
 
   return (
@@ -84,6 +100,22 @@ const Header = () => {
               </Nav.Link>
             ))}
           </Nav>
+
+          {/* Botón de logout */}
+          <div className="logout-section">
+            <button 
+              onClick={handleLogout}
+              className="btn-logout"
+              title="Cerrar sesión"
+            >
+              <span className="logout-icon">
+                <BsBoxArrowRight />
+              </span>
+              <span className="logout-text">
+                {window.innerWidth < 768 ? "Salir" : "Cerrar sesión"}
+              </span>
+            </button>
+          </div>
         </Container>
       </Navbar>
 

@@ -1,67 +1,57 @@
+// componentes/Paso1SeleccionInvitado.js
 import React, { useState, useEffect } from 'react';
 import '../assets/scss/_03-Componentes/_Paso1SeleccionInvitado.scss';
 
-/**
- * COMPONENTE: Paso1SeleccionInvitado
- * PROPÓSITO: Primer paso del flujo - Seleccionar el invitado específico
- * CONEXIONES: 
- * - Recibe props del componente principal PasosInvitacion
- * - Carga la lista de invitados desde invitados.json
- * - Filtra y busca invitados por nombre o grupo
- * - Permite seleccionar un invitado para personalizar la invitación
- */
+// ================================================
+// COMPONENTE: Paso1SeleccionInvitado - VERSIÓN COMPACTA MEJORADA
+// ================================================
+
 const Paso1SeleccionInvitado = ({ 
   invitadoSeleccionado, 
   setInvitadoSeleccionado, 
   avanzarPaso 
 }) => {
-  // ESTADO: Lista completa de invitados cargada desde JSON
+  // ESTADOS
   const [invitados, setInvitados] = useState([]);
-  
-  // ESTADO: Término de búsqueda para filtrar invitados
+  const [grupos, setGrupos] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  
-  // ESTADO: Control de carga y errores
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [gruposExpandidos, setGruposExpandidos] = useState({});
 
-  // EFECTO: Cargar lista de invitados al montar el componente
+  // CARGA DE INVITADOS
   useEffect(() => {
     const cargarInvitados = async () => {
       try {
         setLoading(true);
         const response = await fetch('/invitados.json');
-        
-        if (!response.ok) {
-          throw new Error('No se pudo cargar la lista de invitados');
-        }
+        if (!response.ok) throw new Error('Error cargando invitados');
         
         const data = await response.json();
-        
-        // Validar estructura de datos
-        if (!data.grupos || !Array.isArray(data.grupos)) {
-          throw new Error('Formato de datos inválido en invitados.json');
-        }
+        if (!data.grupos) throw new Error('Formato inválido');
 
-        // Procesar y aplanar la lista de invitados
-        const invitadosProcesados = data.grupos.flatMap(grupo => {
-          if (!grupo.invitados || !Array.isArray(grupo.invitados)) {
-            return [];
-          }
-          
-          return grupo.invitados.map(invitado => ({
+        setGrupos(data.grupos);
+
+        const invitadosProcesados = data.grupos.flatMap(grupo => 
+          grupo.invitados?.map(invitado => ({
             ...invitado,
             grupoNombre: grupo.nombre,
-            telefono: invitado.Contacto?.whatsapp || invitado.Contacto?.telefono || 'Sin teléfono',
-            // Cargar estado de envío desde localStorage si existe
+            grupoId: grupo.id,
+            telefono: invitado.Contacto?.whatsapp || invitado.Contacto?.telefono || '',
             enviado: JSON.parse(localStorage.getItem('estadosEnvio') || '{}')[invitado.id] || false
-          }));
-        });
+          })) || []
+        );
 
         setInvitados(invitadosProcesados);
-        setError(null);
+        
+        // MODIFICACIÓN: Grupos colapsados por defecto
+        const expandidos = {};
+        data.grupos.forEach(grupo => {
+          expandidos[grupo.id] = false; // Colapsar todos por defecto
+        });
+        setGruposExpandidos(expandidos);
+        
       } catch (err) {
-        console.error("Error cargando invitados:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -71,7 +61,7 @@ const Paso1SeleccionInvitado = ({
     cargarInvitados();
   }, []);
 
-  // FUNCIÓN: Filtrar invitados según término de búsqueda
+  // FILTRAR INVITADOS
   const invitadosFiltrados = busqueda 
     ? invitados.filter(invitado => 
         invitado.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
@@ -80,146 +70,138 @@ const Paso1SeleccionInvitado = ({
       )
     : invitados;
 
-  // FUNCIÓN: Manejar selección de invitado
+  // TOGGLE GRUPOS
+  const toggleGrupo = (grupoId) => {
+    setGruposExpandidos(prev => ({ ...prev, [grupoId]: !prev[grupoId] }));
+  };
+
+  const toggleTodosGrupos = (expandir) => {
+    const nuevosEstados = {};
+    grupos.forEach(grupo => {
+      nuevosEstados[grupo.id] = expandir;
+    });
+    setGruposExpandidos(nuevosEstados);
+  };
+
+  // HANDLERS
   const handleSeleccionInvitado = (invitado) => {
     setInvitadoSeleccionado(invitado);
   };
 
-  // FUNCIÓN: Verificar si puede avanzar al siguiente paso
-  const puedeAvanzar = () => {
-    return invitadoSeleccionado !== null;
-  };
+  const puedeAvanzar = () => invitadoSeleccionado !== null;
 
-  // RENDER: Estado de carga
+  // RENDER: ESTADOS
   if (loading) {
     return (
       <div className="estado-carga">
         <div className="spinner"></div>
-        <p>Cargando lista de invitados...</p>
+        <p>Cargando invitados...</p>
       </div>
     );
   }
 
-  // RENDER: Estado de error
   if (error) {
     return (
       <div className="estado-error">
-        <h3>❌ Error al cargar invitados</h3>
+        <h3>❌ Error</h3>
         <p>{error}</p>
-        <button 
-          onClick={() => window.location.reload()}
-          className="btn-reintentar"
-        >
+        <button onClick={() => window.location.reload()} className="btn-reintentar">
           Reintentar
         </button>
       </div>
     );
   }
 
-  // RENDER PRINCIPAL del componente
+  // RENDER PRINCIPAL
   return (
-    <div className="paso1-seleccion-invitado">
-      <div className="instrucciones">
-        <h2>Paso 1: Selecciona un Invitado</h2>
-        <p>Elige el invitado para quien crearás la invitación personalizada.</p>
+    <div className="paso1-seleccion-invitado compacto-mejorado">
+      
+      {/* HEADER */}
+      <div className="header-mejorado">
+        <h2>Seleccionar Invitado</h2>
+        <div className="controles-top">
+          <div className="search-mejorado">
+            <input
+              type="text"
+              placeholder="Buscar por nombre, grupo o teléfono..."
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+              className="input-mejorado"
+            />
+            <span>🔍</span>
+          </div>
+          <div className="grupos-toggle">
+            <button onClick={() => toggleTodosGrupos(true)} title="Expandir todos">📂</button>
+            <button onClick={() => toggleTodosGrupos(false)} title="Colapsar todos">📁</button>
+          </div>
+        </div>
       </div>
 
-      {/* Búsqueda de invitados */}
-      <div className="busqueda-invitados">
-        <div className="search-group">
-          <input
-            type="text"
-            placeholder="Buscar por nombre, grupo o teléfono..."
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-            className="input-busqueda"
-          />
-          <span className="icono-busqueda">🔍</span>
-        </div>
-        
-        <div className="contador-resultados">
-          {invitadosFiltrados.length} de {invitados.length} invitados
-        </div>
-      </div>
-
-      {/* Lista de invitados - MÁS COMPACTA */}
-      <div className="lista-invitados-compacta">
+      {/* LISTA COMPACTA */}
+      <div className="lista-compacta-mejorada">
         {invitadosFiltrados.length === 0 ? (
           <div className="sin-resultados">
-            <p>No se encontraron invitados que coincidan con "{busqueda}"</p>
-            <button 
-              onClick={() => setBusqueda('')}
-              className="btn-limpiar-busqueda"
-            >
-              Limpiar búsqueda
+            <p>No hay resultados para "{busqueda}"</p>
+            <button onClick={() => setBusqueda('')} className="btn-limpiar">
+              Limpiar
             </button>
           </div>
         ) : (
-          <div className="lista-compacta">
-            {invitadosFiltrados.map(invitado => (
-              <div
-                key={invitado.id}
-                className={`item-invitado ${
-                  invitadoSeleccionado?.id === invitado.id ? 'seleccionado' : ''
-                } ${invitado.enviado ? 'ya-enviado' : ''}`}
-                onClick={() => handleSeleccionInvitado(invitado)}
-              >
-                <div className="info-compacta">
-                  <div className="nombre-grupo">
-                    <span className="nombre">{invitado.nombre}</span>
-                    <span className="grupo">{invitado.grupoNombre}</span>
+          <div className="grupos-container">
+            {grupos.map(grupo => {
+              const invitadosGrupo = invitadosFiltrados.filter(inv => inv.grupoId === grupo.id);
+              if (invitadosGrupo.length === 0) return null;
+              
+              return (
+                <div key={grupo.id} className="grupo-mejorado">
+                  <div className="header-grupo-mejorado" onClick={() => toggleGrupo(grupo.id)}>
+                    <span className="toggle">{gruposExpandidos[grupo.id] ? '▼' : '►'}</span>
+                    <span className="nombre-grupo">{grupo.nombre}</span>
+                    <span className="contador">({invitadosGrupo.length})</span>
                   </div>
-                  
-                  <div className="detalles-rapidos">
-                    <span className="telefono">📱 {invitado.telefono}</span>
-                    {invitado.acompanantes > 0 && (
-                      <span className="acompanantes">👥 {invitado.acompanantes}</span>
-                    )}
-                  </div>
+
+                  {gruposExpandidos[grupo.id] && invitadosGrupo.map(invitado => (
+                    <div
+                      key={invitado.id}
+                      className={`item-mejorado ${invitadoSeleccionado?.id === invitado.id ? 'seleccionado' : ''} ${invitado.enviado ? 'enviado' : ''}`}
+                      onClick={() => handleSeleccionInvitado(invitado)}
+                    >
+                      <div className="info-mejorada">
+                        <span className="nombre">{invitado.nombre}</span>
+                        {invitado.telefono && <span className="tel">• {invitado.telefono}</span>}
+                      </div>
+                      <div className="estados-mejorados">
+                        {invitado.enviado && <span className="badge">✓</span>}
+                        <span className="check">{invitadoSeleccionado?.id === invitado.id ? '✓' : ''}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                
-                <div className="estados">
-                  {invitado.enviado && (
-                    <span className="badge-enviado">✓</span>
-                  )}
-                  <span className="indicador-seleccion">
-                    {invitadoSeleccionado?.id === invitado.id ? '✓' : '→'}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
 
-      {/* Información del invitado seleccionado */}
+      {/* INFO SELECCIONADO */}
       {invitadoSeleccionado && (
-        <div className="panel-invitado-seleccionado">
-          <h3>Invitado Seleccionado:</h3>
-          <div className="info-invitado-detalle">
-            <p><strong>Nombre:</strong> {invitadoSeleccionado.nombre}</p>
-            <p><strong>Grupo:</strong> {invitadoSeleccionado.grupoNombre}</p>
-            <p><strong>Teléfono:</strong> {invitadoSeleccionado.telefono}</p>
-            {invitadoSeleccionado.acompanantes > 0 && (
-              <p><strong>Acompañantes:</strong> {invitadoSeleccionado.acompanantes}</p>
-            )}
-            {invitadoSeleccionado.enviado && (
-              <p className="advertencia-enviado">
-                ⚠️ Ya se envió una invitación a esta persona
-              </p>
-            )}
-          </div>
+        <div className="seleccionado-info-mejorado">
+          <span><strong>Seleccionado:</strong> {invitadoSeleccionado.nombre}</span>
+          <span className="grupo-tag">{invitadoSeleccionado.grupoNombre}</span>
+          {invitadoSeleccionado.enviado && <span className="enviado-tag">Enviado</span>}
         </div>
       )}
 
-      {/* Acciones del paso */}
-      <div className="acciones-paso">
-     
-        {!puedeAvanzar() && (
-          <p className="mensaje-ayuda">
-            💡 Selecciona un invitado para continuar
-          </p>
-        )}
+      {/* BOTÓN ACCIÓN */}
+      <div className="acciones-mejoradas">
+        <button
+          onClick={avanzarPaso}
+          disabled={!puedeAvanzar()}
+          className="btn-siguiente-mejorado"
+        >
+          Siguiente →
+        </button>
+        {!puedeAvanzar() && <span className="ayuda">Selecciona un invitado</span>}
       </div>
     </div>
   );

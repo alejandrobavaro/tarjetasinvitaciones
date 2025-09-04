@@ -1,0 +1,459 @@
+/* ==========================================================================
+   COMPONENTE LOGIN UNIFICADO - Diseño Premium Mobile First
+   ========================================================================== */
+
+   .unified-login-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f9f5f0 0%, #e8d6c0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  /* Elementos decorativos de fondo */
+  .login-background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  
+    .deco-flower {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.08;
+      animation: float 6s ease-in-out infinite;
+      
+      &.deco-1 {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      
+      &.deco-2 {
+        top: 25%;
+        right: 8%;
+        animation-delay: 2s;
+      }
+      
+      &.deco-3 {
+        bottom: 20%;
+        left: 15%;
+        animation-delay: 4s;
+      }
+    }
+  
+    .deco-ring {
+      position: absolute;
+      bottom: 15%;
+      right: 12%;
+      font-size: 2.5rem;
+      opacity: 0.06;
+      animation: rotate 8s linear infinite;
+    }
+  
+    .deco-heart {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      opacity: 0.05;
+      animation: pulse 3s ease-in-out infinite;
+    }
+  }
+  
+  /* Contenedor principal */
+  .unified-login-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 
+      0 8px 32px rgba(139, 69, 19, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(194, 167, 141, 0.4);
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Encabezado */
+  .unified-login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  
+    .unified-logo-container {
+      margin-bottom: 1.2rem;
+  
+      .unified-logo {
+        max-width: 120px;
+        height: auto;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 3px 6px rgba(122, 79, 80, 0.2));
+  
+        &:hover {
+          transform: scale(1.05);
+          filter: drop-shadow(0 4px 8px rgba(122, 79, 80, 0.3));
+        }
+      }
+    }
+  
+    .unified-login-title-container {
+      .unified-main-title {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.8rem;
+        margin: 0 0 0.5rem 0;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+  
+        i {
+          color: #A0522D;
+          font-size: 1.4rem;
+        }
+      }
+  
+      .unified-subtitle {
+        font-family: 'Cormorant Garamond', serif;
+        color: #7a4f50;
+        font-size: 1.1rem;
+        margin: 0 0 1rem 0;
+        font-weight: 500;
+        font-style: italic;
+      }
+  
+      .unified-divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        margin: 1rem auto;
+      }
+  
+      .unified-instruction {
+        color: #5a2d2d;
+        font-size: 0.95rem;
+        margin: 0;
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  /* Formulario */
+  .unified-form-container {
+    .unified-login-form {
+      .form-group {
+        margin-bottom: 1.5rem;
+  
+        .form-label {
+          display: block;
+          margin-bottom: 0.7rem;
+          color: #5a2d2d;
+          font-weight: 600;
+          font-size: 0.95rem;
+          font-family: 'Cinzel', serif;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+  
+          i {
+            color: #A0522D;
+            font-size: 1rem;
+          }
+        }
+  
+        .input-with-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+  
+          .form-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #C2A78D;
+            border-radius: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #5A2D2D;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+  
+            &:focus {
+              outline: none;
+              border-color: #7A4F50;
+              box-shadow: 0 0 0 3px rgba(122, 79, 80, 0.15);
+              transform: translateY(-1px);
+            }
+  
+            &::placeholder {
+              color: #A67C52;
+              opacity: 0.7;
+              font-style: italic;
+            }
+  
+            &.input-error {
+              border-color: #d32f2f;
+              animation: shake 0.4s ease;
+            }
+  
+            &:disabled {
+              opacity: 0.7;
+              cursor: not-allowed;
+            }
+          }
+  
+          .btn-toggle-visibilidad {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.3rem;
+            color: #7a4f50;
+            transition: all 0.3s ease;
+            z-index: 2;
+  
+            &:hover:not(:disabled) {
+              color: #8B4513;
+              transform: scale(1.1);
+            }
+  
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+  
+        .form-error-message {
+          color: #d32f2f;
+          font-size: 0.85rem;
+          margin: 0.7rem 0 0 0;
+          background: rgba(211, 47, 47, 0.1);
+          padding: 0.6rem;
+          border-radius: 6px;
+          border-left: 3px solid #d32f2f;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+  
+          i {
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .form-submit-btn {
+        background: linear-gradient(135deg, #7A4F50 0%, #5A2D2D 100%);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        position: relative;
+        overflow: hidden;
+  
+        &:hover:not(.loading):not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(122, 79, 80, 0.25);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+  
+        &.loading {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
+  
+        .submit-spinner {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          border: 2px solid transparent;
+          border-top: 2px solid white;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+  
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+  
+  /* Footer */
+  .unified-login-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(194, 167, 141, 0.3);
+    text-align: center;
+  
+    .heart-divider {
+      margin-bottom: 1rem;
+  
+      i {
+        font-size: 1.4rem;
+        color: #A0522D;
+        animation: heartbeat 2s ease-in-out infinite;
+      }
+    }
+  
+    .welcome-message {
+      color: #8B4513;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      margin: 0 0 0.3rem 0;
+      font-weight: 500;
+    }
+  
+    .date-message {
+      color: #7a4f50;
+      font-size: 0.85rem;
+      margin: 0;
+      opacity: 0.8;
+      font-style: italic;
+    }
+  }
+  
+  /* Animaciones */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.05; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.08; transform: translateX(-50%) scale(1.1); }
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  /* ============ TABLET (600px+) ============ */
+  @media (min-width: 600px) {
+    .unified-login-container {
+      padding: 2rem;
+      max-width: 480px;
+    }
+  
+    .unified-login-header {
+      .unified-logo-container {
+        .unified-logo {
+          max-width: 140px;
+        }
+      }
+  
+      .unified-login-title-container {
+        .unified-main-title {
+          font-size: 2rem;
+          
+          i {
+            font-size: 1.6rem;
+          }
+        }
+  
+        .unified-subtitle {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  
+  /* ============ TABLET GRANDE (768px+) ============ */
+  @media (min-width: 768px) {
+    .unified-login-section {
+      padding: 2rem;
+    }
+  
+    .unified-login-container {
+      padding: 2.5rem;
+      max-width: 520px;
+    }
+  
+    .login-background-elements {
+      .deco-flower {
+        font-size: 2.5rem;
+      }
+  
+      .deco-ring {
+        font-size: 3rem;
+      }
+  
+      .deco-heart {
+        font-size: 3.5rem;
+      }
+    }
+  }
+  
+  /* ============ DESKTOP (992px+) ============ */
+  @media (min-width: 992px) {
+    .unified-login-container {
+      max-width: 550px;
+      padding: 3rem;
+    }
+  
+    .unified-login-header {
+      .unified-logo-container {
+        .unified-logo {
+          max-width: 160px;
+        }
+      }
+    }
+  }
+  
+  /* Efecto de transición suave para toda la página */
+  .unified-login-section {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+  }

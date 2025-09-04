@@ -1,0 +1,275 @@
+/* =============================================== */
+/* COMPONENTE: Paso 2 Masivo - Diseño de Mensaje */
+/* =============================================== */
+
+.paso-masivo2-diseno {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+  
+    /* Instrucciones */
+    .instrucciones-masivo {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      background-color: rgba(37, 211, 102, 0.1);
+      border-radius: 6px;
+      border-left: 3px solid #25d366;
+  
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #128c7e;
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Información de selección */
+    .info-seleccion-masivo {
+      margin-bottom: 1rem;
+      text-align: center;
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  
+    /* Variables disponibles */
+    .variables-disponibles {
+      background-color: rgba(33, 150, 243, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(33, 150, 243, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #1976d2;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .lista-variables {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+        flex-wrap: wrap;
+  
+        .btn-variable {
+          background-color: #1976d2;
+          color: white;
+          border: none;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          cursor: pointer;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.8rem;
+  
+          &:hover {
+            background-color: #1565c0;
+          }
+        }
+      }
+  
+      .nota-variables {
+        color: #1976d2;
+        font-size: 0.8rem;
+        margin: 0;
+        font-style: italic;
+      }
+    }
+  
+    /* Editor de mensaje */
+    .editor-mensaje {
+      margin-bottom: 1rem;
+  
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #5a2d2d;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+  
+      .textarea-mensaje {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
+        resize: vertical;
+        min-height: 200px;
+  
+        &:focus {
+          outline: none;
+          border-color: #25d366;
+          box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+        }
+      }
+    }
+  
+    /* Controles de vista previa */
+    .controles-vista-previa {
+      margin-bottom: 1rem;
+      text-align: center;
+  
+      .btn-vista-previa {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
+  
+        &:hover:not(:disabled) {
+          background-color: #f57c00;
+        }
+  
+        &:disabled {
+          background-color: #cccccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  
+    /* Vista previa del mensaje */
+    .vista-previa-mensaje {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid #e0e0e0;
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #5a2d2d;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .contenido-vista-previa {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+  
+        pre {
+          margin: 0;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.9rem;
+          color: #5a2d2d;
+          line-height: 1.4;
+        }
+      }
+    }
+  
+    /* Plantillas rápidas */
+    .plantillas-rapidas {
+      background-color: rgba(139, 69, 19, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(139, 69, 19, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .lista-plantillas {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+  
+        .btn-plantilla {
+          background-color: #8B4513;
+          color: white;
+          border: none;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          cursor: pointer;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.8rem;
+  
+          &:hover {
+            background-color: #6B3410;
+          }
+        }
+      }
+    }
+  
+    /* Acciones del paso */
+    .acciones-paso-masivo {
+      text-align: center;
+  
+      .mensaje-ayuda-masivo {
+        margin-top: 0.6rem;
+        color: #757575;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  /* Media Queries: Tablet (768px) */
+  @media (min-width: 768px) {
+    .paso-masivo2-diseno {
+      .instrucciones-masivo {
+        padding: 1rem;
+        
+        h2 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .variables-disponibles {
+        .lista-variables {
+          gap: 0.8rem;
+          
+          .btn-variable {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .plantillas-rapidas {
+        .lista-plantillas {
+          gap: 0.8rem;
+          
+          .btn-plantilla {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Media Queries: Escritorio (1024px) */
+  @media (min-width: 1024px) {
+    .paso-masivo2-diseno {
+      .editor-mensaje {
+        .textarea-mensaje {
+          min-height: 250px;
+        }
+      }
+    }
+  }

@@ -1,0 +1,293 @@
+/* =============================================== */
+/* COMPONENTE: Paso 3 Masivo - Previsualización */
+/* =============================================== */
+
+.paso-masivo3-previsualizacion {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+  
+    /* Instrucciones */
+    .instrucciones-masivo {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      background-color: rgba(37, 211, 102, 0.1);
+      border-radius: 6px;
+      border-left: 3px solid #25d366;
+  
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #128c7e;
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Información de selección */
+    .info-seleccion-masivo {
+      margin-bottom: 1rem;
+      text-align: center;
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  
+    /* Sin invitados */
+    .sin-invitados {
+      text-align: center;
+      padding: 2rem;
+      color: #757575;
+  
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+    }
+  
+    /* Navegación entre invitados */
+    .navegacion-invitados {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+  
+      .btn-navegacion {
+        background-color: #f5f5f5;
+        color: #5a2d2d;
+        border: 1px solid #d0d0d0;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.8rem;
+  
+        &:hover:not(:disabled) {
+          background-color: #e0e0e0;
+        }
+  
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+  
+      .contador-invitados {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+    }
+  
+    /* Información del invitado actual */
+    .info-invitado-actual {
+      background-color: rgba(212, 175, 55, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        margin: 0.3rem 0;
+        color: #5a2d2d;
+        font-size: 0.9rem;
+      }
+    }
+  
+    /* Vista previa del mensaje */
+    .vista-previa-mensaje {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid #e0e0e0;
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #5a2d2d;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .contenido-mensaje {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        max-height: 300px;
+        overflow-y: auto;
+  
+        pre {
+          margin: 0;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.9rem;
+          color: #5a2d2d;
+          line-height: 1.4;
+        }
+      }
+    }
+  
+    /* Estadísticas del mensaje */
+    .estadisticas-mensaje {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+  
+      .estadistica {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(33, 150, 243, 0.1);
+        padding: 0.8rem;
+        border-radius: 6px;
+        border: 1px solid rgba(33, 150, 243, 0.3);
+        min-width: 80px;
+  
+        .valor {
+          font-family: 'Cinzel', serif;
+          color: #1976d2;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+  
+        .label {
+          color: #1976d2;
+          font-size: 0.7rem;
+          text-align: center;
+        }
+      }
+    }
+  
+    /* Lista rápida de invitados */
+    .lista-rapida-invitados {
+      background-color: rgba(139, 69, 19, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(139, 69, 19, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      .lista-invitados {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        max-height: 200px;
+        overflow-y: auto;
+  
+        .invitado-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.6rem;
+          background-color: white;
+          border-radius: 4px;
+          border: 1px solid #e0e0e0;
+          cursor: pointer;
+          transition: all 0.2s ease;
+  
+          &:hover {
+            background-color: #f0f0f0;
+          }
+  
+          &.activo {
+            border-color: #25d366;
+            background-color: rgba(37, 211, 102, 0.1);
+          }
+  
+          .nombre-invitado {
+            font-weight: 600;
+            color: #5a2d2d;
+            font-size: 0.9rem;
+          }
+  
+          .grupo-invitado {
+            color: #757575;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  
+    /* Acciones del paso */
+    .acciones-paso-masivo {
+      text-align: center;
+  
+      .mensaje-ayuda-masivo {
+        margin-top: 0.6rem;
+        color: #757575;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  /* Media Queries: Tablet (768px) */
+  @media (min-width: 768px) {
+    .paso-masivo3-previsualizacion {
+      .instrucciones-masivo {
+        padding: 1rem;
+        
+        h2 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .estadisticas-mensaje {
+        gap: 2rem;
+        
+        .estadistica {
+          min-width: 100px;
+          padding: 1rem;
+          
+          .valor {
+            font-size: 1.4rem;
+          }
+          
+          .label {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Media Queries: Escritorio (1024px) */
+  @media (min-width: 1024px) {
+    .paso-masivo3-previsualizacion {
+      .contenido-mensaje {
+        max-height: 350px;
+      }
+      
+      .lista-invitados {
+        max-height: 250px;
+      }
+    }
+  }
