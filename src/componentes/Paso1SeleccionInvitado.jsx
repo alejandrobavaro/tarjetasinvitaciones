@@ -194,13 +194,13 @@ const Paso1SeleccionInvitado = ({
 
       {/* BOTÓN ACCIÓN */}
       <div className="acciones-mejoradas">
-        <button
+        {/* <button
           onClick={avanzarPaso}
           disabled={!puedeAvanzar()}
           className="btn-siguiente-mejorado"
         >
           Siguiente →
-        </button>
+        </button> */}
         {!puedeAvanzar() && <span className="ayuda">Selecciona un invitado</span>}
       </div>
     </div>

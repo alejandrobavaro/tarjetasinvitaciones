@@ -1,0 +1,628 @@
+/* =============================================== */
+/* COMPONENTE: Paso 2B Masivo - Descarga de Tarjetas */
+/* DISEÑO IDÉNTICO AL PASO 2 Y PASO 3 */
+/* =============================================== */
+
+.paso-masivo2b-descargar-tarjetas {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    padding: 0.5rem;
+    background-color: rgba(249, 245, 240, 0.8);
+    min-height: 80vh;
+    box-sizing: border-box;
+  
+    /* Instrucciones - IDÉNTICO AL PASO 2 */
+    .instrucciones-masivo {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      background-color: rgba(139, 69, 19, 0.05);
+      border-radius: 6px;
+      border-left: 3px solid #8B4513;
+  
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  
+    /* Información de selección */
+    .info-seleccion-masivo {
+      margin-bottom: 1rem;
+      text-align: center;
+  
+      p {
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  
+    /* Vista previa container - IDÉNTICO AL PASO 2 */
+    .vista-previa-container {
+      margin-bottom: 1.5rem;
+  
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #5a2d2d;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        text-align: center;
+      }
+    }
+  
+    /* Tarjeta wrapper - IDÉNTICO AL PASO 2 */
+    .tarjeta-wrapper {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  
+    /* Marco de invitación preview - IDÉNTICO AL PASO 2 */
+    .marco-invitacion-preview {
+      background: url('/img/00-fondos/marcoinvitacion2.png') no-repeat center center;
+      background-size: contain;
+      width: 100%;
+      height: 0;
+      padding-bottom: 150%;
+      position: relative;
+      color: #5a2d2d;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+    }
+  
+    /* Contenido invitación - IDÉNTICO AL PASO 2 */
+    .contenido-invitacion {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 85%;
+      padding: 15% 0%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #5a2d2d;
+  
+      .nombre-invitado {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+  
+        .icono-header {
+          color: #6d1d3f;
+          font-size: 1rem;
+        }
+      }
+  
+      .encabezado-boda {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin: 0.4rem 0;
+  
+        .titulo-boda {
+          font-family: 'Cinzel', serif;
+          font-size: 1.4rem;
+          color: #6d1d3f;
+          margin: 0;
+          letter-spacing: 0.5px;
+        }
+  
+        .icono-anillo {
+          color: #d4af37;
+          font-size: 1.2rem;
+          
+          &.izquierda { transform: rotate(-30deg); }
+          &.derecha { transform: rotate(30deg); }
+        }
+      }
+  
+      .frase-destacada {
+        font-style: italic;
+        font-size: 1rem;
+        color: #6d1d3f;
+        margin: 0.4rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+  
+        .icono-corazon {
+          color: #6d1d3f;
+          font-size: 0.9rem;
+          opacity: 0.8;
+        }
+      }
+  
+      .separador-elegante {
+        height: 1px;
+        background: linear-gradient(to right, transparent, #6d1d3f, transparent);
+        margin: 0.6rem auto;
+        width: 70%;
+        opacity: 0.5;
+      }
+  
+      .detalles-boda {
+        .nombres-novios {
+          font-family: 'Cinzel', serif;
+          font-size: 1.1rem;
+          color: #6d1d3f;
+          margin-bottom: 0.8rem;
+        }
+  
+        .fecha-hora {
+          margin: 0.6rem 0;
+  
+          p {
+            margin: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+          }
+        }
+  
+        .icono-detalle {
+          color: #6d1d3f;
+          font-size: 1rem;
+          opacity: 0.8;
+        }
+  
+        .lugar {
+          font-weight: 500;
+          margin: 0.8rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          font-size: 0.9rem;
+        }
+  
+        .codigo-vestimenta {
+          margin: 0.8rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          font-size: 0.9rem;
+        }
+      }
+  
+      .pie-invitacion {
+        margin-top: -1.5rem;
+  
+        .nota-ninos {
+          font-style: italic;
+          color: #6d1d3f;
+          margin: 0.4rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          font-size: 0.9rem;
+        }
+  
+        .frase-cierre {
+          font-weight: 500;
+          margin: 0.4rem 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  
+    /* Nota descarga */
+    .nota-descarga {
+      margin-top: 0.8rem;
+      padding: 0.6rem;
+      background-color: rgba(139, 69, 19, 0.05);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #5a2d2d;
+      text-align: center;
+  
+      p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+      }
+    }
+  
+    /* Controles descarga */
+    .controles-descarga {
+      text-align: center;
+      margin-bottom: 1.5rem;
+  
+      .btn-descargar-masivo {
+        background-color: #8B4513;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0 auto;
+        min-width: 280px;
+  
+        .icono-descarga {
+          font-size: 1.1rem;
+        }
+  
+        &:hover:not(:disabled) {
+          background-color: #6B3410;
+        }
+  
+        &:disabled {
+          background-color: #cccccc;
+          cursor: not-allowed;
+          opacity: 0.7;
+        }
+      }
+    }
+  
+    /* Barra progreso descarga */
+    .barra-progreso-descarga {
+      margin: 1rem auto;
+      max-width: 400px;
+  
+      .progreso-texto {
+        text-align: center;
+        color: #5a2d2d;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      .progreso-barra {
+        background-color: #e0e0e0;
+        height: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+  
+        .progreso-llenado {
+          background: linear-gradient(90deg, #25d366, #128c7e);
+          height: 100%;
+          transition: width 0.3s ease;
+          border-radius: 10px;
+        }
+      }
+  
+      .progreso-porcentaje {
+        text-align: center;
+        font-weight: 600;
+        color: #25d366;
+        font-size: 0.9rem;
+      }
+    }
+  
+    /* Mensajes de estado */
+    .mensaje-exito-masivo {
+      background: linear-gradient(135deg, #e8f5e8 0%, #d0e9c6 100%);
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 400px;
+      text-align: center;
+  
+      .icono-exito {
+        color: #4caf50;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+  
+      span {
+        color: #2e7d32;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        color: #5a2d2d;
+        margin: 0;
+        font-size: 0.9rem;
+      }
+    }
+  
+    .mensaje-error-masivo {
+      background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+      border: 2px solid #f44336;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 400px;
+      text-align: center;
+  
+      .icono-error {
+        color: #f44336;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+  
+      span {
+        color: #d32f2f;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.8rem;
+      }
+  
+      .btn-reintentar {
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        font-family: 'Cormorant Garamond', serif;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #b71c1c;
+        }
+      }
+    }
+  
+    /* Lista invitados descarga */
+    .lista-invitados-descarga {
+      background-color: rgba(139, 69, 19, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(139, 69, 19, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        text-align: center;
+      }
+  
+      .lista-invitados {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        max-height: 200px;
+        overflow-y: auto;
+  
+        .invitado-item {
+          display: flex;
+          align-items: center;
+          padding: 0.6rem;
+          background-color: white;
+          border-radius: 4px;
+          border: 1px solid #e0e0e0;
+  
+          .numero-invitado {
+            font-weight: 600;
+            color: #8B4513;
+            margin-right: 0.8rem;
+            min-width: 20px;
+          }
+  
+          .nombre-invitado {
+            flex: 1;
+            font-weight: 600;
+            color: #5a2d2d;
+            font-size: 0.9rem;
+          }
+  
+          .grupo-invitado {
+            color: #757575;
+            font-size: 0.8rem;
+            margin-left: 0.8rem;
+          }
+        }
+      }
+    }
+  
+    /* Acciones paso masivo */
+    .acciones-paso-masivo {
+      text-align: center;
+  
+      .mensaje-ayuda-masivo {
+        margin-top: 0.6rem;
+        color: #757575;
+        font-size: 0.9rem;
+      }
+    }
+  
+    /* Instrucciones uso */
+    .instrucciones-uso {
+      background-color: rgba(33, 150, 243, 0.1);
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(33, 150, 243, 0.3);
+  
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #1976d2;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+  
+      ul {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: #5a2d2d;
+  
+        li {
+          margin-bottom: 0.4rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  
+    /* Clase para ocultar elementos durante descarga */
+    .ocultar-al-descargar {
+      /* Se mantiene visible, solo se oculta temporalmente via JS */
+    }
+  }
+  
+  /* =============================================== */
+  /* MEDIA QUERIES - TABLET (768px) */
+  /* =============================================== */
+  @media (min-width: 768px) {
+    .paso-masivo2b-descargar-tarjetas {
+      padding: 1rem;
+      max-width: 750px;
+      margin: 0 auto;
+  
+      .instrucciones-masivo {
+        padding: 1rem;
+        
+        h2 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .info-seleccion-masivo {
+        p {
+          font-size: 1rem;
+        }
+      }
+  
+      .vista-previa-container {
+        h3 {
+          font-size: 1.2rem;
+        }
+      }
+  
+      .tarjeta-wrapper {
+        max-width: 450px;
+      }
+  
+      .contenido-invitacion {
+        font-size: 1rem;
+        
+        .nombre-invitado {
+          font-size: 1.1rem;
+        }
+        
+        .encabezado-boda {
+          .titulo-boda {
+            font-size: 1.6rem;
+          }
+          
+          .icono-anillo {
+            font-size: 1.4rem;
+          }
+        }
+        
+        .nombres-novios {
+          font-size: 1.3rem;
+        }
+      }
+  
+      .controles-descarga {
+        .btn-descargar-masivo {
+          min-width: 320px;
+          padding: 1rem 1.8rem;
+          font-size: 1rem;
+        }
+      }
+  
+      .lista-invitados-descarga {
+        .lista-invitados {
+          max-height: 250px;
+        }
+      }
+    }
+  }
+  
+  /* =============================================== */
+  /* MEDIA QUERIES - ESCRITORIO (1024px) */
+  /* =============================================== */
+  @media (min-width: 1024px) {
+    .paso-masivo2b-descargar-tarjetas {
+      max-width: 900px;
+      padding: 1.5rem;
+  
+      .instrucciones-masivo {
+        h2 {
+          font-size: 1.6rem;
+        }
+      }
+  
+      .vista-previa-container {
+        h3 {
+          font-size: 1.3rem;
+        }
+      }
+  
+      .tarjeta-wrapper {
+        max-width: 500px;
+      }
+  
+      .contenido-invitacion {
+        .encabezado-boda {
+          .titulo-boda {
+            font-size: 1.8rem;
+          }
+        }
+      }
+  
+      .lista-invitados-descarga {
+        .lista-invitados {
+          max-height: 300px;
+        }
+      }
+    }
+  }
+  
+  /* Scrollbar personalizado para listas */
+  .lista-invitados::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .lista-invitados::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .lista-invitados::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #8B4513 0%, #d4af37 100%);
+    border-radius: 3px;
+  }
+  
+  .lista-invitados::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #6B3410 0%, #8B4513 100%);
+  }

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { unstable_HistoryRouter as HistoryRouter, Routes, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import ListaInvitados from './componentes/ListaInvitados';
-import PasosInvitacion from './componentes/PasosInvitacion'; 
-import PasosEnvioMasivo from './componentes/PasosEnvioMasivo';
+import Paso0Pasos from './componentes/Paso0Pasos'; 
+import PasoMasivo0Pasos from './componentes/PasoMasivo0Pasos';
 import Contacto from './componentes/Contacto';
 import Header from './componentes/Header';
 import Footer from './componentes/Footer';
@@ -23,11 +23,11 @@ const routesConfig = [
   },
   {
     path: '/crear-invitacion',
-    element: <PasosInvitacion />
+    element: <Paso0Pasos />
   },
   {
     path: '/enviar-invitacion',
-    element: <PasosInvitacion />
+    element: <Paso0Pasos />
   },
   {
     path: '/Contacto',
@@ -35,7 +35,7 @@ const routesConfig = [
   },
   {
     path: '/envio-masivo',
-    element: <PasosEnvioMasivo />
+    element: <PasoMasivo0Pasos />
   }
 ];
 

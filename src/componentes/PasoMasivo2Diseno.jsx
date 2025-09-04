@@ -5,9 +5,10 @@ import '../assets/scss/_03-Componentes/_PasoMasivo2Diseno.scss';
  * COMPONENTE: PasoMasivo2Diseno
  * PROPÓSITO: Segundo paso del flujo masivo - Diseñar el mensaje para envío masivo
  * CONEXIONES: 
- * - Recibe props del componente principal PasosEnvioMasivo
+ * - Recibe props del componente principal PasoMasivo0Pasos
  * - Permite personalizar el mensaje que se enviará a todos los invitados
  * - Incluye variables como {nombre} que se reemplazarán automáticamente
+ * - MODIFICADO: Solo una plantilla disponible (Plantilla Formal)
  */
 const PasoMasivo2Diseno = ({ 
   disenoMasivo, 
@@ -18,8 +19,8 @@ const PasoMasivo2Diseno = ({
   // Estado para vista previa del mensaje
   const [mostrarVistaPrevia, setMostrarVistaPrevia] = useState(false);
   
-  // Plantilla por defecto para el mensaje masivo
-  const plantillaPorDefecto = `¡Hola {nombre}! 🎉
+  // Plantilla por defecto para el mensaje masivo (ÚNICA OPCIÓN)
+  const plantillaFormal = `¡Hola {nombre}! 🎉
 
 Te invitamos a celebrar nuestra boda:
 
@@ -40,7 +41,7 @@ https://noscasamos-aleyfabi.netlify.app/ubicacion
   if (!disenoMasivo.mensajePersonalizado) {
     setDisenoMasivo({
       ...disenoMasivo,
-      mensajePersonalizado: plantillaPorDefecto
+      mensajePersonalizado: plantillaFormal
     });
   }
 
@@ -66,7 +67,7 @@ https://noscasamos-aleyfabi.netlify.app/ubicacion
       mensajePersonalizado: nuevoTexto
     });
     
-    // Enfocar y posicionar cursor después de la variable insertada
+    // Enfocar and posicionar cursor después de la variable insertada
     setTimeout(() => {
       textarea.focus();
       textarea.setSelectionRange(start + variable.length, start + variable.length);
@@ -82,6 +83,14 @@ https://noscasamos-aleyfabi.netlify.app/ubicacion
       .replace(/{nombre}/g, invitadoEjemplo.nombre)
       .replace(/{grupo}/g, invitadoEjemplo.grupoNombre)
       .replace(/{telefono}/g, invitadoEjemplo.telefono);
+  };
+
+  // Función para restaurar plantilla formal
+  const restaurarPlantillaFormal = () => {
+    setDisenoMasivo({
+      ...disenoMasivo,
+      mensajePersonalizado: plantillaFormal
+    });
   };
 
   // Verificar si puede avanzar al siguiente paso
@@ -158,23 +167,20 @@ https://noscasamos-aleyfabi.netlify.app/ubicacion
         </div>
       )}
 
-      {/* Plantillas rápidas */}
+      {/* Plantilla rápida (ÚNICA OPCIÓN) */}
       <div className="plantillas-rapidas">
-        <h4>💡 Plantillas Rápidas:</h4>
+        <h4>💡 Plantilla Predefinida:</h4>
         <div className="lista-plantillas">
           <button 
-            onClick={() => setDisenoMasivo({...disenoMasivo, mensajePersonalizado: plantillaPorDefecto})}
+            onClick={restaurarPlantillaFormal}
             className="btn-plantilla"
           >
             Plantilla Formal
           </button>
-          <button 
-            onClick={() => setDisenoMasivo({...disenoMasivo, mensajePersonalizado: `¡Hola {nombre}! 🎊\n\n¡Estás invitado a nuestra boda! 🥂\n\n📅 23/11/2025 - 🕒 19:00 hs\n📍 Casa del Mar, Mar del Plata\n\nConfirma aquí: https://confirmarasistenciaevento.netlify.app/\n\n¡Te esperamos! 💍`})}
-            className="btn-plantilla"
-          >
-            Plantilla Casual
-          </button>
         </div>
+        <p className="nota-plantilla">
+          💡 Usa esta plantilla como base y personalízala según necesites
+        </p>
       </div>
 
       {/* Acciones del paso */}

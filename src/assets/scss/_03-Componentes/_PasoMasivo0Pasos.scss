@@ -1,0 +1,284 @@
+/* =============================================== */
+/* COMPONENTE: Pasos de Envío Masivo - Flujo Completo */
+/* =============================================== */
+
+/* --- Contenedor Principal --- */
+.pasos-envio-masivo-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: rgba(249, 245, 240, 0.8);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* --- Encabezado --- */
+.encabezado-pasos-masivo {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  
+  h1 {
+    font-family: 'Cinzel', serif;
+    color: #8B4513;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #5a2d2d;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+
+/* --- Barra de Progreso para Envío Masivo --- */
+.barra-progreso-masivo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: 1;
+  }
+}
+
+.paso-indicador-masivo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 60px;
+  margin-bottom: 0.5rem;
+  
+  .numero-paso-masivo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid #e0e0e0;
+    font-size: 0.9rem;
+  }
+  
+  .texto-paso-masivo {
+    font-size: 0.7rem;
+    text-align: center;
+    color: #757575;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+  }
+  
+  /* Estado activo */
+  &.activo {
+    .numero-paso-masivo {
+      background-color: #25d366;
+      color: white;
+      border-color: #25d366;
+    }
+    
+    .texto-paso-masivo {
+      color: #25d366;
+      font-weight: 600;
+    }
+  }
+  
+  /* Estado completado */
+  &.completado {
+    .numero-paso-masivo {
+      background-color: #128c7e;
+      color: white;
+      border-color: #128c7e;
+    }
+    
+    .texto-paso-masivo {
+      color: #128c7e;
+    }
+  }
+}
+
+/* --- Contenido del Paso Actual --- */
+.contenido-paso-masivo {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Controles de Navegación para Envío Masivo --- */
+.controles-navegacion-masivo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+  
+  .btn {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    min-width: 100px;
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  .btn-anterior-masivo {
+    background-color: #f5f5f5;
+    color: #5a2d2d;
+    
+    &:hover:not(:disabled) {
+      background-color: #e0e0e0;
+    }
+  }
+  
+  .btn-siguiente-masivo {
+    background-color: #25d366;
+    color: white;
+    
+    &:hover:not(:disabled) {
+      background-color: #128c7e;
+    }
+  }
+  
+  .btn-finalizar-masivo {
+    background-color: #8B4513;
+    color: white;
+    
+    &:hover {
+      background-color: #6B3410;
+    }
+  }
+}
+
+/* --- Media Queries: Tablet (768px) --- */
+@media (min-width: 768px) {
+  .pasos-envio-masivo-container {
+    padding: 1rem;
+    max-width: 750px;
+  }
+  
+  .encabezado-pasos-masivo {
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  .barra-progreso-masivo {
+    padding: 0 1rem;
+    
+    .paso-indicador-masivo {
+      .texto-paso-masivo {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  .controles-navegacion-masivo {
+    .btn {
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      min-width: 120px;
+    }
+  }
+}
+
+/* --- Media Queries: Escritorio (1024px) --- */
+@media (min-width: 1024px) {
+  .pasos-envio-masivo-container {
+    max-width: 900px;
+    padding: 1.5rem;
+  }
+  
+  .encabezado-pasos-masivo {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  .barra-progreso-masivo {
+    .paso-indicador-masivo {
+      .texto-paso-masivo {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+/* --- Media Queries: Pantallas muy grandes (1200px) --- */
+@media (min-width: 1200px) {
+  .pasos-envio-masivo-container {
+    max-width: 1000px;
+  }
+  
+  .barra-progreso-masivo {
+    .paso-indicador-masivo {
+      min-width: 80px;
+      
+      .texto-paso-masivo {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+/* --- Ajustes para móviles pequeños --- */
+@media (max-width: 480px) {
+  .barra-progreso-masivo {
+    &::before {
+      top: 15px;
+    }
+    
+    .paso-indicador-masivo {
+      min-width: 50px;
+      
+      .numero-paso-masivo {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+      }
+      
+      .texto-paso-masivo {
+        font-size: 0.6rem;
+      }
+    }
+  }
+  
+  .controles-navegacion-masivo {
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}

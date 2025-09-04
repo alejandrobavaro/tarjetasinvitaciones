@@ -5,7 +5,7 @@ import '../assets/scss/_03-Componentes/_Paso4CopiarMensaje.scss';
  * COMPONENTE: Paso4CopiarMensaje
  * PROPÓSITO: Cuarto paso del flujo - Generar y copiar mensaje personalizado para WhatsApp
  * CONEXIONES: 
- * - Recibe props del componente principal PasosInvitacion
+ * - Recibe props del componente principal Paso0Pasos
  * - Genera mensaje personalizado con datos del diseño e invitado
  * - Usa enlaces fijos para confirmación y ubicación
  * - Permite copiar el mensaje al portapapeles

@@ -5,24 +5,34 @@ import '../assets/scss/_03-Componentes/_PasoMasivo4Envio.scss';
  * COMPONENTE: PasoMasivo4Envio
  * PROPÓSITO: Cuarto paso del flujo masivo - Envío real de mensajes
  * CONEXIONES: 
- * - Recibe props del componente principal PasosEnvioMasivo
+ * - Recibe props del componente principal PasoMasivo0Pasos
  * - Maneja el proceso de envío masivo real
  * - Proporciona feedback del progreso y resultados
+ * - ACTUALIZADO: Ahora actualiza automáticamente el estado de envío en la lista de invitados
+ * - PROBLEMA: No recibía teléfono porque esperaba estructura plana
  */
 const PasoMasivo4Envio = ({ 
   disenoMasivo, 
   invitadosSeleccionados, 
   finalizarProceso 
 }) => {
-  // Estados para controlar el proceso de envío
-  const [enviando, setEnviando] = useState(false);
-  const [progreso, setProgreso] = useState(0);
-  const [enviosCompletados, setEnviosCompletados] = useState(0);
-  const [enviosFallidos, setEnviosFallidos] = useState(0);
-  const [completado, setCompletado] = useState(false);
-  const [errorGlobal, setErrorGlobal] = useState(null);
+  // ================================================
+  // ESTADOS PARA CONTROLAR EL PROCESO DE ENVÍO
+  // ================================================
+  const [enviando, setEnviando] = useState(false);           // Control de envío en progreso
+  const [progreso, setProgreso] = useState(0);               // Porcentaje de progreso del envío
+  const [enviosCompletados, setEnviosCompletados] = useState(0); // Contador de envíos exitosos
+  const [enviosFallidos, setEnviosFallidos] = useState(0);   // Contador de envíos fallidos
+  const [completado, setCompletado] = useState(false);       // Estado de finalización del proceso
+  const [errorGlobal, setErrorGlobal] = useState(null);      // Almacenamiento de errores globales
 
-  // Función para generar mensaje personalizado para un invitado
+  // ================================================
+  // FUNCIÓN: Generar mensaje personalizado para un invitado
+  // ================================================
+  // PROPÓSITO: Crear mensaje con variables reemplazadas
+  // ENTRADA: objeto invitado con datos
+  // SALIDA: string con mensaje personalizado
+  // ================================================
   const generarMensajeParaInvitado = (invitado) => {
     if (!disenoMasivo.mensajePersonalizado) return '';
     
@@ -32,7 +42,60 @@ const PasoMasivo4Envio = ({
       .replace(/{telefono}/g, invitado.telefono);
   };
 
-  // Función principal para enviar mensajes masivamente
+  // ================================================
+  // FUNCIÓN: Actualizar estado de envío en localStorage
+  // ================================================
+  // PROPÓSITO: Marcar invitados como enviados en almacenamiento persistente
+  // CONEXIONES: Se sincroniza con ListaInvitados.js mediante localStorage
+  // ================================================
+  const actualizarEstadoEnvio = (invitadoId, enviado) => {
+    try {
+      // Obtener estados actuales de localStorage
+      const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
+      
+      // Actualizar el estado del invitado específico
+      estadosEnvio[invitadoId] = enviado;
+      
+      // Guardar de vuelta en localStorage
+      localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
+      
+      // También actualizar el historial de envíos
+      const historial = JSON.parse(localStorage.getItem('historialWhatsApp') || '[]');
+      const nuevoRegistro = {
+        id: Date.now(),
+        invitadoId: invitadoId,
+        fechaEnvio: new Date().toISOString(),
+        tipo: 'masivo',
+        estado: enviado ? 'exitoso' : 'fallido'
+      };
+      
+      localStorage.setItem('historialWhatsApp', JSON.stringify([...historial, nuevoRegistro]));
+      
+    } catch (error) {
+      console.error('Error al actualizar estado de envío:', error);
+    }
+  };
+
+  // ================================================
+  // FUNCIÓN: Forzar actualización de la lista de invitados
+  // ================================================
+  // PROPÓSITO: Notificar a otros componentes sobre cambios en estados de envío
+  // CONEXIONES: ListaInvitados.js escucha eventos de almacenamiento
+  // ================================================
+  const forzarActualizacionLista = () => {
+    // Disparar evento personalizado para notificar a otros componentes
+    window.dispatchEvent(new Event('estadosEnvioActualizados'));
+    
+    // También disparar evento de storage para componentes que escuchen localStorage
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  // ================================================
+  // FUNCIÓN PRINCIPAL: Enviar mensajes masivamente
+  // ================================================
+  // PROPÓSITO: Procesar y enviar mensajes a todos los invitados seleccionados
+  // FLUJO: Validar → Procesar → Actualizar estados → Notificar
+  // ================================================
   const enviarMensajesMasivamente = async () => {
     if (enviando || completado) return;
     
@@ -45,12 +108,20 @@ const PasoMasivo4Envio = ({
       // Crear array de mensajes para copiar al portapapeles
       const mensajesParaCopiar = [];
       
+      // Procesar cada invitado seleccionado
       for (let i = 0; i < invitadosSeleccionados.length; i++) {
         const invitado = invitadosSeleccionados[i];
         const mensaje = generarMensajeParaInvitado(invitado);
         
-        // Solo procesar invitados con teléfono válido
-        if (invitado.telefono && invitado.telefono !== 'Sin teléfono' && mensaje) {
+        // 🛠️ MEJOR VALIDACIÓN: Buscar teléfono en múltiples ubicaciones
+        const telefonoInvitado = invitado.telefono || 
+                                invitado.contactoCompleto?.telefono || 
+                                invitado.contactoCompleto?.whatsapp;
+        
+        // 🛠️ SOLUCIÓN: Validar correctamente la existencia de teléfono
+        if (telefonoInvitado && telefonoInvitado !== 'Sin teléfono' && 
+            telefonoInvitado !== 'N/A' && mensaje) {
+          
           mensajesParaCopiar.push(mensaje);
           mensajesParaCopiar.push(''); // Espacio entre mensajes
           
@@ -62,18 +133,31 @@ const PasoMasivo4Envio = ({
           if (exito) {
             setEnviosCompletados(prev => prev + 1);
             
-            // Actualizar estado de envío en localStorage
-            const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
-            estadosEnvio[invitado.id] = true;
-            localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
+            // ================================================
+            // ACTUALIZAR ESTADO DE ENVÍO EN LOCALSTORAGE
+            // ================================================
+            actualizarEstadoEnvio(invitado.id, true);
+            
           } else {
             setEnviosFallidos(prev => prev + 1);
+            
+            // También registrar fallos en localStorage
+            actualizarEstadoEnvio(invitado.id, false);
           }
+        } else {
+          // Invitado sin teléfono válido, contar como fallido
+          setEnviosFallidos(prev => prev + 1);
+          actualizarEstadoEnvio(invitado.id, false);
         }
         
         // Actualizar progreso
         setProgreso(((i + 1) / invitadosSeleccionados.length) * 100);
       }
+      
+      // ================================================
+      // NOTIFICAR ACTUALIZACIÓN A OTROS COMPONENTES
+      // ================================================
+      forzarActualizacionLista();
       
       // Copiar todos los mensajes al portapapeles
       try {
@@ -92,7 +176,11 @@ const PasoMasivo4Envio = ({
     }
   };
 
-  // Función para reiniciar el proceso
+  // ================================================
+  // FUNCIÓN: Reiniciar el proceso
+  // ================================================
+  // PROPÓSITO: Limpiar estados y preparar para nuevo envío
+  // ================================================
   const reiniciarProceso = () => {
     setEnviando(false);
     setProgreso(0);
@@ -102,19 +190,44 @@ const PasoMasivo4Envio = ({
     setErrorGlobal(null);
   };
 
-  // Función para abrir WhatsApp Web
+  // ================================================
+  // FUNCIÓN: Abrir WhatsApp Web
+  // ================================================
+  // PROPÓSITO: Abrir WhatsApp Web en nueva pestaña
+  // ================================================
   const abrirWhatsAppWeb = () => {
     window.open('https://web.whatsapp.com', '_blank');
   };
 
-  // Estadísticas del envío
+  // ================================================
+  // FUNCIÓN: Finalizar proceso masivo
+  // ================================================
+  // PROPÓSITO: Limpiar y completar el proceso de envío masivo
+  // CONEXIONES: Llama a la función finalizarProceso del componente padre
+  // ================================================
+  const handleFinalizarProceso = () => {
+    // Forzar una última actualización antes de finalizar
+    forzarActualizacionLista();
+    
+    // Llamar a la función de finalización del padre
+    if (finalizarProceso) {
+      finalizarProceso();
+    }
+  };
+
+  // ================================================
+  // ESTADÍSTICAS DEL ENVÍO
+  // ================================================
   const totalInvitados = invitadosSeleccionados.length;
   const porcentajeExito = totalInvitados > 0 ? Math.round((enviosCompletados / totalInvitados) * 100) : 0;
 
+  // ================================================
+  // RENDER PRINCIPAL del componente
+  // ================================================
   return (
     <div className="paso-masivo4-envio">
       <div className="instrucciones-masivo">
-        <h2>Paso 4: Envío Masivo</h2>
+        <h2>Paso 5: Envío Masivo</h2>
         <p>Envía las invitaciones a todos los invitados seleccionados.</p>
       </div>
 
@@ -235,6 +348,11 @@ const PasoMasivo4Envio = ({
           </li>
           <li>Los mensajes están ordenados en el mismo orden que la lista de invitados</li>
         </ol>
+        
+        {/* Nueva nota sobre actualización automática */}
+        <div className="nota-actualizacion">
+          <p>🔄 <strong>Nota:</strong> Los estados de envío se actualizarán automáticamente en la lista de invitados</p>
+        </div>
       </div>
 
       {/* Lista de invitados para referencia */}
@@ -245,7 +363,15 @@ const PasoMasivo4Envio = ({
             <div key={invitado.id} className="invitado-item">
               <span className="numero-invitado">{index + 1}.</span>
               <span className="nombre-invitado">{invitado.nombre}</span>
-              <span className="telefono-invitado">{invitado.telefono}</span>
+              {/* 🛠️ MEJOR VISUALIZACIÓN: Buscar teléfono en múltiples ubicaciones */}
+              <span className="telefono-invitado">
+                {invitado.telefono || invitado.contactoCompleto?.telefono || 
+                 invitado.contactoCompleto?.whatsapp || 'Sin teléfono'}
+              </span>
+              <span className="estado-invitado">
+                {(invitado.telefono || invitado.contactoCompleto?.telefono || 
+                  invitado.contactoCompleto?.whatsapp) ? '✅ Listo' : '❌ Sin teléfono'}
+              </span>
             </div>
           ))}
         </div>
@@ -254,7 +380,7 @@ const PasoMasivo4Envio = ({
       {/* Acciones finales */}
       <div className="acciones-finales-paso">
         {completado && (
-          <button onClick={finalizarProceso} className="btn-finalizar-proceso">
+          <button onClick={handleFinalizarProceso} className="btn-finalizar-proceso">
             ✅ Finalizar Proceso
           </button>
         )}

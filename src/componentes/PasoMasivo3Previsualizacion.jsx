@@ -5,7 +5,7 @@ import '../assets/scss/_03-Componentes/_PasoMasivo3Previsualizacion.scss';
  * COMPONENTE: PasoMasivo3Previsualizacion
  * PROPÓSITO: Tercer paso del flujo masivo - Previsualizar mensajes antes del envío
  * CONEXIONES: 
- * - Recibe props del componente principal PasosEnvioMasivo
+ * - Recibe props del componente principal PasoMasivo0Pasos
  * - Muestra cómo quedará el mensaje para cada invitado
  * - Permite revisar y confirmar antes del envío masivo
  */

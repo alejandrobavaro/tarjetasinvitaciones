@@ -1,4 +1,3 @@
-// componentes/ListaInvitados.js
 import React, { useState, useEffect } from 'react';
 import '../assets/scss/_03-Componentes/_ListaInvitados.scss';
 
@@ -10,60 +9,39 @@ import '../assets/scss/_03-Componentes/_ListaInvitados.scss';
 // - Carga datos desde: /invitados.json (archivo estático)
 // - Guarda en: localStorage (contactosEditados, estadosEnvio)
 // - Estilos desde: ../assets/scss/_03-Componentes/_ListaInvitados.scss
+// - ESCUCHA eventos de actualización de estados de envío
+// - PROBLEMA: Estructura anidada en JSON vs plana en componentes
 // ================================================
 
 const ListaInvitados = () => {
   // ================================================
   // ESTADOS DEL COMPONENTE
   // ================================================
-  
-  // Estado: Almacena la lista completa de invitados procesados
-  const [invitados, setInvitados] = useState([]);
-  
-  // Estado: Almacena la estructura original de grupos desde JSON
-  const [grupos, setGrupos] = useState([]);
-  
-  // Estado: Lista filtrada según búsqueda y filtros aplicados
-  const [invitadosFiltrados, setInvitadosFiltrados] = useState([]);
-  
-  // Estado: Controla si los datos están cargando
-  const [loading, setLoading] = useState(true);
-  
-  // Estado: Almacena mensajes de error si ocurren
-  const [error, setError] = useState(null);
-  
-  // Estado: Configuración del ordenamiento (campo y dirección asc/desc)
-  const [orden, setOrden] = useState({ campo: 'grupoNombre', direccion: 'asc' });
-  
-  // Estado: Filtro actual por estado de envío
-  const [filtroEnvio, setFiltroEnvio] = useState('todos');
-  
-  // Estado: Término de búsqueda para filtrar invitados
-  const [busqueda, setBusqueda] = useState('');
-  
-  // Estado: Controla qué invitado y campo se está editando
-  const [editando, setEditando] = useState(null);
-  
-  // Estado: Almacena valores temporales durante la edición
-  const [valoresEditados, setValoresEditados] = useState({});
-  
-  // Estado: Controla qué grupos están expandidos/colapsados
-  const [gruposExpandidos, setGruposExpandidos] = useState({});
+  const [invitados, setInvitados] = useState([]);          // Lista completa de invitados procesados
+  const [grupos, setGrupos] = useState([]);                // Estructura original de grupos desde JSON
+  const [invitadosFiltrados, setInvitadosFiltrados] = useState([]); // Lista filtrada según búsqueda
+  const [loading, setLoading] = useState(true);            // Control de estado de carga
+  const [error, setError] = useState(null);                // Almacenamiento de mensajes de error
+  const [orden, setOrden] = useState({ campo: 'grupoNombre', direccion: 'asc' }); // Config ordenamiento
+  const [filtroEnvio, setFiltroEnvio] = useState('todos'); // Filtro por estado de envío
+  const [busqueda, setBusqueda] = useState('');            // Término de búsqueda para filtrar
+  const [editando, setEditando] = useState(null);          // Control de edición (qué invitado y campo)
+  const [valoresEditados, setValoresEditados] = useState({}); // Valores temporales durante edición
+  const [gruposExpandidos, setGruposExpandidos] = useState({}); // Control de grupos expandidos/colapsados
 
   // ================================================
   // EFECTO: Cargar datos iniciales al montar el componente
   // ================================================
   // DEPENDENCIAS: [] (solo se ejecuta una vez al montar)
   // ACCIÓN: Carga invitados.json y combina con datos de localStorage
+  // PROBLEMA: La estructura JSON tiene contactos anidados, pero componentes necesitan plana
   // ================================================
   useEffect(() => {
     const cargarInvitados = async () => {
       try {
         // 1. Realizar petición al archivo JSON estático
         const response = await fetch('/invitados.json');
-        if (!response.ok) {
-          throw new Error('No se pudo cargar el archivo JSON');
-        }
+        if (!response.ok) throw new Error('No se pudo cargar el archivo JSON');
         
         // 2. Parsear la respuesta JSON
         const data = await response.json();
@@ -82,29 +60,38 @@ const ListaInvitados = () => {
         // 6. Guardar grupos para agrupamiento visual
         setGrupos(data.grupos);
 
-        // 7. Procesar cada invitado combinando datos originales y editados
+        // 7. 🛠️ SOLUCIÓN: Procesar cada invitado APLANANDO la estructura
+        // ORIGINAL: invitado.contacto.telefono (anidado)
+        // NUEVO: invitado.telefono (plano) + mantener contactoCompleto por compatibilidad
         const invitadosProcesados = data.grupos.flatMap(grupo => {
-          if (!grupo.invitados || !Array.isArray(grupo.invitados)) {
-            return [];
-          }
+          if (!grupo.invitados || !Array.isArray(grupo.invitados)) return [];
           
           return grupo.invitados.map(invitado => {
             const contactoEditado = contactosEditados[invitado.id];
             
+            // 🛠️ EXTRACCIÓN CORRECTA de teléfono de estructura anidada
+            const telefonoOriginal = invitado.contacto?.telefono || invitado.contacto?.whatsapp || 'N/A';
+            const emailOriginal = invitado.contacto?.email || 'N/A';
+            
             return {
-              ...invitado,
+              ...invitado, // Mantener todos los datos originales
               grupoNombre: grupo.nombre,
               grupoId: grupo.id,
               enviado: estadosEnvio[invitado.id] || false,
-              telefono: contactoEditado?.telefono || invitado.contacto?.telefono || 'N/A',
-              email: contactoEditado?.email || invitado.contacto?.email || 'N/A',
-              telefonoOriginal: invitado.contacto?.telefono || 'N/A',
-              emailOriginal: invitado.contacto?.email || 'N/A'
+              
+              // 🛠️ APLANAR ESTRUCTURA: Crear propiedades planas para teléfono y email
+              telefono: contactoEditado?.telefono || telefonoOriginal,
+              email: contactoEditado?.email || emailOriginal,
+              telefonoOriginal: telefonoOriginal,
+              emailOriginal: emailOriginal,
+              
+              // 🛠️ MANTENER compatibilidad: guardar contacto completo por si otros componentes lo necesitan
+              contactoCompleto: invitado.contacto
             };
           });
         });
 
-        // 8. Actualizar estados con datos procesados
+        // 8. Actualizar estados con datos procesados (ahora con estructura plana)
         setInvitados(invitadosProcesados);
         setInvitadosFiltrados(invitadosProcesados);
         
@@ -127,6 +114,36 @@ const ListaInvitados = () => {
 
     cargarInvitados();
   }, []);
+
+  // ================================================
+  // EFECTO: Escuchar actualizaciones de estados de envío
+  // ================================================
+  // PROPÓSITO: Actualizar la lista cuando otros componentes cambien estados de envío
+  // CONEXIONES: Responde a eventos de PasoMasivo4Envio y Paso5EnviarWhatsApp
+  // ================================================
+  useEffect(() => {
+    const handleStorageChange = () => {
+      // Recargar estados de envío desde localStorage
+      const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
+      
+      // Actualizar invitados con nuevos estados
+      const invitadosActualizados = invitados.map(invitado => ({
+        ...invitado,
+        enviado: estadosEnvio[invitado.id] || false
+      }));
+      
+      setInvitados(invitadosActualizados);
+    };
+
+    // Escuchar eventos de almacenamiento y eventos personalizados
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('estadosEnvioActualizados', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('estadosEnvioActualizados', handleStorageChange);
+    };
+  }, [invitados]);
 
   // ================================================
   // EFECTO: Aplicar filtros y ordenamiento cuando cambian parámetros
@@ -465,7 +482,7 @@ const ListaInvitados = () => {
             <thead>
               <tr>
                 <th className="columna-grupo" onClick={() => cambiarOrden('grupoNombre')}>
-                  Grupo {orden.campo === 'grupoNombre' && (orden.direccion === 'asc' || '↓')}
+                  Grupo {orden.campo === 'grupoNombre' && (orden.direccion === 'asc' ? '↑' : '↓')}
                 </th>
                 <th className="columna-nombre" onClick={() => cambiarOrden('nombre')}>
                   Nombre {orden.campo === 'nombre' && (orden.direccion === 'asc' ? '↑' : '↓')}

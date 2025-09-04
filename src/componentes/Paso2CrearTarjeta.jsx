@@ -15,7 +15,7 @@ import '../assets/scss/_03-Componentes/_Paso2CrearTarjeta.scss';
  * COMPONENTE: Paso2CrearTarjeta
  * PROPÓSITO: Segundo paso del flujo - Diseñar la tarjeta de invitación
  * CONEXIONES: 
- * - Recibe props del componente principal PasosInvitacion
+ * - Recibe props del componente principal Paso0Pasos
  * - Se comunica con localStorage para guardar el diseño
  * - Previsualiza la tarjeta en tiempo real con el nombre del invitado
  */

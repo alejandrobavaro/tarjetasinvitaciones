@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../assets/scss/_03-Componentes/_PasosEnvioMasivo.scss';
+import '../assets/scss/_03-Componentes/_PasoMasivo0Pasos.scss';
 
 // ---------------------------------------------------
 // IMPORTACIÓN DE COMPONENTES DE CADA PASO MASIVO
 // Cada uno de estos componentes representa un paso del flujo de envío masivo
 // PasoMasivo1Seleccion: Selección de invitados
 // PasoMasivo2Diseno: Diseño del mensaje o tarjeta
+// PasoMasivo2BDescargarTarjetas: NUEVO - Descarga de tarjetas JPG
 // PasoMasivo3Previsualizacion: Vista previa antes del envío
 // PasoMasivo4Envio: Envío final de los mensajes
 // ---------------------------------------------------
 import PasoMasivo1Seleccion from './PasoMasivo1Seleccion';
 import PasoMasivo2Diseno from './PasoMasivo2Diseno';
+import PasoMasivo2BDescargarTarjetas from './PasoMasivo2BDescargarTarjetas';
 import PasoMasivo3Previsualizacion from './PasoMasivo3Previsualizacion';
 import PasoMasivo4Envio from './PasoMasivo4Envio';
 
 /**
- * COMPONENTE PRINCIPAL: PasosEnvioMasivo
+ * COMPONENTE PRINCIPAL: PasoMasivo0Pasos
  * PROPÓSITO: Controlar todo el flujo de envío masivo de invitaciones
  * CONEXIONES:
  * - Independiente del flujo individual de invitaciones
  * - Almacena datos en localStorage propio para no interferir con otros flujos
  * - Se comunica con los componentes de cada paso mediante props
+ * - NUEVO: Ahora incluye 5 pasos con la adición de descarga de tarjetas
  */
-const PasosEnvioMasivo = () => {
+const PasoMasivo0Pasos = () => {
   // ---------------------------------------------------
   // HOOK: useNavigate
   // Permite redirigir a otra ruta al finalizar el proceso
@@ -31,8 +34,9 @@ const PasosEnvioMasivo = () => {
   const navigate = useNavigate();
   
   // ---------------------------------------------------
-  // ESTADO PRINCIPAL: Paso actual (1 a 4)
+  // ESTADO PRINCIPAL: Paso actual (1 a 5)
   // Controla cuál paso del flujo se está mostrando
+  // MODIFICADO: Ahora son 5 pasos en lugar de 4
   // ---------------------------------------------------
   const [pasoActual, setPasoActual] = useState(1);
   
@@ -71,11 +75,12 @@ const PasosEnvioMasivo = () => {
 
   // ---------------------------------------------------
   // FUNCIONES DE NAVEGACIÓN ENTRE PASOS
+  // MODIFICADO: Ahora maneja 5 pasos en lugar de 4
   // ---------------------------------------------------
 
   // Avanzar al siguiente paso
   const avanzarPaso = () => {
-    if (pasoActual < 4) {
+    if (pasoActual < 5) {
       setPasoActual(pasoActual + 1);
     }
   };
@@ -112,19 +117,21 @@ const PasosEnvioMasivo = () => {
 
   // ---------------------------------------------------
   // RENDERS AUXILIARES
+  // MODIFICADO: Ahora muestra 5 pasos en la barra de progreso
   // ---------------------------------------------------
 
-  // Renderiza la barra de progreso mostrando los 4 pasos
+  // Renderiza la barra de progreso mostrando los 5 pasos
   const renderBarraProgreso = () => (
     <div className="barra-progreso-masivo">
-      {[1, 2, 3, 4].map(paso => (
+      {[1, 2, 3, 4, 5].map(paso => (
         <div key={paso} className={`paso-indicador-masivo ${paso === pasoActual ? 'activo' : ''} ${paso < pasoActual ? 'completado' : ''}`}>
           <div className="numero-paso-masivo">{paso}</div>
           <div className="texto-paso-masivo">
             {paso === 1 && 'Seleccionar Invitados'}
             {paso === 2 && 'Diseñar Mensaje'}
-            {paso === 3 && 'Previsualizar'}
-            {paso === 4 && 'Enviar Masivamente'}
+            {paso === 3 && 'Descargar Tarjetas'} {/* NUEVO PASO */}
+            {paso === 4 && 'Previsualizar'}
+            {paso === 5 && 'Enviar Masivamente'}
           </div>
         </div>
       ))}
@@ -132,6 +139,7 @@ const PasosEnvioMasivo = () => {
   );
 
   // Renderiza los botones de navegación entre pasos
+  // MODIFICADO: Ahora maneja 5 pasos
   const renderControlesNavegacion = () => (
     <div className="controles-navegacion-masivo">
       <button 
@@ -142,7 +150,7 @@ const PasosEnvioMasivo = () => {
         ← Anterior
       </button>
       
-      {pasoActual < 4 ? (
+      {pasoActual < 5 ? (
         <button 
           onClick={avanzarPaso} 
           className="btn btn-siguiente-masivo"
@@ -161,6 +169,7 @@ const PasosEnvioMasivo = () => {
   );
 
   // Renderiza el componente correspondiente al paso actual
+  // MODIFICADO: Ahora incluye el nuevo paso 3 (Descargar Tarjetas)
   const renderPasoActual = () => {
     // Props comunes que se pasan a todos los pasos
     const propsComunes = {
@@ -177,8 +186,10 @@ const PasosEnvioMasivo = () => {
       case 2:
         return <PasoMasivo2Diseno {...propsComunes} />;
       case 3:
-        return <PasoMasivo3Previsualizacion {...propsComunes} />;
+        return <PasoMasivo2BDescargarTarjetas {...propsComunes} />; {/* NUEVO PASO */}
       case 4:
+        return <PasoMasivo3Previsualizacion {...propsComunes} />;
+      case 5:
         return <PasoMasivo4Envio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
       default:
         return <PasoMasivo1Seleccion {...propsComunes} />;
@@ -193,7 +204,8 @@ const PasosEnvioMasivo = () => {
       {/* Encabezado */}
       <div className="encabezado-pasos-masivo">
         <h1>Envío Masivo de Invitaciones</h1>
-        <p>Sigue estos 4 pasos para enviar invitaciones a múltiples invitados a la vez</p>
+        <p>Sigue estos 5 pasos para enviar invitaciones a múltiples invitados a la vez</p>
+        {/* MODIFICADO: Cambiado de 4 a 5 pasos */}
       </div>
 
       {/* Barra de progreso */}
@@ -210,4 +222,4 @@ const PasosEnvioMasivo = () => {
   );
 };
 
-export default PasosEnvioMasivo;
+export default PasoMasivo0Pasos;

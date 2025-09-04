@@ -1336,8 +1336,20 @@
             "telefono": "+5492235199169",
             "email": "SIN DATOS"
           }
+        },
+        {
+ "id": 129,
+"nombre": "Ale Prueba",
+"relacion": "invitado prueba",
+"contacto": {
+  "whatsapp": "+5492235455451",
+  "telefono": "+5492235455451",
+  "email": "alejandrobavaro@hotmail.com"
+          }
         }
       ]
     }
   ]
 }
+
+

@@ -10,7 +10,7 @@ import '../assets/scss/_03-Componentes/_Paso3DescargarTarjeta.scss';
  * COMPONENTE: Paso3DescargarTarjeta
  * PROPÓSITO: Tercer paso del flujo - Descargar la tarjeta como imagen JPG
  * CONEXIONES: 
- * - Recibe props del componente principal PasosInvitacion
+ * - Recibe props del componente principal Paso0Pasos
  * - Usa html2canvas para convertir el HTML a imagen
  * - Genera la tarjeta personalizada con el nombre del invitado
  * - Muestra vista IDÉNTICA a la del Paso 2 para consistencia

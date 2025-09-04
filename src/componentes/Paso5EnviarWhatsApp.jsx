@@ -6,37 +6,49 @@ import { useNavigate } from 'react-router-dom';
  * COMPONENTE: Paso5EnviarWhatsApp
  * PROPÓSITO: Quinto y último paso del flujo - Integración con WhatsApp y finalización
  * CONEXIONES: 
- * - Recibe props del componente principal PasosInvitacion
+ * - Recibe props del componente principal Paso0Pasos
  * - Abre WhatsApp con el mensaje predefinido (usando enlaces fijos)
  * - Actualiza el estado del invitado en localStorage
  * - Registra el envío en el historial
  * - Permite finalizar el proceso o reiniciarlo
+ * - ACTUALIZADO: Sistema de sincronización con ListaInvitados
+ * - PROBLEMA: No recibía teléfono porque esperaba estructura plana
  */
 const Paso5EnviarWhatsApp = ({ 
   disenoInvitacion, 
   invitadoSeleccionado, 
   finalizarProceso 
 }) => {
-  // Hook de navegación
-  const navigate = useNavigate();
-  
-  // ESTADO: Control del proceso de envío
-  const [enviando, setEnviando] = useState(false);
-  const [enviado, setEnviado] = useState(false);
-  const [errorEnvio, setErrorEnvio] = useState(null);
-  const [historialEnvio, setHistorialEnvio] = useState(null);
+  // ================================================
+  // HOOKS Y ESTADOS
+  // ================================================
+  const navigate = useNavigate(); // Hook de navegación de React Router
+  const [enviando, setEnviando] = useState(false);      // Control de envío en progreso
+  const [enviado, setEnviado] = useState(false);        // Estado de envío completado
+  const [errorEnvio, setErrorEnvio] = useState(null);   // Almacenamiento de errores
+  const [historialEnvio, setHistorialEnvio] = useState(null); // Historial de envíos
 
+  // ================================================
   // CONSTANTES: Enlaces fijos (igual que en Paso 4)
+  // ================================================
   const ENLACE_CONFIRMACION = 'https://confirmarasistenciaevento.netlify.app/';
   const ENLACE_UBICACION = 'https://noscasamos-aleyfabi.netlify.app/ubicacion';
 
-  // EFECTO: Cargar historial de envíos al montar el componente
+  // ================================================
+  // EFECTO: Cargar historial de envíos al montar
+  // ================================================
   useEffect(() => {
     const historial = JSON.parse(localStorage.getItem('historialWhatsApp') || '[]');
     setHistorialEnvio(historial);
   }, []);
 
-  // FUNCIÓN: Generar mensaje para WhatsApp (actualizado con enlaces fijos)
+  // ================================================
+  // FUNCIÓN: Generar mensaje para WhatsApp
+  // ================================================
+  // PROPÓSITO: Crear mensaje con enlaces fijos y datos de invitación
+  // ENTRADA: datos de disenoInvitacion y invitadoSeleccionado
+  // SALIDA: string con mensaje formateado
+  // ================================================
   const generarMensajeWhatsApp = () => {
     if (!invitadoSeleccionado || !disenoInvitacion) return '';
     
@@ -46,7 +58,7 @@ const Paso5EnviarWhatsApp = ({
       `📅 ${disenoInvitacion.fecha}\n` +
       `🕒 ${disenoInvitacion.hora}\n` +
       `📍 ${disenoInvitacion.lugar.split('\n')[0]}\n\n` +
-      `---- IMAGEN DE LA INVITACIÓN AQUÍ ----\n\n` +
+     
       `*Información importante:*\n` +
       `🔹 Cómo llegar: ${ENLACE_UBICACION}\n` +
       `🔹 Vestimenta: ${disenoInvitacion.codigoVestimenta}\n\n` +
@@ -58,7 +70,65 @@ const Paso5EnviarWhatsApp = ({
       `Con amor,\n${disenoInvitacion.nombresNovios.split('de ')[1] || disenoInvitacion.nombresNovios}`;
   };
 
-  // FUNCIÓN: Abrir WhatsApp con el mensaje predefinido
+  // ================================================
+  // FUNCIÓN: Actualizar estado de envío en localStorage
+  // ================================================
+  // PROPÓSITO: Marcar invitados como enviados en almacenamiento persistente
+  // CONEXIONES: Se sincroniza con ListaInvitados.js mediante localStorage
+  // ================================================
+  const actualizarEstadoEnvio = (invitadoId, enviado) => {
+    try {
+      // Obtener estados actuales de localStorage
+      const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
+      
+      // Actualizar el estado del invitado específico
+      estadosEnvio[invitadoId] = enviado;
+      
+      // Guardar de vuelta en localStorage
+      localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
+      
+      // También actualizar el historial de envíos
+      const historial = JSON.parse(localStorage.getItem('historialWhatsApp') || '[]');
+      const nuevoRegistro = {
+        id: Date.now(),
+        invitadoId: invitadoId,
+        invitadoNombre: invitadoSeleccionado.nombre,
+        telefono: invitadoSeleccionado.telefono,
+        grupo: invitadoSeleccionado.grupoNombre,
+        fechaEnvio: new Date().toISOString(),
+        mensaje: generarMensajeWhatsApp(),
+        tipo: 'individual',
+        estado: enviado ? 'exitoso' : 'fallido'
+      };
+      
+      localStorage.setItem('historialWhatsApp', JSON.stringify([...historial, nuevoRegistro]));
+      
+    } catch (error) {
+      console.error('Error al actualizar estado de envío:', error);
+    }
+  };
+
+  // ================================================
+  // FUNCIÓN: Forzar actualización de la lista de invitados
+  // ================================================
+  // PROPÓSITO: Notificar a otros componentes sobre cambios en estados de envío
+  // CONEXIONES: ListaInvitados.js escucha eventos de almacenamiento
+  // ================================================
+  const forzarActualizacionLista = () => {
+    // Disparar evento personalizado para notificar a otros componentes
+    window.dispatchEvent(new Event('estadosEnvioActualizados'));
+    
+    // También disparar evento de storage para componentes que escuchen localStorage
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  // ================================================
+  // FUNCIÓN PRINCIPAL: Abrir WhatsApp con mensaje
+  // ================================================
+  // PROPÓSITO: Preparar y abrir WhatsApp con el mensaje personalizado
+  // FLUJO: Validar → Formatear → Abrir → Actualizar estados
+  // PROBLEMA ORIGINAL: No encontraba el teléfono por estructura anidada
+  // ================================================
   const abrirWhatsApp = () => {
     if (!invitadoSeleccionado) {
       setErrorEnvio('No hay invitado seleccionado');
@@ -70,59 +140,51 @@ const Paso5EnviarWhatsApp = ({
 
     try {
       const mensaje = generarMensajeWhatsApp();
-      const telefono = invitadoSeleccionado.telefono.replace(/\D/g, ''); // Solo números
       
-      // Validar número de teléfono
-      if (!telefono || telefono.length < 8) {
-        throw new Error('Número de teléfono inválido');
+      // 🛠️ SOLUCIÓN: Buscar teléfono en múltiples ubicaciones
+      const telefonoInvitado = invitadoSeleccionado.telefono || 
+                              invitadoSeleccionado.contactoCompleto?.telefono || 
+                              invitadoSeleccionado.contactoCompleto?.whatsapp;
+      
+      // 🛠️ MEJOR VALIDACIÓN: Verificar múltiples casos de teléfono inválido
+      if (!telefonoInvitado || telefonoInvitado === 'Sin teléfono' || 
+          telefonoInvitado === 'N/A' || telefonoInvitado.replace(/\D/g, '').length < 8) {
+        throw new Error('Número de teléfono inválido o faltante');
       }
       
-      // Formatear URL de WhatsApp
-      const urlWhatsApp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      // Formatear URL de WhatsApp (solo números)
+      const telefonoLimpio = telefonoInvitado.replace(/\D/g, '');
+      const urlWhatsApp = `https://wa.me/${telefonoLimpio}?text=${encodeURIComponent(mensaje)}`;
       
       // Abrir en nueva pestaña
       window.open(urlWhatsApp, '_blank');
       
-      // Registrar envío en historial
-      registrarEnvio();
+      // ================================================
+      // REGISTRAR ENVÍO Y ACTUALIZAR ESTADO
+      // ================================================
+      actualizarEstadoEnvio(invitadoSeleccionado.id, true);
+      forzarActualizacionLista();
       
       setEnviado(true);
       
     } catch (error) {
       console.error('Error al abrir WhatsApp:', error);
       setErrorEnvio(error.message || 'Error al abrir WhatsApp. Verifica que el número sea válido.');
+      
+      // Registrar el fallo en el estado de envío
+      actualizarEstadoEnvio(invitadoSeleccionado.id, false);
+      forzarActualizacionLista();
     } finally {
       setEnviando(false);
     }
   };
 
-  // FUNCIÓN: Registrar el envío en el historial y actualizar estado
-  const registrarEnvio = () => {
-    if (!invitadoSeleccionado) return;
-
-    // Actualizar estado de envío
-    const estadosEnvio = JSON.parse(localStorage.getItem('estadosEnvio') || '{}');
-    estadosEnvio[invitadoSeleccionado.id] = true;
-    localStorage.setItem('estadosEnvio', JSON.stringify(estadosEnvio));
-
-    // Registrar en historial
-    const historial = JSON.parse(localStorage.getItem('historialWhatsApp') || '[]');
-    const nuevoRegistro = {
-      id: Date.now(),
-      invitadoId: invitadoSeleccionado.id,
-      invitadoNombre: invitadoSeleccionado.nombre,
-      telefono: invitadoSeleccionado.telefono,
-      grupo: invitadoSeleccionado.grupoNombre,
-      fechaEnvio: new Date().toISOString(),
-      mensaje: generarMensajeWhatsApp()
-    };
-
-    const nuevoHistorial = [...historial, nuevoRegistro];
-    localStorage.setItem('historialWhatsApp', JSON.stringify(nuevoHistorial));
-    setHistorialEnvio(nuevoHistorial);
-  };
-
+  // ================================================
   // FUNCIÓN: Obtener último envío para este invitado
+  // ================================================
+  // PROPÓSITO: Buscar en el historial el último envío al invitado actual
+  // SALIDA: Objeto con datos del último envío o null si no existe
+  // ================================================
   const getUltimoEnvio = () => {
     if (!historialEnvio || !invitadoSeleccionado) return null;
     
@@ -131,7 +193,13 @@ const Paso5EnviarWhatsApp = ({
       .sort((a, b) => new Date(b.fechaEnvio) - new Date(a.fechaEnvio))[0];
   };
 
-  // FUNCIÓN: Formatear fecha
+  // ================================================
+  // FUNCIÓN: Formatear fecha para mostrar
+  // ================================================
+  // PROPÓSITO: Convertir fecha ISO a formato legible
+  // ENTRADA: fechaISO (string en formato ISO)
+  // SALIDA: string con fecha formateada
+  // ================================================
   const formatearFecha = (fechaISO) => {
     return new Date(fechaISO).toLocaleDateString('es-ES', {
       day: '2-digit',
@@ -142,8 +210,16 @@ const Paso5EnviarWhatsApp = ({
     });
   };
 
-  // FUNCIÓN: Finalizar proceso y navegar a la lista de invitados
+  // ================================================
+  // FUNCIÓN: Finalizar proceso y navegar
+  // ================================================
+  // PROPÓSITO: Completar el proceso y regresar a la lista de invitados
+  // CONEXIONES: Navega a '/organizacion/invitados' o llama a función padre
+  // ================================================
   const handleFinalizarProceso = () => {
+    // Forzar una última actualización antes de finalizar
+    forzarActualizacionLista();
+    
     // Si se proporciona una función de finalización, usarla
     if (finalizarProceso) {
       finalizarProceso();
@@ -153,7 +229,12 @@ const Paso5EnviarWhatsApp = ({
     }
   };
 
-  // RENDER: Información de envío previo
+  // ================================================
+  // FUNCIÓN: Renderizar información de envío previo
+  // ================================================
+  // PROPÓSITO: Mostrar detalles del último envío si existe
+  // SALIDA: Componente JSX con información o null
+  // ================================================
   const renderInfoEnvioPrevio = () => {
     const ultimoEnvio = getUltimoEnvio();
     
@@ -175,7 +256,9 @@ const Paso5EnviarWhatsApp = ({
     );
   };
 
+  // ================================================
   // RENDER PRINCIPAL del componente
+  // ================================================
   return (
     <div className="paso5-enviar-whatsapp">
       <div className="instrucciones">
@@ -189,7 +272,13 @@ const Paso5EnviarWhatsApp = ({
           <h3>📋 Resumen del Envío</h3>
           <div className="detalles-invitado">
             <p><strong>Invitado:</strong> {invitadoSeleccionado.nombre}</p>
-            <p><strong>Teléfono:</strong> {invitadoSeleccionado.telefono}</p>
+            {/* 🛠️ MEJOR VISUALIZACIÓN: Buscar teléfono en múltiples ubicaciones */}
+            <p><strong>Teléfono:</strong> 
+              {invitadoSeleccionado.telefono || 
+               invitadoSeleccionado.contactoCompleto?.telefono || 
+               invitadoSeleccionado.contactoCompleto?.whatsapp || 
+               ' Sin teléfono'}
+            </p>
             <p><strong>Grupo:</strong> {invitadoSeleccionado.grupoNombre}</p>
             {invitadoSeleccionado.acompanantes > 0 && (
               <p><strong>Acompañantes:</strong> {invitadoSeleccionado.acompanantes}</p>
@@ -270,7 +359,12 @@ const Paso5EnviarWhatsApp = ({
       {/* Acciones finales */}
       <div className="acciones-finales">
         <div className="botones-accion">
-        
+          <button
+            onClick={handleFinalizarProceso}
+            className="btn-finalizar"
+          >
+            ✅ Finalizar Proceso
+          </button>
 
           <button
             onClick={abrirWhatsApp}

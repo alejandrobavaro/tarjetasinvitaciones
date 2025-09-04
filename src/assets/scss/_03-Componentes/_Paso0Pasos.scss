@@ -1,9 +1,9 @@
 /* =============================================== */
-/* COMPONENTE: Pasos de Envío Masivo - Flujo Completo */
+/* COMPONENTE: Pasos de Invitación - Flujo Completo */
 /* =============================================== */
 
 /* --- Contenedor Principal --- */
-.pasos-envio-masivo-container {
+.pasos-invitacion-container {
     width: 100%;
     margin: 0 auto;
     padding: 0.5rem;
@@ -15,7 +15,7 @@
   }
   
   /* --- Encabezado --- */
-  .encabezado-pasos-masivo {
+  .encabezado-pasos {
     text-align: center;
     margin-bottom: 1rem;
     
@@ -33,8 +33,8 @@
     }
   }
   
-  /* --- Barra de Progreso para Envío Masivo --- */
-  .barra-progreso-masivo {
+  /* --- Barra de Progreso --- */
+  .barra-progreso {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
@@ -53,7 +53,7 @@
     }
   }
   
-  .paso-indicador-masivo {
+  .paso-indicador {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +61,7 @@
     z-index: 2;
     flex: 1;
     
-    .numero-paso-masivo {
+    .numero-paso {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -75,7 +75,7 @@
       border: 2px solid #e0e0e0;
     }
     
-    .texto-paso-masivo {
+    .texto-paso {
       font-size: 0.7rem;
       text-align: center;
       color: #757575;
@@ -85,40 +85,40 @@
     
     /* Estado activo */
     &.activo {
-      .numero-paso-masivo {
-        background-color: #25d366;
+      .numero-paso {
+        background-color: #8B4513;
         color: white;
-        border-color: #25d366;
+        border-color: #8B4513;
       }
       
-      .texto-paso-masivo {
-        color: #25d366;
+      .texto-paso {
+        color: #8B4513;
         font-weight: 600;
       }
     }
     
     /* Estado completado */
     &.completado {
-      .numero-paso-masivo {
-        background-color: #128c7e;
+      .numero-paso {
+        background-color: #4caf50;
         color: white;
-        border-color: #128c7e;
+        border-color: #4caf50;
       }
       
-      .texto-paso-masivo {
-        color: #128c7e;
+      .texto-paso {
+        color: #4caf50;
       }
     }
   }
   
   /* --- Contenido del Paso Actual --- */
-  .contenido-paso-masivo {
+  .contenido-paso {
     flex: 1;
     margin-bottom: 1.5rem;
   }
   
-  /* --- Controles de Navegación para Envío Masivo --- */
-  .controles-navegacion-masivo {
+  /* --- Controles de Navegación --- */
+  .controles-navegacion {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
@@ -139,7 +139,7 @@
       }
     }
     
-    .btn-anterior-masivo {
+    .btn-anterior {
       background-color: #f5f5f5;
       color: #5a2d2d;
       
@@ -148,33 +148,33 @@
       }
     }
     
-    .btn-siguiente-masivo {
-      background-color: #25d366;
-      color: white;
-      
-      &:hover:not(:disabled) {
-        background-color: #128c7e;
-      }
-    }
-    
-    .btn-finalizar-masivo {
+    .btn-siguiente {
       background-color: #8B4513;
       color: white;
       
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: #6B3410;
+      }
+    }
+    
+    .btn-finalizar {
+      background-color: #4caf50;
+      color: white;
+      
+      &:hover {
+        background-color: #3d8b40;
       }
     }
   }
   
   /* --- Media Queries: Tablet (768px) --- */
   @media (min-width: 768px) {
-    .pasos-envio-masivo-container {
+    .pasos-invitacion-container {
       padding: 1rem;
       max-width: 750px;
     }
     
-    .encabezado-pasos-masivo {
+    .encabezado-pasos {
       h1 {
         font-size: 1.8rem;
       }
@@ -184,17 +184,17 @@
       }
     }
     
-    .barra-progreso-masivo {
+    .barra-progreso {
       padding: 0 1rem;
       
-      .paso-indicador-masivo {
-        .texto-paso-masivo {
+      .paso-indicador {
+        .texto-paso {
           font-size: 0.8rem;
         }
       }
     }
     
-    .controles-navegacion-masivo {
+    .controles-navegacion {
       .btn {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
@@ -204,20 +204,20 @@
   
   /* --- Media Queries: Escritorio (1024px) --- */
   @media (min-width: 1024px) {
-    .pasos-envio-masivo-container {
+    .pasos-invitacion-container {
       max-width: 900px;
       padding: 1.5rem;
     }
     
-    .encabezado-pasos-masivo {
+    .encabezado-pasos {
       h1 {
         font-size: 2rem;
       }
     }
     
-    .barra-progreso-masivo {
-      .paso-indicador-masivo {
-        .texto-paso-masivo {
+    .barra-progreso {
+      .paso-indicador {
+        .texto-paso {
           font-size: 0.9rem;
         }
       }

@@ -384,13 +384,13 @@ const PasoMasivo1Seleccion = ({
 
       {/* Acciones del paso */}
       <div className="acciones-mejoradas">
-        <button
+        {/* <button
           onClick={avanzarPaso}
           disabled={!puedeAvanzar()}
           className="btn-siguiente-mejorado"
         >
           Siguiente →
-        </button>
+        </button> */}
         {!puedeAvanzar() && <span className="ayuda">Selecciona al menos un invitado</span>}
       </div>
     </div>
