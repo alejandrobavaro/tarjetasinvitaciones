@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import '../assets/scss/_03-Componentes/_PasoMasivo3Previsualizacion.scss';
+import '../assets/scss/_03-Componentes/_PasoMasivo4Previsualizacion.scss';
 
 /**
- * COMPONENTE: PasoMasivo3Previsualizacion
+ * COMPONENTE: PasoMasivo4Previsualizacion
  * PROPÓSITO: Tercer paso del flujo masivo - Previsualizar mensajes antes del envío
  * CONEXIONES: 
  * - Recibe props del componente principal PasoMasivo0Pasos
  * - Muestra cómo quedará el mensaje para cada invitado
  * - Permite revisar y confirmar antes del envío masivo
  */
-const PasoMasivo3Previsualizacion = ({ 
+const PasoMasivo4Previsualizacion = ({ 
   disenoMasivo, 
   invitadosSeleccionados, 
   avanzarPaso 
@@ -155,4 +155,4 @@ const PasoMasivo3Previsualizacion = ({
   );
 };
 
-export default PasoMasivo3Previsualizacion;
+export default PasoMasivo4Previsualizacion;

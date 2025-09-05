@@ -26,7 +26,7 @@ const Paso0Pasos = () => {
       nombresNovios: 'Ale y Fabi', // CORREGIDO: Sin "Boda"
       fecha: 'Domingo, 23 de noviembre de 2025', // CORREGIDO: Año 2025
       hora: '19:00 horas',
-      lugar: 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet, Mar del Plata',
+      lugar: 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet',
       codigoVestimenta: 'Elegante',
       linkUbicacion: 'https://noscasamos-aleyfabi.netlify.app/ubicacion',
       detallesRegalo: 'Nos viene bien juntar para la Luna de Miel. CBU o alias: 00000531313113 aleyfabicasamiento'

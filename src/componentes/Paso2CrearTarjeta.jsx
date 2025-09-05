@@ -33,7 +33,7 @@ const Paso2CrearTarjeta = ({
   const FECHA_BODA = new Date(2025, 10, 23); // 23 de Noviembre 2025 (mes 10 = Noviembre)
   const HORA_BODA = '19:00';
   const NOMBRE_DEFAULT = 'Boda Ale y Fabi';
-  const LUGAR_DEFAULT = 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet, Mar del Plata';
+  const LUGAR_DEFAULT = 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet';
 
   // EFECTO: Inicializar diseño si está vacío
   React.useEffect(() => {

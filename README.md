@@ -228,8 +228,8 @@ src/
 │       └── [Subcomponentes de envío masivo]/
 │           ├── PasoMasivo1Seleccion.js
 │           ├── PasoMasivo2Diseno.js
-│           ├── PasoMasivo3Previsualizacion.js
-│           └── PasoMasivo4Envio.js
+│           ├── PasoMasivo4Previsualizacion.js
+│           └── PasoMasivo5Envio.js
 ├── assets/
 │   └── scss/              # Estilos SCSS organizados
 └── App.js                 # Componente principal con enrutamiento
@@ -319,7 +319,7 @@ src/
 - `{grupo}` - Se reemplaza por el grupo del invitado
 - `{telefono}` - Se reemplaza por el teléfono del invitado
 
-### PasoMasivo3Previsualizacion.js - Previsualización Masiva
+### PasoMasivo4Previsualizacion.js - Previsualización Masiva
 
 **Propósito**: Tercer paso del flujo masivo - revisar mensajes antes del envío.
 
@@ -335,7 +335,7 @@ src/
 - Información completa del invitado en previsualización
 - Interfaz de navegación intuitiva
 
-### PasoMasivo4Envio.js - Envío Masivo
+### PasoMasivo5Envio.js - Envío Masivo
 
 **Propósito**: Cuarto paso del flujo masivo - proceso de envío y resultados.
 

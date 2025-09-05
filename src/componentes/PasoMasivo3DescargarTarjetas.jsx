@@ -5,10 +5,10 @@ import {
   FiDownload, FiCheckCircle, FiAlertCircle
 } from "react-icons/fi";
 import { GiRing } from "react-icons/gi";
-import '../assets/scss/_03-Componentes/_PasoMasivo2BDescargarTarjetas.scss';
+import '../assets/scss/_03-Componentes/_PasoMasivo3DescargarTarjetas.scss';
 
 /**
- * COMPONENTE: PasoMasivo2BDescargarTarjetas
+ * COMPONENTE: PasoMasivo3DescargarTarjetas
  * PROPÓSITO: Paso intermedio del flujo masivo - Descargar tarjetas JPG personalizadas para todos los invitados seleccionados
  * CONEXIONES: 
  * - Recibe props del componente principal PasosEnvioMasivo
@@ -16,7 +16,7 @@ import '../assets/scss/_03-Componentes/_PasoMasivo2BDescargarTarjetas.scss';
  * - Genera tarjetas personalizadas con el nombre de cada invitado
  * - DISEÑO IDÉNTICO al componente Paso2CrearTarjeta y Paso3DescargarTarjeta
  */
-const PasoMasivo2BDescargarTarjetas = ({ 
+const PasoMasivo3DescargarTarjetas = ({ 
   disenoMasivo, 
   invitadosSeleccionados, 
   avanzarPaso 
@@ -42,7 +42,7 @@ const PasoMasivo2BDescargarTarjetas = ({
   const FECHA_BODA = new Date(2025, 10, 23); // 23 de Noviembre 2025
   const HORA_BODA = '19:00';
   const NOMBRE_NOVIOS = 'Boda Ale y Fabi';
-  const LUGAR_BODA = 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet, Mar del Plata';
+  const LUGAR_BODA = 'Casa del Mar - Villa García Uriburu C. Seaglia 5400, Camet';
   const CODIGO_VESTIMENTA = 'Elegante';
 
   // ================================================
@@ -338,4 +338,4 @@ const PasoMasivo2BDescargarTarjetas = ({
   );
 };
 
-export default PasoMasivo2BDescargarTarjetas;
+export default PasoMasivo3DescargarTarjetas;

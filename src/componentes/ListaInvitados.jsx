@@ -119,7 +119,7 @@ const ListaInvitados = () => {
   // EFECTO: Escuchar actualizaciones de estados de envío
   // ================================================
   // PROPÓSITO: Actualizar la lista cuando otros componentes cambien estados de envío
-  // CONEXIONES: Responde a eventos de PasoMasivo4Envio y Paso5EnviarWhatsApp
+  // CONEXIONES: Responde a eventos de PasoMasivo5Envio y Paso5EnviarWhatsApp
   // ================================================
   useEffect(() => {
     const handleStorageChange = () => {

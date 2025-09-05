@@ -7,15 +7,15 @@ import '../assets/scss/_03-Componentes/_PasoMasivo0Pasos.scss';
 // Cada uno de estos componentes representa un paso del flujo de envío masivo
 // PasoMasivo1Seleccion: Selección de invitados
 // PasoMasivo2Diseno: Diseño del mensaje o tarjeta
-// PasoMasivo2BDescargarTarjetas: NUEVO - Descarga de tarjetas JPG
-// PasoMasivo3Previsualizacion: Vista previa antes del envío
-// PasoMasivo4Envio: Envío final de los mensajes
+// PasoMasivo3DescargarTarjetas: NUEVO - Descarga de tarjetas JPG
+// PasoMasivo4Previsualizacion: Vista previa antes del envío
+// PasoMasivo5Envio: Envío final de los mensajes
 // ---------------------------------------------------
 import PasoMasivo1Seleccion from './PasoMasivo1Seleccion';
 import PasoMasivo2Diseno from './PasoMasivo2Diseno';
-import PasoMasivo2BDescargarTarjetas from './PasoMasivo2BDescargarTarjetas';
-import PasoMasivo3Previsualizacion from './PasoMasivo3Previsualizacion';
-import PasoMasivo4Envio from './PasoMasivo4Envio';
+import PasoMasivo3DescargarTarjetas from './PasoMasivo3DescargarTarjetas';
+import PasoMasivo4Previsualizacion from './PasoMasivo4Previsualizacion';
+import PasoMasivo5Envio from './PasoMasivo5Envio';
 
 /**
  * COMPONENTE PRINCIPAL: PasoMasivo0Pasos
@@ -56,7 +56,7 @@ const PasoMasivo0Pasos = () => {
   const [disenoMasivo, setDisenoMasivo] = useState(() => {
     const guardado = localStorage.getItem('disenoMasivo');
     return guardado ? JSON.parse(guardado) : {
-      mensajePersonalizado: `¡Hola {nombre}! 🎉\n\nEstás invitado a nuestra boda!\n\n📅 Domingo, 23 de noviembre de 2025\n🕒 19:00 horas\n📍 Casa del Mar - Villa García Uriburu\n\nConfirma tu asistencia aquí:\nhttps://confirmarasistenciaevento.netlify.app/\n\nUbicación:\nhttps://noscasamos-aleyfabi.netlify.app/ubicacion\n\n¡Esperamos verte! 💍\nAle y Fabi`
+      mensajePersonalizado: `¡Hola {nombre}! 🎉\n\nEstás invitado a nuestra boda!\n\n📅 Domingo, 23 de noviembre de 2025\n🕒 19:00 horas\n📍 Casa del Mar - Villa García Uriburu - C. Seaglia 5400, Camet\n\nConfirma tu asistencia aquí:\nhttps://confirmarasistenciaevento.netlify.app/\n\nUbicación:\nhttps://noscasamos-aleyfabi.netlify.app/ubicacion\n\n¡Esperamos verte! 💍\nAle y Fabi`
     };
   });
 
@@ -186,11 +186,11 @@ const PasoMasivo0Pasos = () => {
       case 2:
         return <PasoMasivo2Diseno {...propsComunes} />;
       case 3:
-        return <PasoMasivo2BDescargarTarjetas {...propsComunes} />; {/* NUEVO PASO */}
+        return <PasoMasivo3DescargarTarjetas {...propsComunes} />; 
       case 4:
-        return <PasoMasivo3Previsualizacion {...propsComunes} />;
+        return <PasoMasivo4Previsualizacion {...propsComunes} />;
       case 5:
-        return <PasoMasivo4Envio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
+        return <PasoMasivo5Envio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
       default:
         return <PasoMasivo1Seleccion {...propsComunes} />;
     }
