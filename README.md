@@ -229,7 +229,7 @@ src/
 │           ├── PasoMasivo1Seleccion.js
 │           ├── PasoMasivo2Diseno.js
 │           ├── PasoMasivo4Previsualizacion.js
-│           └── PasoMasivo5Envio.js
+│           └── PasoMasivo5WhatsAppEnvio.js
 ├── assets/
 │   └── scss/              # Estilos SCSS organizados
 └── App.js                 # Componente principal con enrutamiento
@@ -335,7 +335,7 @@ src/
 - Información completa del invitado en previsualización
 - Interfaz de navegación intuitiva
 
-### PasoMasivo5Envio.js - Envío Masivo
+### PasoMasivo5WhatsAppEnvio.js - Envío Masivo
 
 **Propósito**: Cuarto paso del flujo masivo - proceso de envío y resultados.
 

@@ -176,6 +176,232 @@
   }
 }
 
+/* --- Nuevos estilos para el paso de selección de método --- */
+.paso-seleccion-metodo {
+  padding: 1rem;
+  
+  .instrucciones-metodo {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: #5a2d2d;
+      font-size: 1rem;
+    }
+  }
+}
+
+.opciones-metodo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.opcion-metodo {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  
+  &:hover {
+    border-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.seleccionado {
+    border-color: #25d366;
+    background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+    
+    .icono-metodo {
+      background: rgba(37, 211, 102, 0.1);
+    }
+  }
+}
+
+.icono-metodo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  font-size: 2rem;
+  background: rgba(139, 69, 19, 0.1);
+  flex-shrink: 0;
+  
+  .whatsapp-icon {
+    color: #25d366;
+  }
+  
+  .email-icon {
+    color: #1565c0;
+  }
+}
+
+.info-metodo {
+  flex: 1;
+  
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #8B4513;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #5a2d2d;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 1rem;
+    
+    li {
+      color: #5a2d2d;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+.selector-metodo {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  flex-shrink: 0;
+  
+  .check {
+    color: #25d366;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+.opcion-metodo.seleccionado .selector-metodo {
+  border-color: #25d366;
+  background: #25d366;
+  
+  .check {
+    color: white;
+  }
+}
+
+.estadisticas-metodo {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(139, 69, 19, 0.05);
+  border-radius: 12px;
+  border: 1px solid #e0d6c2;
+}
+
+.estadistica {
+  text-align: center;
+  
+  .numero {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 0.5rem;
+  }
+  
+  .texto {
+    font-size: 0.85rem;
+    color: #5a2d2d;
+  }
+}
+
+/* --- Media Queries para el nuevo paso --- */
+@media (max-width: 768px) {
+  .opcion-metodo {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    
+    .icono-metodo {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .selector-metodo {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+  
+  .estadisticas-metodo {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paso-seleccion-metodo {
+    padding: 0.5rem;
+  }
+  
+  .opciones-metodo {
+    gap: 1rem;
+  }
+  
+  .info-metodo {
+    h3 {
+      font-size: 1.1rem;
+    }
+    
+    ul {
+      padding-left: 0.8rem;
+      
+      li {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+/* --- Ajustes para la barra de progreso de 6 pasos --- */
+.barra-progreso-masivo {
+  // Ajustar para 5 indicadores en lugar de 6
+  // Los estilos existentes deberían funcionar bien
+}
+
+// Asegurar que el texto del paso 5 se vea bien
+.paso-indicador-masivo:nth-child(5) .texto-paso-masivo {
+  font-size: 0.7rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 480px) {
+  .paso-indicador-masivo:nth-child(5) .texto-paso-masivo {
+    font-size: 0.6rem;
+  }
+}
+
 /* --- Media Queries: Tablet (768px) --- */
 @media (min-width: 768px) {
   .pasos-envio-masivo-container {

@@ -1,0 +1,541 @@
+/* =============================================== */
+/* COMPONENTE: Paso Email Envío - VERSIÓN MEJORADA */
+/* =============================================== */
+
+.paso-email-envio.compacto-mejorado {
+    width: 100%;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    background: linear-gradient(135deg, rgba(235, 245, 255, 0.4) 0%, rgba(240, 250, 255, 0.6) 100%);
+    padding: 12px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  
+    /* DEBUG INFO */
+    .debug-info {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      color: #856404;
+      font-size: 13px;
+  
+      .btn-debug {
+        margin-left: 12px;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        cursor: pointer;
+  
+        &:hover {
+          background: #e9ecef;
+        }
+      }
+    }
+  
+    /* HEADER MEJORADO */
+    .header-mejorado {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
+      border-left: 3px solid #1565c0;
+  
+      h2 {
+        color: #1565c0;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-align: center;
+        letter-spacing: -0.01em;
+      }
+  
+      .info-seleccion-header {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        
+        p {
+          color: #37474f;
+          font-size: 13px;
+          margin: 0;
+          
+          strong {
+            color: #1565c0;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  
+    /* INSTRUCCIONES PRINCIPALES */
+    .instrucciones-principales {
+      margin-bottom: 20px;
+  
+      .tarjeta-instrucciones {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
+        padding: 16px;
+  
+        h3 {
+          color: #1565c0;
+          font-size: 15px;
+          font-weight: 700;
+          margin: 0 0 12px 0;
+        }
+  
+        p {
+          color: #37474f;
+          font-size: 13px;
+          margin: 0 0 12px 0;
+          line-height: 1.4;
+        }
+  
+        ul {
+          margin: 0 0 16px 0;
+          padding-left: 20px;
+          color: #37474f;
+  
+          li {
+            margin-bottom: 6px;
+            font-size: 13px;
+            line-height: 1.4;
+          }
+        }
+  
+        .nota-importante {
+          background: rgba(33, 150, 243, 0.1);
+          padding: 10px;
+          border-radius: 6px;
+          border-left: 3px solid #2196f3;
+          
+          p {
+            color: #1976d2;
+            font-size: 12px;
+            margin: 0;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  
+    /* SIN INVITADOS */
+    .sin-invitados {
+      text-align: center;
+      padding: 40px 20px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+      p {
+        color: #6c757d;
+        font-size: 14px;
+        margin: 0 0 8px 0;
+      }
+  
+      .subtexto {
+        font-size: 12px;
+        color: #868e96;
+        font-style: italic;
+      }
+    }
+  
+    /* LISTA DE EMAIL */
+    .lista-email-envio {
+      margin-bottom: 20px;
+  
+      h3 {
+        color: #1565c0;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 0 12px 16px;
+      }
+  
+      .contenedor-invitados {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 4px;
+      }
+  
+      .tarjeta-invitado {
+        background: white;
+        border: 2px solid #e3f2fd;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease;
+  
+        &.completado {
+          border-color: #4caf50;
+          background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+          box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+        }
+  
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+  
+        .header-invitado {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+          padding-bottom: 12px;
+          border-bottom: 2px solid #bbdefb;
+  
+          .info-invitado {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+  
+            .numero {
+              color: #1565c0;
+              font-weight: 700;
+              font-size: 14px;
+              min-width: 24px;
+              background: rgba(21, 101, 192, 0.1);
+              padding: 4px 8px;
+              border-radius: 12px;
+              text-align: center;
+            }
+  
+            .nombre {
+              color: #37474f;
+              font-weight: 600;
+              font-size: 15px;
+            }
+  
+            .grupo {
+              color: #6c757d;
+              font-size: 12px;
+              background: rgba(21, 101, 192, 0.1);
+              padding: 4px 8px;
+              border-radius: 12px;
+            }
+          }
+  
+          .estado-envio {
+            .badge-completado {
+              background: linear-gradient(135deg, #4caf50 0%, #43a047 100%);
+              color: white;
+              padding: 6px 12px;
+              border-radius: 16px;
+              font-size: 12px;
+              font-weight: 600;
+            }
+  
+            .badge-pendiente {
+              background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+              color: white;
+              padding: 6px 12px;
+              border-radius: 16px;
+              font-size: 12px;
+              font-weight: 600;
+            }
+          }
+        }
+  
+        .cuerpo-invitado {
+          .datos-contacto {
+            margin-bottom: 16px;
+            
+            .dato-contacto {
+              margin-bottom: 8px;
+              font-size: 13px;
+              
+              strong {
+                color: #1565c0;
+              }
+            }
+          }
+  
+          .vista-previa-mensaje {
+            margin-bottom: 16px;
+            
+            h4 {
+              color: #1565c0;
+              font-size: 13px;
+              font-weight: 600;
+              margin: 0 0 8px 0;
+            }
+            
+            .contenido-mensaje {
+              background: #f8f9fa;
+              border: 1px solid #e9ecef;
+              border-radius: 6px;
+              padding: 12px;
+              max-height: 120px;
+              overflow-y: auto;
+  
+              pre {
+                margin: 0;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+                font-size: 13px;
+                color: #37474f;
+                line-height: 1.4;
+              }
+            }
+          }
+  
+          .acciones-email {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            
+            button {
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              padding: 10px 16px;
+              border: none;
+              border-radius: 6px;
+              font-size: 12px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              min-width: 140px;
+              
+              &:hover:not(:disabled) {
+                transform: translateY(-1px);
+              }
+              
+              &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+              }
+            }
+            
+            .btn-generar-email {
+              background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+              color: white;
+              box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+              
+              &.generado {
+                background: linear-gradient(135deg, #4caf50 0%, #43a047 100%);
+              }
+              
+              &:hover:not(:disabled) {
+                box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+              }
+            }
+            
+            .btn-enviado {
+              background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+              color: white;
+              box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+              
+              &.completado {
+                background: linear-gradient(135deg, #4caf50 0%, #43a047 100%);
+              }
+              
+              &:hover:not(:disabled) {
+                box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+              }
+            }
+            
+            .btn-abrir-email {
+              background: linear-gradient(135deg, #9e9e9e 0%, #757575 100%);
+              color: white;
+              box-shadow: 0 2px 4px rgba(158, 158, 158, 0.3);
+              
+              &:hover {
+                box-shadow: 0 4px 8px rgba(158, 158, 158, 0.4);
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    /* ACCIONES FINALES */
+    .acciones-finales-mejoradas {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+      .resumen-progreso {
+        margin-bottom: 16px;
+  
+        p {
+          color: #37474f;
+          font-size: 14px;
+          margin: 0 0 8px 0;
+          font-weight: 600;
+  
+          strong {
+            color: #1565c0;
+            font-size: 16px;
+          }
+        }
+  
+        .completado-total {
+          color: #4caf50;
+          font-weight: 700;
+          font-size: 14px;
+          margin: 8px 0 0 0;
+        }
+      }
+  
+      .btn-finalizar-mejorado {
+        background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        height: 52px;
+        min-width: 160px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+  
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(21, 101, 192, 0.5);
+        }
+      }
+  
+      .notas-importantes {
+        .nota-importante {
+          color: #1976d2;
+          font-size: 13px;
+          font-weight: 500;
+          margin: 0 0 8px 0;
+        }
+  
+        .nota-tecnica {
+          color: #f57c00;
+          font-size: 12px;
+          line-height: 1.4;
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  /* SCROLLBAR PERSONALIZADO */
+  .contenedor-invitados::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .contenedor-invitados::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .contenedor-invitados::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+    border-radius: 4px;
+  }
+  
+  .contenedor-invitados::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  }
+  
+  /* =============================================== */
+  /* MEDIA QUERIES - TABLET (768px) */
+  /* =============================================== */
+  @media (min-width: 768px) {
+    .paso-email-envio.compacto-mejorado {
+      padding: 20px;
+      max-width: 90%;
+      margin: 0 auto;
+  
+      .header-mejorado {
+        h2 {
+          font-size: 20px;
+        }
+      }
+  
+      .lista-email-envio {
+        .contenedor-invitados {
+          max-height: 65vh;
+        }
+      }
+    }
+  }
+  
+  /* =============================================== */
+  /* MEDIA QUERIES - ESCRITORIO (1024px) */
+  /* =============================================== */
+  @media (min-width: 1024px) {
+    .paso-email-envio.compacto-mejorado {
+      max-width: 1000px;
+      padding: 24px;
+  
+      .lista-email-envio {
+        .contenedor-invitados {
+          max-height: 70vh;
+        }
+      }
+    }
+  }
+  
+  /* =============================================== */
+  /* ANIMACIONES Y EFECTOS ESPECIALES */
+  /* =============================================== */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .tarjeta-invitado.completado {
+    animation: pulse 0.5s ease-in-out;
+  }
+  
+  .btn-generar-email.generado,
+  .btn-enviado.completado {
+    animation: checkmark 0.3s ease-in-out;
+  }
+  
+  /* =============================================== */
+  /* MEJORAS DE ACCESIBILIDAD */
+  /* =============================================== */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  .btn-generar-email:focus,
+  .btn-enviado:focus,
+  .btn-abrir-email:focus,
+  .btn-finalizar-mejorado:focus {
+    outline: 2px solid #1565c0;
+    outline-offset: 2px;
+  }

@@ -2,69 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/scss/_03-Componentes/_PasoMasivo0Pasos.scss';
 
-// ---------------------------------------------------
-// IMPORTACIÓN DE COMPONENTES DE CADA PASO MASIVO
-// Cada uno de estos componentes representa un paso del flujo de envío masivo
-// PasoMasivo1Seleccion: Selección de invitados
-// PasoMasivo2Diseno: Diseño del mensaje o tarjeta
-// PasoMasivo3DescargarTarjetas: NUEVO - Descarga de tarjetas JPG
-// PasoMasivo4Previsualizacion: Vista previa antes del envío
-// PasoMasivo5Envio: Envío final de los mensajes
-// ---------------------------------------------------
+// Importación de componentes
 import PasoMasivo1Seleccion from './PasoMasivo1Seleccion';
 import PasoMasivo2Diseno from './PasoMasivo2Diseno';
 import PasoMasivo3DescargarTarjetas from './PasoMasivo3DescargarTarjetas';
 import PasoMasivo4Previsualizacion from './PasoMasivo4Previsualizacion';
-import PasoMasivo5Envio from './PasoMasivo5Envio';
+import PasoMasivo5WhatsAppEnvio from './PasoMasivo5WhatsAppEnvio';
+import PasoMasivo6EmailEnvio from './PasoMasivo6EmailEnvio'; // Nuevo componente de email
 
-/**
- * COMPONENTE PRINCIPAL: PasoMasivo0Pasos
- * PROPÓSITO: Controlar todo el flujo de envío masivo de invitaciones
- * CONEXIONES:
- * - Independiente del flujo individual de invitaciones
- * - Almacena datos en localStorage propio para no interferir con otros flujos
- * - Se comunica con los componentes de cada paso mediante props
- * - NUEVO: Ahora incluye 5 pasos con la adición de descarga de tarjetas
- */
 const PasoMasivo0Pasos = () => {
-  // ---------------------------------------------------
-  // HOOK: useNavigate
-  // Permite redirigir a otra ruta al finalizar el proceso
-  // ---------------------------------------------------
   const navigate = useNavigate();
-  
-  // ---------------------------------------------------
-  // ESTADO PRINCIPAL: Paso actual (1 a 5)
-  // Controla cuál paso del flujo se está mostrando
-  // MODIFICADO: Ahora son 5 pasos en lugar de 4
-  // ---------------------------------------------------
   const [pasoActual, setPasoActual] = useState(1);
-  
-  // ---------------------------------------------------
-  // ESTADO: Lista de invitados seleccionados para el envío masivo
-  // Se inicializa desde localStorage si existe algún dato previo
-  // ---------------------------------------------------
   const [invitadosSeleccionados, setInvitadosSeleccionados] = useState(() => {
     const guardado = localStorage.getItem('invitadosMasivosSeleccionados');
     return guardado ? JSON.parse(guardado) : [];
   });
-  
-  // ---------------------------------------------------
-  // ESTADO: Diseño de mensaje o plantilla para el envío masivo
-  // Se inicializa desde localStorage si existe, o con un mensaje por defecto
-  // ---------------------------------------------------
   const [disenoMasivo, setDisenoMasivo] = useState(() => {
     const guardado = localStorage.getItem('disenoMasivo');
     return guardado ? JSON.parse(guardado) : {
       mensajePersonalizado: `¡Hola {nombre}! 🎉\n\nEstás invitado a nuestra boda!\n\n📅 Domingo, 23 de noviembre de 2025\n🕒 19:00 horas\n📍 Casa del Mar - Villa García Uriburu - C. Seaglia 5400, Camet\n\nConfirma tu asistencia aquí:\nhttps://confirmarasistenciaevento.netlify.app/\n\nUbicación:\nhttps://noscasamos-aleyfabi.netlify.app/ubicacion\n\n¡Esperamos verte! 💍\nAle y Fabi`
     };
   });
+  
+  // NUEVO ESTADO: Método de envío seleccionado
+  const [metodoEnvio, setMetodoEnvio] = useState(() => {
+    const guardado = localStorage.getItem('metodoEnvioMasivo');
+    return guardado ? JSON.parse(guardado) : 'whatsapp'; // 'whatsapp' o 'email'
+  });
 
-  // ---------------------------------------------------
-  // EFECTOS: Sincronización con localStorage
-  // Guarda los cambios en la lista de invitados y diseño de mensaje
-  // Cada vez que cambian los estados, se actualiza localStorage
-  // ---------------------------------------------------
+  // Sincronización con localStorage
   useEffect(() => {
     localStorage.setItem('invitadosMasivosSeleccionados', JSON.stringify(invitadosSeleccionados));
   }, [invitadosSeleccionados]);
@@ -73,54 +39,49 @@ const PasoMasivo0Pasos = () => {
     localStorage.setItem('disenoMasivo', JSON.stringify(disenoMasivo));
   }, [disenoMasivo]);
 
-  // ---------------------------------------------------
-  // FUNCIONES DE NAVEGACIÓN ENTRE PASOS
-  // MODIFICADO: Ahora maneja 5 pasos en lugar de 4
-  // ---------------------------------------------------
+  // NUEVO: Sincronizar método de envío
+  useEffect(() => {
+    localStorage.setItem('metodoEnvioMasivo', JSON.stringify(metodoEnvio));
+  }, [metodoEnvio]);
 
-  // Avanzar al siguiente paso
+  // Funciones de navegación
   const avanzarPaso = () => {
-    if (pasoActual < 5) {
+    if (pasoActual < 6) {
       setPasoActual(pasoActual + 1);
     }
   };
 
-  // Retroceder al paso anterior
   const retrocederPaso = () => {
     if (pasoActual > 1) {
       setPasoActual(pasoActual - 1);
     }
   };
 
-  // Ir a un paso específico
   const irAPaso = (numeroPaso) => {
     setPasoActual(numeroPaso);
   };
 
-  // ---------------------------------------------------
-  // FUNCIONES DE CONTROL DEL PROCESO MASIVO
-  // ---------------------------------------------------
-
-  // Reiniciar todo el proceso masivo y limpiar localStorage
+  // Reiniciar proceso
   const reiniciarProcesoMasivo = () => {
     setInvitadosSeleccionados([]);
     setPasoActual(1);
+    setMetodoEnvio('whatsapp');
     localStorage.removeItem('invitadosMasivosSeleccionados');
     localStorage.removeItem('disenoMasivo');
+    localStorage.removeItem('metodoEnvioMasivo');
   };
 
-  // Finalizar el proceso masivo y redirigir a la lista de invitados
   const finalizarProcesoMasivo = () => {
     reiniciarProcesoMasivo();
-    navigate('/organizacion/invitados'); // Ruta de regreso
+    navigate('/organizacion/invitados');
   };
 
-  // ---------------------------------------------------
-  // RENDERS AUXILIARES
-  // MODIFICADO: Ahora muestra 5 pasos en la barra de progreso
-  // ---------------------------------------------------
+  // NUEVO: Cambiar método de envío
+  const cambiarMetodoEnvio = (nuevoMetodo) => {
+    setMetodoEnvio(nuevoMetodo);
+  };
 
-  // Renderiza la barra de progreso mostrando los 5 pasos
+  // Render de barra de progreso (ahora con 6 pasos)
   const renderBarraProgreso = () => (
     <div className="barra-progreso-masivo">
       {[1, 2, 3, 4, 5].map(paso => (
@@ -129,17 +90,16 @@ const PasoMasivo0Pasos = () => {
           <div className="texto-paso-masivo">
             {paso === 1 && 'Seleccionar Invitados'}
             {paso === 2 && 'Diseñar Mensaje'}
-            {paso === 3 && 'Descargar Tarjetas'} {/* NUEVO PASO */}
+            {paso === 3 && 'Descargar Tarjetas'}
             {paso === 4 && 'Previsualizar'}
-            {paso === 5 && 'Enviar Masivamente'}
+            {paso === 5 && 'Elegir Envío'} {/* Nuevo paso para elegir método */}
           </div>
         </div>
       ))}
     </div>
   );
 
-  // Renderiza los botones de navegación entre pasos
-  // MODIFICADO: Ahora maneja 5 pasos
+  // Render de controles de navegación
   const renderControlesNavegacion = () => (
     <div className="controles-navegacion-masivo">
       <button 
@@ -157,6 +117,13 @@ const PasoMasivo0Pasos = () => {
         >
           Siguiente →
         </button>
+      ) : pasoActual === 5 ? (
+        <button 
+          onClick={avanzarPaso} 
+          className="btn btn-siguiente-masivo"
+        >
+          Continuar al Envío →
+        </button>
       ) : (
         <button 
           onClick={finalizarProcesoMasivo} 
@@ -168,10 +135,77 @@ const PasoMasivo0Pasos = () => {
     </div>
   );
 
-  // Renderiza el componente correspondiente al paso actual
-  // MODIFICADO: Ahora incluye el nuevo paso 3 (Descargar Tarjetas)
+  // NUEVO: Paso para seleccionar método de envío
+  const renderPasoSeleccionMetodo = () => (
+    <div className="paso-seleccion-metodo">
+      <div className="instrucciones-metodo">
+        <h2>Paso 5: Seleccionar Método de Envío</h2>
+        <p>Elige cómo deseas enviar las invitaciones a tus invitados</p>
+      </div>
+
+      <div className="opciones-metodo">
+        <div 
+          className={`opcion-metodo ${metodoEnvio === 'whatsapp' ? 'seleccionado' : ''}`}
+          onClick={() => cambiarMetodoEnvio('whatsapp')}
+        >
+          <div className="icono-metodo">
+            <span className="whatsapp-icon">💚</span>
+          </div>
+          <div className="info-metodo">
+            <h3>WhatsApp</h3>
+            <p>Envía mensajes e imágenes directamente por WhatsApp</p>
+            <ul>
+              <li>✓ Envío rápido y directo</li>
+              <li>✓ Mayor tasa de respuesta</li>
+              <li>✓ Ideal para contactos móviles</li>
+            </ul>
+          </div>
+          <div className="selector-metodo">
+            {metodoEnvio === 'whatsapp' && <div className="check">✓</div>}
+          </div>
+        </div>
+
+        <div 
+          className={`opcion-metodo ${metodoEnvio === 'email' ? 'seleccionado' : ''}`}
+          onClick={() => cambiarMetodoEnvio('email')}
+        >
+          <div className="icono-metodo">
+            <span className="email-icon">📧</span>
+          </div>
+          <div className="info-metodo">
+            <h3>Email</h3>
+            <p>Envía invitaciones completas por correo electrónico</p>
+            <ul>
+              <li>✓ Ideal para invitaciones formales</li>
+              <li>✓ Incluye todos los detalles</li>
+              <li>✓ Fácil de archivar y consultar</li>
+            </ul>
+          </div>
+          <div className="selector-metodo">
+            {metodoEnvio === 'email' && <div className="check">✓</div>}
+          </div>
+        </div>
+
+        <div className="estadisticas-metodo">
+          <div className="estadistica">
+            <span className="numero">{invitadosSeleccionados.filter(inv => inv.telefono && inv.telefono !== 'N/A').length}</span>
+            <span className="texto">Invitados con WhatsApp</span>
+          </div>
+          <div className="estadistica">
+            <span className="numero">{invitadosSeleccionados.filter(inv => inv.email && inv.email !== 'N/A').length}</span>
+            <span className="texto">Invitados con Email</span>
+          </div>
+          <div className="estadistica">
+            <span className="numero">{invitadosSeleccionados.length}</span>
+            <span className="texto">Total de Invitados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Render del paso actual
   const renderPasoActual = () => {
-    // Props comunes que se pasan a todos los pasos
     const propsComunes = {
       disenoMasivo,
       setDisenoMasivo,
@@ -186,37 +220,36 @@ const PasoMasivo0Pasos = () => {
       case 2:
         return <PasoMasivo2Diseno {...propsComunes} />;
       case 3:
-        return <PasoMasivo3DescargarTarjetas {...propsComunes} />; 
+        return <PasoMasivo3DescargarTarjetas {...propsComunes} />;
       case 4:
         return <PasoMasivo4Previsualizacion {...propsComunes} />;
       case 5:
-        return <PasoMasivo5Envio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
+        return renderPasoSeleccionMetodo();
+      case 6:
+        // Paso 6: Envío según el método seleccionado
+        if (metodoEnvio === 'whatsapp') {
+          return <PasoMasivo5WhatsAppEnvio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
+        } else {
+          return <PasoMasivo6EmailEnvio {...propsComunes} finalizarProceso={finalizarProcesoMasivo} />;
+        }
       default:
         return <PasoMasivo1Seleccion {...propsComunes} />;
     }
   };
 
-  // ---------------------------------------------------
-  // RENDER PRINCIPAL
-  // ---------------------------------------------------
   return (
     <div className="pasos-envio-masivo-container">
-      {/* Encabezado */}
       <div className="encabezado-pasos-masivo">
         <h1>Envío Masivo de Invitaciones</h1>
-        <p>Sigue estos 5 pasos para enviar invitaciones a múltiples invitados a la vez</p>
-        {/* MODIFICADO: Cambiado de 4 a 5 pasos */}
+        <p>Sigue estos {pasoActual <= 5 ? 6 : 5} pasos para enviar invitaciones a múltiples invitados a la vez</p>
       </div>
 
-      {/* Barra de progreso */}
       {renderBarraProgreso()}
       
-      {/* Contenido del paso actual */}
       <div className="contenido-paso-masivo">
         {renderPasoActual()}
       </div>
 
-      {/* Controles de navegación */}
       {renderControlesNavegacion()}
     </div>
   );

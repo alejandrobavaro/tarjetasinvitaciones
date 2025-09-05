@@ -5,9 +5,9 @@ import {
   FiDownload, FiCheckCircle, FiAlertCircle, FiCopy, FiImage, FiSend
 } from "react-icons/fi";
 import { GiRing } from "react-icons/gi";
-import '../assets/scss/_03-Componentes/_PasoMasivo5Envio.scss';
+import '../assets/scss/_03-Componentes/_PasoMasivo5WhatsAppEnvio.scss';
 
-const PasoMasivo5Envio = ({ 
+const PasoMasivo5WhatsAppEnvio = ({ 
   disenoMasivo, 
   invitadosSeleccionados, 
   finalizarProceso 
@@ -443,4 +443,4 @@ const PasoMasivo5Envio = ({
   );
 };
 
-export default PasoMasivo5Envio;
+export default PasoMasivo5WhatsAppEnvio;
